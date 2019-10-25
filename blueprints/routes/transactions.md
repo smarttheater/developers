@@ -23,27 +23,12 @@
 期限指定で注文取引を開始します。取引の期限が切れると、それまでの仮予約は解除され、取引を確定することはできなくなります。
 アプリケーションの購入フローで十分な期間を想定し、期限をセットしてください。
 
-::: note
-This action requires an `access_token` with `transactions` scope.
-:::
-
-**購入者区分**
-| value    | type   | description |
-| :------- | :----- | :---------- |
-| Customer | string | 一般        |
-
-::: note
-販売者識別子は、固定で`TokyoTower`を入力してください。
-:::
-
 + Request (application/json)
     + Headers
         Authentication: Bearer JWT
 
     + Attributes
         + expires:  `2017-05-10T07:42:25Z` (string, required) - 取引有効期限
-        + seller_identifier: `TokyoTower` (string, required) - 販売者識別子
-        + purchaser_group: `Customer` (string, required) - 購入者区分
 
 + Response 201 (application/json)
     + Attributes
@@ -67,10 +52,6 @@ This action requires an `access_token` with `transactions` scope.
 パフォーマンス指定で座席を仮予約します。複数座席予約の場合は、座席分のofferを投げてください。 
 本リクエストのレスポンスに含まれる仮予約IDは、仮予約削除の際に必要になります。アプリケーション側で大切に管理してください。  
 空席がない場合、ステータスコード409を返却します。
-
-::: note
-This action requires an `access_token` with `transactions.authorizations` scope.
-:::
 
 + Request (application/json)
     + Headers
@@ -99,10 +80,6 @@ This action requires an `access_token` with `transactions.authorizations` scope.
 ### 座席仮予約解除 [DELETE]
 仮予約を解除します。仮予約を解除された座席は、即座に空席として解放されます。
 
-::: note
-This action requires an `access_token` with `transactions` scope.
-:::
-
 + Request (application/json)
     + Headers
         Authentication: Bearer JWT
@@ -121,10 +98,6 @@ This action requires an `access_token` with `transactions` scope.
 
 ### 購入者情報登録 [PUT]
 取引の購入者情報を登録します。
-
-::: note
-This action requires an `access_token` with `transactions` scope.
-:::
 
 **性別**
 | value | type   | description |
@@ -173,10 +146,6 @@ This action requires an `access_token` with `transactions` scope.
 注文取引を確定します。
 有効期限を超過していた場合、ステータスコード404を返却します。
 
-::: note
-This action requires an `access_token` with `transactions` scope.
-:::
-
 **決済方法**
 | value | type   | description |
 | :---- | :----- | :---------- |
@@ -205,14 +174,6 @@ This action requires an `access_token` with `transactions` scope.
 該当予約がない場合、ステータスコード404を返却します。
 また、すでに返品済の場合、ステータスコード409を返却します。
 
-::: note
-This action requires an `access_token` with `reservations` scope.
-:::
-
-::: note
-ツアー開演日までの残日数等、キャンセル対象条件を満たしているかどうかチェックしない場合、forciblyをtrueとしてリクエストしてください。
-:::
-
 + Request (application/json)
     + Headers
         Authentication: Bearer JWT
@@ -220,8 +181,6 @@ This action requires an `access_token` with `reservations` scope.
     + Attributes
         + performance_day: `20170511` (string, required) - 上映日
         + payment_no: `123456` (string, required) - 購入番号
-        + cancellation_fee: 1000 (number, required) - キャンセル手数料
-        + forcibly: 1000 (boolean, required) - キャンセル対象に対するバリデーションを無効にするかどうか(trueの場合、無効)
 
 + Response 201 (application/json)
     + Attributes

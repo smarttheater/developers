@@ -17,13 +17,9 @@
 
 + `client_credentials`
 
-認証時には必要なスコープを必ず指定してください。
+~~認証時には必要なスコープを必ず指定してください。~~
 
-**利用可能なスコープ**
-| scope                  | description                 |
-| :--------------------- | :-------------------------- |
-| transactions           | 座席予約取引に対する書き込み処理 |
-| performances.read-only | パフォーマンス読み込み               |
+スコープ指定が非必須となりました。
 
 ::: note
 返却値には、`access_token`と`expires_in`が含まれます。
@@ -38,7 +34,7 @@
         + `grant_type`: `client_credencials` (string, required) - 認証タイプ(固定値)
         + `state`: `state123456789` (string, required)
             クライアント状態(クライアント側で現在のユーザー状態を表す文字列を送信してください。例えばセッションIDなどです)
-        + `scopes` (array, fixed-type, required) - 必要なスコープは、各APIの説明を参照してください。
+        + `scopes` (array, fixed-type) - 未指定であれば、必要なスコープがセットされます。
             + `https://ttts-api-development-azurewebsites.net/transactions` (string)
             + `https://ttts-api-development-azurewebsites.net/performances.read-only` (string)
 

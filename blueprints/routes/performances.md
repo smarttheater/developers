@@ -72,10 +72,6 @@
 ### パフォーマンス検索 [GET]
 条件指定でパフォーマンスを検索します。
 
-::: note
-This action requires an `access_token` with `performances.read-only` scope.
-:::
-
 example:
 ```no-highlight
 /performances?day=20110101&limit=5

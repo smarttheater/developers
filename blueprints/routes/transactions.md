@@ -146,17 +146,18 @@
 注文取引を確定します。
 有効期限を超過していた場合、ステータスコード404を返却します。
 
-**決済方法**
-| value | type   | description |
-| :---- | :----- | :---------- |
-| Cash  | string | 現金        |
+~~**決済方法**~~
+| ~~value~~ | ~~type~~   | ~~description~~ |
+| :-------- | :--------- | :-------------- |
+| ~~Cash~~  | ~~string~~ | ~~現金~~        |
+
+決済方法指定は不要となりました。
 
 + Request (application/json)
     + Headers
         Authentication: Bearer JWT
 
     + Attributes
-        + payment_method: `Cash` (string, required) - 決済方法
 
 + Response 201 (application/json)
     + Attributes

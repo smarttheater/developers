@@ -65,7 +65,6 @@
       + Default: `1`
     + limit: `25` (number, optional) - 最大取得件数
       + Default: `100`
-    + theater: `001` (string, optional) - 施設(指定の必要がなくなりました)
     + day: `20110101` (string, optional) - 上映日
     + performanceId: `171222001001012130` (string, optional) - パフォーマンスID
 

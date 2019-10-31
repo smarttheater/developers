@@ -17,10 +17,6 @@
 
 + `client_credentials`
 
-~~認証時には必要なスコープを必ず指定してください。~~
-
-スコープ指定が非必須となりました。
-
 ::: note
 返却値には、`access_token`と`expires_in`が含まれます。
 
@@ -34,9 +30,6 @@
         + `grant_type`: `client_credencials` (string, required) - 認証タイプ(固定値)
         + `state`: `state123456789` (string, required)
             クライアント状態(クライアント側で現在のユーザー状態を表す文字列を送信してください。例えばセッションIDなどです)
-        + `scopes` (array, fixed-type) - 未指定であれば、必要なスコープがセットされます。
-            + `https://ttts-api-development-azurewebsites.net/transactions` (string)
-            + `https://ttts-api-development-azurewebsites.net/performances.read-only` (string)
 
 + Response 200 (application/json)
     + Attributes

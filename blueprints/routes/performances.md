@@ -22,9 +22,6 @@
     + wheelchair_available: 1 (number, required) - 車椅子残数
     + ticket_types (array[Performances.TicketType], fixed-type) - 券種リスト
     + online_sales_status: `Normal` (string, required) - 販売ステータス
-    + refunded_count: 1 (number, required) - 返金済数
-    + refund_status: `None` (string, required) - 返金ステータス
-    + ev_service_status: `Normal` (string, required) - 停止ステータス
 
 ## Performances.ICheckinCountByTicketType
 + count: 0 (number, required) - 入場数

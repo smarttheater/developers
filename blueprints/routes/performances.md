@@ -12,7 +12,7 @@
 
 ## Performances.Performance
 + id: `171222001001012130` (string, required) - パフォーマンスID
-+ atrributes (object)
++ attributes (object)
     + day: `20171025` (string, required) - 上映日(YYYYMMDD)
     + open_time: `1210` (string, required) - 開場時刻(hhmm)
     + start_time: `1210` (string, required) - 開場時刻(hhmm)

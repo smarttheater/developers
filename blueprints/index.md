@@ -7,8 +7,6 @@ HOST: https://example.com
 
 基本仕様は以下に従っています。
 
-[JSON API](http://jsonapi.org/)
-
 [OAuth 2.0](https://oauth.net/2/)
 
 [OAuth 2.0 Framework](http://tools.ietf.org/html/rfc6749)
@@ -52,5 +50,3 @@ HOST: https://example.com
 <!-- include(routes/transactions.md) -->
 
 <!-- include(routes/places.md) -->
-
-<!-- include(routes/404.md) -->

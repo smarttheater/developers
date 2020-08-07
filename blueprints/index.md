@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://ttts-api-development.azurewebsites.net
+HOST: https://example.com
 
 # 東京タワーチケットシステム API documentation
 

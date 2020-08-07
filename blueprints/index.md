@@ -1,13 +1,11 @@
 FORMAT: 1A
-HOST: https://ttts-api-development.azurewebsites.net
+HOST: https://example.com
 
 # 東京タワーチケットシステム API documentation
 
 東京タワーチケットシステムが提供するapiは、チケットシステムデータとのやりとりを行うアプリケーション開発を可能にするためのものです。
 
 基本仕様は以下に従っています。
-
-[JSON API](http://jsonapi.org/)
 
 [OAuth 2.0](https://oauth.net/2/)
 
@@ -52,5 +50,3 @@ HOST: https://ttts-api-development.azurewebsites.net
 <!-- include(routes/transactions.md) -->
 
 <!-- include(routes/places.md) -->
-
-<!-- include(routes/404.md) -->

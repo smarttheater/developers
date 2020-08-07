@@ -1,16 +1,13 @@
 {
   "name": "ttts-api-mock",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "ttts api mock",
   "scripts": {
-    "clean": "rimraf docs/**/* npm-debug.log*",
-    "doc": "gulp docs",
-    "doc:watch": "gulp watch",
-    "serve": "drakov --config drakovrc.js",
-    "start": "npm run serve",
-    "start:development": "npm run doc && concurrently \"npm run doc:watch\" \"npm run serve\"",
+    "build": "node ./build.js",
+    "clean": "rimraf public/docs/**/* npm-debug.log*",
+    "start": "http-server ./public",
     "test": "mocha",
-    "preversion": "npm run clean && npm run doc && npm test",
+    "preversion": "npm run clean && npm run build && npm test",
     "version": "git add -A",
     "postversion": "git push origin --tags"
   },
@@ -27,13 +24,10 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "drakov": "^1.0.4"
+    "http-server": "^0.12.3"
   },
   "devDependencies": {
     "aglio": "^2.3.0",
-    "concurrently": "^3.6.1",
-    "gulp": "^3.9.1",
-    "gulp-aglio": "0.0.10",
     "mocha": "^3.5.3",
     "request": "^2.88.0",
     "rimraf": "^2.6.3"

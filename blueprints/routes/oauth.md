@@ -8,7 +8,7 @@
 ::: note
 エンドポイントは、
 
-`https://ttts-development.auth.ap-northeast-1.amazoncognito.com/token`
+`https://example.auth.ap-northeast-1.amazoncognito.com/token`
 
 となります。
 :::

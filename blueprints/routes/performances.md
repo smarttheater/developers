@@ -12,7 +12,7 @@
 
 ## Performances.Performance
 + id: `171222001001012130` (string, required) - パフォーマンスID
-+ atrributes (object)
++ attributes (object)
     + day: `20171025` (string, required) - 上映日(YYYYMMDD)
     + open_time: `1210` (string, required) - 開場時刻(hhmm)
     + start_time: `1210` (string, required) - 開場時刻(hhmm)
@@ -22,9 +22,6 @@
     + wheelchair_available: 1 (number, required) - 車椅子残数
     + ticket_types (array[Performances.TicketType], fixed-type) - 券種リスト
     + online_sales_status: `Normal` (string, required) - 販売ステータス
-    + refunded_count: 1 (number, required) - 返金済数
-    + refund_status: `None` (string, required) - 返金ステータス
-    + ev_service_status: `Normal` (string, required) - 停止ステータス
 
 ## Performances.ICheckinCountByTicketType
 + count: 0 (number, required) - 入場数

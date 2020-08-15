@@ -39,10 +39,8 @@
 ## Performances.PerformanceWithAggregation
 + id: `171225001001011330` (string, required) - パフォーマンスID
 + tourNumber: `133` (string, required) - ツアーナンバー
-+ doorTime: `2017-12-25T04:30:00.000Z` (string, required) - 開場日時(ISO8601)
 + startDate: `2017-12-25T04:30:00.000Z` (string, required) - ツアー開演日時(ISO8601)
 + endDate: `2017-12-25T04:45:00.000Z` (string, required) - ツアー終演日時(ISO8601)
-+ duration: `PT15M` (string, required) - ツアー時間
 + maximumAttendeeCapacity: 35 (number, required) - 最大収容人数
 + remainingAttendeeCapacity: 34 (number, required) - 残収容人数
 + remainingAttendeeCapacityForWheelchair: 1 (number, required) - 車椅子残収容人数

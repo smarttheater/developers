@@ -8,7 +8,7 @@
 ## Transactions.EventReservation
 + qr_str: `TT-171222-000300-0` (string, required) - QR文字列
 + payment_no: `000300` (string, required) - 購入番号
-+ performance: `171222001001010915` (string, required) - パフォーマンスID
++ performance: `171222001001010915` (string, required) - イベントID
 
 ## Transactions.SeatReservationOffer
 + ticket_type: `001` (string, required) - 券種ID
@@ -49,7 +49,7 @@
     + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
 
 ### 座席仮予約 [POST]
-パフォーマンス指定で座席を仮予約します。複数座席予約の場合は、座席分のofferを投げてください。 
+イベント指定で座席を仮予約します。複数座席予約の場合は、座席分のofferを投げてください。 
 本リクエストのレスポンスに含まれる仮予約IDは、仮予約削除の際に必要になります。アプリケーション側で大切に管理してください。  
 空席がない場合、ステータスコード409を返却します。
 
@@ -58,7 +58,7 @@
         Authentication: Bearer JWT
 
     + Attributes
-        + performance_id: `59119065e3157c1884d3c333` (string, required) - パフォーマンスID
+        + performance_id: `59119065e3157c1884d3c333` (string, required) - イベントID
         + offers: (array[Transactions.SeatReservationOffer], fixed-type) - 座席予約供給情報
 
 + Response 201 (application/json)

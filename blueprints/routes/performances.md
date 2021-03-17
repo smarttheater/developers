@@ -20,7 +20,7 @@
     + seat_status: `35` (string, required) - 残席数
     + tour_number: `213` (string, required) - ツアーナンバー
     + wheelchair_available: 1 (number, required) - 車椅子残数
-    + ticket_types (array[Performances.TicketType], fixed-type) - オファーリスト
+    + ticket_types (array[Performances.TicketType], fixed-type) - オファーリスト(イベントID指定での検索時のみ)
     + online_sales_status: `Normal` (string, required) - 販売ステータス
 
 # Group Events
@@ -37,6 +37,7 @@
 
 ### イベント検索 [GET]
 イベントを検索します。
+検索結果のうち、オファーリスト(ticket_types)については、イベントID指定での検索時のみ含まれます。
 
 example:
 ```no-highlight

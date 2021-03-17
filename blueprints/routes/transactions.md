@@ -9,6 +9,9 @@
 + ticket_type: `001` (string, required) - オファーコード
 + watcher_name: `メモメモ` (string, required) - 予約追加テキスト
 
+## Transactions.Customer
++ telephone: `+819012345678` (string, required) - 電話番号
+
 
 # Group Transactions
 
@@ -143,6 +146,7 @@
 
 + Response 201 (application/json)
     + Attributes
+        + orderNumber: `xxxxxxxx` (string, required) - 注文番号
         + eventReservations (array[Transactions.EventReservation], fixed-type) - 予約リスト
 
 <!-- include(../response/400.md) -->
@@ -153,17 +157,19 @@
 ## 返品取引 [/transactions/returnOrder/confirm]
 
 ### 返品取引確定 [POST]
-イベント開催日と確認番号から注文を返品します。
+注文番号と購入者情報、あるいは、イベント開催日と確認番号から注文の返品処理を開始します。
+イベント開催日と確認番号の組み合わせは、2021-04-20T15:00:00Zをもって廃止となります。
 該当注文がない場合、ステータスコード404を返却します。
-また、すでに返品済の場合、ステータスコード409を返却します。
 
 + Request (application/json)
     + Headers
         Authentication: Bearer JWT
 
     + Attributes
-        + performance_day: `20170511` (string, required) - イベント開催日
-        + payment_no: `123456` (string, required) - 確認番号
+        + orderNumber: `xxxxxxxx` (string) - 注文番号
+        + customer: (Transactions.Customer, fixed-type) - 購入者情報(注文番号指定の場合、必須)
+        + performance_day: `20170511` (string) - イベント開催日(非推奨)
+        + payment_no: `123456` (string) - 確認番号(イベント開催日指定の場合、必須)(非推奨)
 
 + Response 201 (application/json)
     + Attributes

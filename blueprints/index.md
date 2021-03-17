@@ -1,9 +1,9 @@
 FORMAT: 1A
 HOST: https://example.com
 
-# Smart Theater Legacy POS API documentation
+# Smart Theater API Documentation
 
-Smart Theater Legacy POS APIは、Smart Theaterを利用したPOSアプリケーション開発を可能にするためのものです。
+Smart Theater APIは、Smart Theaterを利用したアプリケーション開発を可能にするためのものです。
 
 基本仕様は以下に従っています。
 
@@ -25,7 +25,6 @@ Smart Theater Legacy POS APIは、Smart Theaterを利用したPOSアプリケー
 | 409 CONFLICT              | 指定したリソースにおいて競合が発生しました。                                             |
 | 429 TOO_MANY_REQUESTS     | レート制限を超過しました。時間をおいて再度アクセスしてください。                         |
 | 500 INTERNAL_SERVER_ERROR | APIサーバ側の一時的なエラーです。                                                        |
-| 502 NOT_IMPLEMENTED       | 未実装エンドポイントです。                                                               |
 | 503 SERVICE_UNAVAILABLE   | APIサーバ側の一時的なエラーです。                                                        |
 
 ### Error response

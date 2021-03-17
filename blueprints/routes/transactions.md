@@ -10,7 +10,7 @@
 + watcher_name: `メモメモ` (string, required) - 予約追加テキスト
 
 ## Transactions.Customer
-+ telephone: `+819012345678` (string, required) - 電話番号
++ telephone: `+819012345678` (string, required) - 電話番号(E164フォーマット)
 
 
 # Group Transactions
@@ -157,7 +157,7 @@
 ## 返品取引 [/transactions/returnOrder/confirm]
 
 ### 返品取引確定 [POST]
-注文番号と購入者情報、あるいは、イベント開催日と確認番号から注文の返品処理を開始します。
+注文番号と購入者情報、あるいは、イベント開催日と確認番号(非推奨)、から注文の返品処理を開始します。
 イベント開催日と確認番号の組み合わせは、2021-04-20T15:00:00Zをもって廃止となります。
 該当注文がない場合、ステータスコード404を返却します。
 

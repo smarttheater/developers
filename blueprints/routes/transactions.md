@@ -1,7 +1,7 @@
 # Data Structure
 
 ## Transactions.EventReservation
-+ qr_str: `TTT281430206052148-0` (string, required) - 予約ID
++ qr_str: `TTT281430206052148-0` (string, required) - 予約QR文字列
 + payment_no: `56686` (string, required) - 確認番号
 + performance: `171222001001010915` (string, required) - イベントID
 
@@ -18,7 +18,7 @@
 ## 注文取引開始 [/transactions/placeOrder/start]
 
 ### 注文取引開始 [POST]
-期限指定で注文取引を開始します。取引の期限が切れると、それまでの仮予約は解除され、取引を確定することはできなくなります。
+期限指定で注文取引を開始します。取引の期限が切れると、取引中で作成された仮予約は取り消され、取引を確定することはできなくなります。
 アプリケーションの購入フローで十分な期間を想定し、期限をセットしてください。
 
 + Request (application/json)
@@ -26,14 +26,13 @@
         Authentication: Bearer JWT
 
     + Attributes
-        + expires:  `2017-05-10T07:42:25Z` (string, required) - 取引有効期限
+        + expires:  `2017-05-10T07:42:25Z` (string, required) - 取引期限
 
 + Response 201 (application/json)
     + Attributes
-        + id: `59119065e3157c1884d3c333` (string, required) - 取引ID
-        + agent: (object, required) - 購入者
+        + id: `1234567890abcdefghijklmn` (string, required) - 取引ID
         + seller: (object, required) - 販売者
-        + expires: `2017-05-10T07:42:25Z` (string, required) - 取引有効期限
+        + expires: `2017-05-10T07:42:25Z` (string, required) - 取引期限
         + startDate: `2017-05-10T07:42:25Z` (string, required) - 取引開始日時
 
 <!-- include(../response/400.md) -->
@@ -44,10 +43,10 @@
 ## 予約オファー承認 [/transactions/placeOrder/{transactionId}/actions/authorize/seatReservation]
 
 + Parameters
-    + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
+    + transactionId: `1234567890abcdefghijklmn` (string, required) - 取引ID
 
 ### 予約オファー承認 [POST]
-イベント指定で座席を仮予約します。複数座席予約の場合は、座席分のofferを投げてください。 
+イベント指定で座席を仮予約します。複数座席予約の場合は、座席数分のオファーを指定してください。 
 本リクエストのレスポンスに含まれるIDは、承認取消の際に必要になります。アプリケーション側で大切に管理してください。
 空席がない場合、ステータスコード409を返却します。
 
@@ -56,12 +55,12 @@
         Authentication: Bearer JWT
 
     + Attributes
-        + performance_id: `59119065e3157c1884d3c333` (string, required) - イベントID
+        + performance_id: `xxxxxxxxxxxx` (string, required) - イベントID
         + offers: (array[Transactions.SeatReservationOffer], fixed-type) - 受け入れるオファーリスト
 
 + Response 201 (application/json)
     + Attributes
-        + id: `59119065e3157c1884d3c333` (string, required) - 承認アクションID
+        + id: `1234567890abcdefghijklmn` (string, required) - 承認アクションID
 
 <!-- include(../response/400.md) -->
 <!-- include(../response/404.md) -->
@@ -72,11 +71,11 @@
 ## 予約オファー承認取消 [/transactions/placeOrder/{transactionId}/actions/authorize/seatReservation/{actionId}]
 
 + Parameters
-    + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
-    + actionId: `59119065e3157c1884d3c333` (string, required) - 承認アクションID
+    + transactionId: `1234567890abcdefghijklmn` (string, required) - 取引ID
+    + actionId: `1234567890abcdefghijklmn` (string, required) - 承認アクションID
 
 ### 予約オファー承認取消 [DELETE]
-オファー承認を取り消します。仮予約された座席は空席として解放されます。
+オファー承認を取り消します。仮予約は取り消されます。
 
 + Request (application/json)
     + Headers
@@ -92,7 +91,7 @@
 ## 購入者プロフィール設定 [/transactions/placeOrder/{transactionId}/customerContact]
 
 + Parameters
-    + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
+    + transactionId: `1234567890abcdefghijklmn` (string, required) - 取引ID
 
 ### 購入者プロフィール設定 [PUT]
 購入者のプロフィールを設定します。
@@ -132,11 +131,11 @@
 ## 注文取引確定 [/transactions/placeOrder/{transactionId}/confirm]
 
 + Parameters
-    + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
+    + transactionId: `1234567890abcdefghijklmn` (string, required) - 取引ID
 
 ### 注文取引確定 [POST]
 注文取引を確定します。
-有効期限を超過していた場合、ステータスコード404を返却します。
+期限を超過していた場合、ステータスコード404を返却します。
 
 + Request (application/json)
     + Headers
@@ -173,7 +172,7 @@
 
 + Response 201 (application/json)
     + Attributes
-        + id: `59119065e3157c1884d3c333` (string, required) - 取引ID
+        + id: `1234567890abcdefghijklmn` (string, required) - 取引ID
 
 <!-- include(../response/400.md) -->
 <!-- include(../response/404.md) -->

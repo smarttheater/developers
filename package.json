@@ -1,7 +1,7 @@
 {
-  "name": "ttts-api-mock",
+  "name": "@smarttheater/developers",
   "version": "2.9.1",
-  "description": "ttts api mock",
+  "description": "Smart Theater Developers",
   "scripts": {
     "build": "node ./build.js",
     "clean": "rimraf public/docs/**/* npm-debug.log*",

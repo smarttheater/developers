@@ -6,12 +6,12 @@
 
 ## Performances.TicketType
 + charge: 1800 (number, required) - 価格
-+ name: (Performances.MultilingualString, required) - オファー名称(多言語対応)
++ name: (Performances.MultilingualString, required) - オファー名称
 + id: `001` (string, required) - オファーコード
 + available_num: 1 (number, required) - 在庫数
 
 ## Performances.Performance
-+ id: `171222001001012130` (string, required) - イベントID
++ id: `xxxxxxxxxxxx` (string, required) - イベントID
 + attributes (object)
     + day: `20171025` (string, required) - 開催日(YYYYMMDD)
     + open_time: `1210` (string, required) - 開場時刻(hhmm)
@@ -25,7 +25,7 @@
 
 # Group Events
 
-## イベント検索 [/performances{?page,limit,day,performanceId}]
+## イベント検索 [/performances{?page,limit,day,eventId}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
@@ -33,7 +33,7 @@
     + limit: `25` (number, optional) - 最大取得件数
       + Default: `100`
     + day: `20110101` (string, optional) - 開催日
-    + performanceId: `171222001001012130` (string, optional) - イベントID
+    + eventId: `xxxxxxxxxxxx` (string, optional) - イベントID
 
 ### イベント検索 [GET]
 イベントを検索します。

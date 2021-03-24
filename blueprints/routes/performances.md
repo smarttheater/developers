@@ -42,7 +42,7 @@
 
 # Group Events
 
-## イベント検索 w/ 車椅子 [/performances{?page,limit,day,eventId}]
+## イベント検索 w/ 車椅子 [/performances{?page,limit,day,performanceId}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
@@ -50,7 +50,7 @@
     + limit: `25` (number, optional) - 最大取得件数
       + Default: `100`
     + day: `20110101` (string, optional) - 開催日
-    + eventId: `xxxxxxxxxxxx` (string, optional) - イベントID
+    + performanceId: `xxxxxxxxxxxx` (string, optional) - イベントID
 
 ### イベント検索 w/ 車椅子 [GET]
 イベントを検索します。

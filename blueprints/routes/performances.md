@@ -1,14 +1,21 @@
 # Data Structure
 
 ## Performances.MultilingualString
-+ en: `english name` (string, optional) - 英語名称
-+ ja: `日本語名称` (string, optional) - 日本語名称
++ en: `English` (string, optional) - 英語
++ ja: `日本語` (string, optional) - 日本語
 
 ## Performances.TicketType
 + charge: 1800 (number, required) - 価格
 + name: (Performances.MultilingualString, required) - オファー名称
 + id: `001` (string, required) - オファーコード
 + available_num: 1 (number, required) - 在庫数
+
+## Performances.Language
++ name: `Japanese` (string, optional) - 名称
+
+## Performances.PropertyValue
++ name: `xxx` (string, required) - プロパティ名
++ value: `xxx` (string, required) - プロパティ値
 
 ## Performances.Performance
 + id: `xxxxxxxxxxxx` (string, required) - イベントID
@@ -24,21 +31,29 @@
     + online_sales_status: `Normal` (string, required) - 販売ステータス
 
 ## Performances.Event
-+ id: `xxxxxxxxxxxx` (string, required) - イベントID
-+ name (object)
-    + en: `xxx` (string) - 英語名称
-    + ja: `xxx` (string) - 名称
-+ location (object)
-    + branchCode: `xxx` (string) - ルームコード
-    + name: (object)
-        + en: `xxx` (string) - 英語名称
-        + ja: `xxx` (string) - 名称
-+ endDate: `2021-04-01T00:00:00Z` (string) - 終了日時
++ additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
 + doorTime: `2021-04-01T00:00:00Z` (string) - 開場日時
-+ startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
-+ maximumAttendeeCapacity: 1 (number) - 最大収容席数
-+ remainingAttendeeCapacity: 1 (number) - 残席数
++ endDate: `2021-04-01T00:00:00Z` (string) - 終了日時
 + eventStatus: `xxx` (string) - イベントステータス
++ id: `xxxxxxxxxxxx` (string, required) - イベントID
++ location (object)
+    + address: (Performances.MultilingualString, optional) - アドレス
+    + branchCode: `xxx` (string) - ルームコード
+    + name: (Performances.MultilingualString, optional) - 名称
++ maximumAttendeeCapacity: 1 (number) - 最大収容席数
++ offers (object)
+    + validFrom: `2021-04-01T00:00:00Z` (string) - 販売開始日時
+    + validThrough: `2021-04-01T00:00:00Z` (string) - 販売終了日時
++ startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
++ superEvent (object)
+    + description: (Performances.MultilingualString, optional) - 補足説明
+    + dubLanguage: (Performances.Language, optional) - 吹替言語
+    + subtitleLanguage: (Performances.Language, optional) - 字幕言語
++ remainingAttendeeCapacity: 1 (number) - 残席数
++ workPerformed (object)
+    + headline: `xxx` (string) - サブタイトル
+    + contentRating: `G` (string) - レイティング
+    + duration: `PT15M` (string) - 上映時間
 
 # Group Events
 

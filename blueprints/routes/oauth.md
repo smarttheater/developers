@@ -1,6 +1,6 @@
 # Group OAuth
 
-## Issue an access token [/token]
+## アクセストークン [/token]
 
 ### アクセストークン発行 [POST]
 [OAuth2](https://tools.ietf.org/html/rfc6749) に準拠したトークンエンドポイントです。
@@ -8,9 +8,11 @@
 ::: note
 エンドポイントは、
 
-`https://example.auth.ap-northeast-1.amazoncognito.com/token`
+`https://auth.example.com/token`
 
 となります。
+
+開発前に、運営側よりエンドポイント、認証情報を取得してください。
 :::
 
 **利用可能な認可タイプ**

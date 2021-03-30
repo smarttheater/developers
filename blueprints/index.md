@@ -44,6 +44,8 @@ Smart Theater APIは、Smart Theaterを利用したアプリケーション開�
 
 <!-- include(routes/oauth.md) -->
 
+<!-- include(routes/movies.md) -->
+
 <!-- include(routes/performances.md) -->
 
 <!-- include(routes/transactions.md) -->

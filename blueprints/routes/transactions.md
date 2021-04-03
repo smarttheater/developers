@@ -13,7 +13,7 @@
 + telephone: `+819012345678` (string, required) - 電話番号(E164フォーマット)
 
 
-# Group Transactions
+# Group 取引 - POSのみ利用可能
 
 ## 注文取引開始 [/transactions/placeOrder/start]
 

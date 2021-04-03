@@ -55,7 +55,7 @@
     + contentRating: `G` (string) - レイティング
     + duration: `PT15M` (string) - 上映時間
 
-# Group Events
+# Group イベント
 
 ## イベント検索 w/ 車椅子 [/performances{?page,limit,day,performanceId}]
 

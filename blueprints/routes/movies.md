@@ -16,7 +16,7 @@
 + identifier: `xxx` (string, required) - コード
 + name: (Performances.MultilingualString, optional) - 名称
 
-# Group CreativeWorks
+# Group コンテンツ
 
 ## コンテンツ検索 [/creativeWorks/movie{?page,limit}]
 

@@ -103,13 +103,15 @@ example:
 
 <!-- include(../response/400.md) -->
 
-## 汎用イベント検索 [/events/ScreeningEvent{?page,limit}]
+## 汎用イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
       + Default: `1`
     + limit: `25` (number, optional) - 最大取得件数
       + Default: `100`
+    + startFrom: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(から)
+    + startThrough: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(まで)
 
 ### 汎用イベント検索 [GET]
 イベントを検索します。

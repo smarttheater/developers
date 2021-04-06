@@ -18,13 +18,15 @@
 
 # Group コンテンツ
 
-## コンテンツ検索 [/creativeWorks/movie{?page,limit}]
+## コンテンツ検索 [/creativeWorks/movie{?page,limit,datePublishedFrom,datePublishedThrough}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
       + Default: `1`
     + limit: `25` (number, optional) - 最大取得件数
       + Default: `100`
+    + datePublishedFrom: `2021-04-01T00:00:00Z` (string, optional) - 公開日時範囲(から)
+    + datePublishedThrough: `2021-04-01T00:00:00Z` (string, optional) - 公開日時範囲(まで)
 
 ### コンテンツ検索 [GET]
 コンテンツを検索します。

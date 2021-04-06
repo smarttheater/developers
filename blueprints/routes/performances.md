@@ -41,6 +41,7 @@
     + branchCode: `xxx` (string) - ルームコード
     + name: (Performances.MultilingualString, optional) - 名称
 + maximumAttendeeCapacity: 1 (number) - 最大収容席数
++ name: (Performances.MultilingualString, optional) - 名称
 + offers (object)
     + validFrom: `2021-04-01T00:00:00Z` (string) - 販売開始日時
     + validThrough: `2021-04-01T00:00:00Z` (string) - 販売終了日時
@@ -51,9 +52,14 @@
     + subtitleLanguage: (Performances.Language, optional) - 字幕言語
 + remainingAttendeeCapacity: 1 (number) - 残席数
 + workPerformed (object)
+    + identifier: `xxx` (string) - コンテンツコード
     + headline: `xxx` (string) - サブタイトル
     + contentRating: `G` (string) - レイティング
     + duration: `PT15M` (string) - 上映時間
+
+## Performances.ScreeningEventSeries
++ additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
++ id: `xxxxxxxxxxxx` (string, required) - イベントID
 
 # Group イベント
 
@@ -80,7 +86,24 @@ example:
     + Attributes
         + data: (array[Performances.Performance], fixed-type) - イベントリスト
 
-## 汎用イベント検索 [/events{?page,limit}]
+## 施設コンテンツ検索 [/events/ScreeningEventSeries{?page,limit}]
+
++ Parameters
+    + page: `2` (number, optional) - ページ
+      + Default: `1`
+    + limit: `25` (number, optional) - 最大取得件数
+      + Default: `100`
+
+### 施設コンテンツ検索 [GET]
+イベントを検索します。
+
++ Response 200 (application/json)
+    + Attributes (array, fixed-type)
+        + (Performances.ScreeningEventSeries) - 施設コンテンツ
+
+<!-- include(../response/400.md) -->
+
+## 汎用イベント検索 [/events/ScreeningEvent{?page,limit}]
 
 + Parameters
     + page: `2` (number, optional) - ページ

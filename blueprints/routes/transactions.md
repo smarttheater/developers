@@ -156,8 +156,7 @@
 ## 注文返品 [/transactions/returnOrder/confirm]
 
 ### 注文返品 [POST]
-注文番号と購入者情報、あるいは、イベント開催日と確認番号(非推奨)、から注文の返品処理を開始します。
-イベント開催日と確認番号の組み合わせは、2021-04-16T15:00:00Zをもって廃止となります。
+注文番号と購入者情報から注文の返品処理を開始します。
 該当注文がない場合、ステータスコード404を返却します。
 
 + Request (application/json)
@@ -167,8 +166,6 @@
     + Attributes
         + orderNumber: `xxxxxxxx` (string) - 注文番号
         + customer: (Transactions.Customer, fixed-type) - 購入者情報(注文番号指定の場合、必須)
-        + performance_day: `20170511` (string) - イベント開催日(非推奨)
-        + payment_no: `123456` (string) - 確認番号(イベント開催日指定の場合、必須)(非推奨)
 
 + Response 201 (application/json)
     + Attributes

@@ -135,7 +135,6 @@
 
 ### 注文取引確定 [POST]
 注文取引を確定します。
-注文金額を指定しない場合の金額自動算出については、2021-05-15T00:00:00+09:00をもって廃止となります。
 期限を超過していた場合、ステータスコード404を返却します。
 
 + Request (application/json)
@@ -145,7 +144,7 @@
     + Attributes
         + result: (object, optional)
             + order: (object, optional)
-                + price: 1800 (number, optional) - 注文金額
+                + price: 1800 (number, required) - 注文金額
 
 + Response 201 (application/json)
     + Attributes
@@ -168,7 +167,7 @@
         Authentication: Bearer JWT
 
     + Attributes
-        + orderNumber: `xxxxxxxx` (string) - 注文番号
+        + orderNumber: `xxxxxxxx` (string, required) - 注文番号
         + customer: (Transactions.Customer, fixed-type) - 購入者情報(注文番号指定の場合、必須)
 
 + Response 201 (application/json)

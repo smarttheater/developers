@@ -47,6 +47,7 @@
     + validThrough: `2021-04-01T00:00:00Z` (string) - 販売終了日時
 + startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
 + superEvent (object)
+    + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
     + description: (Performances.MultilingualString, optional) - 補足説明
     + dubLanguage: (Performances.Language, optional) - 吹替言語
     + subtitleLanguage: (Performances.Language, optional) - 字幕言語
@@ -59,7 +60,7 @@
 
 ## Performances.ScreeningEventSeries
 + additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
-+ id: `xxxxxxxxxxxx` (string, required) - イベントID
++ id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
 + name: (Performances.MultilingualString, optional) - 名称
 
 # Group イベント
@@ -87,13 +88,15 @@ example:
     + Attributes
         + data: (array[Performances.Performance], fixed-type) - イベントリスト
 
-## 施設コンテンツ検索 [/events/ScreeningEventSeries{?page,limit}]
+## 施設コンテンツ検索 [/events/ScreeningEventSeries{?page,limit,locationBranchCode,workPerformedIdentifier}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
       + Default: `1`
     + limit: `25` (number, optional) - 最大取得件数
       + Default: `100`
+    + locationBranchCode: `xxx` (string, optional) - 施設コード
+    + workPerformedIdentifier: `xxx` (string, optional) - コンテンツコード
 
 ### 施設コンテンツ検索 [GET]
 イベントを検索します。
@@ -104,7 +107,7 @@ example:
 
 <!-- include(../response/400.md) -->
 
-## 汎用イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough,superEventLocationBranchCode}]
+## 汎用イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough,superEventLocationBranchCode,superEventWorkPerformedIdentifier}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
@@ -114,6 +117,7 @@ example:
     + startFrom: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(から)
     + startThrough: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(まで)
     + superEventLocationBranchCode: `xxx` (string, optional) - 施設コード
+    + superEventWorkPerformedIdentifier: `xxx` (string, optional) - コンテンツコード
 
 ### 汎用イベント検索 [GET]
 イベントを検索します。

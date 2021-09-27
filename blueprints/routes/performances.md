@@ -60,6 +60,7 @@
 ## Performances.ScreeningEventSeries
 + additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
 + id: `xxxxxxxxxxxx` (string, required) - イベントID
++ name: (Performances.MultilingualString, optional) - 名称
 
 # Group イベント
 
@@ -103,7 +104,7 @@ example:
 
 <!-- include(../response/400.md) -->
 
-## 汎用イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough}]
+## 汎用イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough,superEventLocationBranchCode}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
@@ -112,6 +113,7 @@ example:
       + Default: `100`
     + startFrom: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(から)
     + startThrough: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(まで)
+    + superEventLocationBranchCode: `xxx` (string, optional) - 施設コード
 
 ### 汎用イベント検索 [GET]
 イベントを検索します。

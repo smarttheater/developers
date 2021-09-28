@@ -40,28 +40,30 @@
     + address: (Performances.MultilingualString, optional) - アドレス
     + branchCode: `xxx` (string) - ルームコード
     + name: (Performances.MultilingualString, optional) - 名称
-+ maximumAttendeeCapacity: 1 (number) - 最大収容席数
++ maximumAttendeeCapacity: 1 (number, optional) - 最大収容席数
 + name: (Performances.MultilingualString, optional) - 名称
 + offers (object)
-    + validFrom: `2021-04-01T00:00:00Z` (string) - 販売開始日時
-    + validThrough: `2021-04-01T00:00:00Z` (string) - 販売終了日時
+    + validFrom: `2021-04-01T00:00:00Z` (string, optional) - 販売開始日時
+    + validThrough: `2021-04-01T00:00:00Z` (string, optional) - 販売終了日時
 + startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
 + superEvent (object)
     + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
     + description: (Performances.MultilingualString, optional) - 補足説明
     + dubLanguage: (Performances.Language, optional) - 吹替言語
     + subtitleLanguage: (Performances.Language, optional) - 字幕言語
-+ remainingAttendeeCapacity: 1 (number) - 残席数
++ remainingAttendeeCapacity: 1 (number, optional) - 残席数
 + workPerformed (object)
-    + identifier: `xxx` (string) - コンテンツコード
-    + headline: `xxx` (string) - サブタイトル
-    + contentRating: `G` (string) - レイティング
-    + duration: `PT15M` (string) - 上映時間
+    + identifier: `xxx` (string, required) - コンテンツコード
+    + headline: `xxx` (string, optional) - サブタイトル
+    + contentRating: `G` (string, optional) - レイティング
+    + duration: `PT15M` (string, optional) - 上映時間
 
 ## Performances.ScreeningEventSeries
 + additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
 + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
 + name: (Performances.MultilingualString, optional) - 名称
++ endDate: `2021-04-01T00:00:00Z` (string, optional) - 終了日時
++ startDate: `2021-04-01T00:00:00Z` (string, optional) - 開始日時
 
 # Group イベント
 
@@ -88,7 +90,7 @@ example:
     + Attributes
         + data: (array[Performances.Performance], fixed-type) - イベントリスト
 
-## 施設コンテンツ検索 [/events/ScreeningEventSeries{?page,limit,locationBranchCode,workPerformedIdentifier}]
+## 施設コンテンツ検索 [/events/ScreeningEventSeries{?page,limit,locationBranchCode,workPerformedIdentifier,startFrom,startThrough,endFrom,endThrough}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
@@ -97,6 +99,10 @@ example:
       + Default: `100`
     + locationBranchCode: `xxx` (string, optional) - 施設コード
     + workPerformedIdentifier: `xxx` (string, optional) - コンテンツコード
+    + startFrom: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(から)
+    + startThrough: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(まで)
+    + endFrom: `2021-04-01T00:00:00Z` (string, optional) - 終了日時範囲(から)
+    + endThrough: `2021-04-01T00:00:00Z` (string, optional) - 終了日時範囲(まで)
 
 ### 施設コンテンツ検索 [GET]
 イベントを検索します。

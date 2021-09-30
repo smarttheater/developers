@@ -1,6 +1,6 @@
 # Group OAuth
 
-## アクセストークン [/token]
+## アクセストークン [/oauth2/token]
 
 ### アクセストークン発行 [POST]
 [OAuth2](https://tools.ietf.org/html/rfc6749) に準拠したトークンエンドポイントです。
@@ -8,7 +8,7 @@
 ::: note
 エンドポイントは、
 
-`https://auth.example.com/token`
+`https://auth.example.com/oauth2/token`
 
 となります。
 

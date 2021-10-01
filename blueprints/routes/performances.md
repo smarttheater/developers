@@ -4,31 +4,12 @@
 + en: `English` (string, optional) - 英語
 + ja: `日本語` (string, optional) - 日本語
 
-## Performances.TicketType
-+ charge: 1800 (number, required) - 価格
-+ name: (Performances.MultilingualString, required) - オファー名称
-+ id: `001` (string, required) - オファーコード
-+ available_num: 1 (number, required) - 在庫数
-
 ## Performances.Language
 + name: `Japanese` (string, optional) - 名称
 
 ## Performances.PropertyValue
 + name: `xxx` (string, required) - プロパティ名
 + value: `xxx` (string, required) - プロパティ値
-
-## Performances.Performance
-+ id: `xxxxxxxxxxxx` (string, required) - イベントID
-+ attributes (object)
-    + day: `20171025` (string, required) - 開催日(YYYYMMDD)
-    + open_time: `1210` (string, required) - 開場時刻(hhmm)
-    + start_time: `1210` (string, required) - 開場時刻(hhmm)
-    + end_time: `1230` (string, required) - 開演時刻(hhmm)
-    + seat_status: `35` (string, required) - 残席数
-    + tour_number: `213` (string, required) - ツアーナンバー
-    + wheelchair_available: 1 (number, required) - 車椅子残数
-    + ticket_types (array[Performances.TicketType], fixed-type) - オファーリスト(イベントID指定での検索時のみ)
-    + online_sales_status: `Normal` (string, required) - 販売ステータス
 
 ## Performances.Event
 + additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
@@ -67,29 +48,6 @@
 
 # Group イベント
 
-## イベント検索 w/ 車椅子 [/performances{?page,limit,day,performanceId}]
-
-+ Parameters
-    + page: `2` (number, optional) - ページ
-      + Default: `1`
-    + limit: `25` (number, optional) - 最大取得件数
-      + Default: `100`
-    + day: `20110101` (string, optional) - 開催日
-    + performanceId: `xxxxxxxxxxxx` (string, optional) - イベントID
-
-### イベント検索 w/ 車椅子 [GET]
-イベントを検索します。
-検索結果のうち、オファーリスト(ticket_types)については、イベントID指定での検索時のみ含まれます。
-
-example:
-```no-highlight
-/performances?day=20110101&limit=5
-```
-
-+ Response 200 (application/json)
-    + Attributes
-        + data: (array[Performances.Performance], fixed-type) - イベントリスト
-
 ## 施設コンテンツ検索 [/events/ScreeningEventSeries{?page,limit,locationBranchCode,workPerformedIdentifier,startFrom,startThrough,endFrom,endThrough}]
 
 + Parameters
@@ -113,7 +71,7 @@ example:
 
 <!-- include(../response/400.md) -->
 
-## 汎用イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough,superEventLocationBranchCode,superEventWorkPerformedIdentifier}]
+## イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough,superEventLocationBranchCode,superEventWorkPerformedIdentifier}]
 
 + Parameters
     + page: `2` (number, optional) - ページ
@@ -125,7 +83,7 @@ example:
     + superEventLocationBranchCode: `xxx` (string, optional) - 施設コード
     + superEventWorkPerformedIdentifier: `xxx` (string, optional) - コンテンツコード
 
-### 汎用イベント検索 [GET]
+### イベント検索 [GET]
 イベントを検索します。
 
 + Response 200 (application/json)

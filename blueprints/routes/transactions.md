@@ -1,8 +1,12 @@
 # Data Structure
 
+## Transactions.MultilingualString
++ en: `English` (string, optional) - 英語
++ ja: `日本語` (string, optional) - 日本語
+
 ## Transactions.TicketType
 + charge: 1800 (number, required) - 価格
-+ name: (Performances.MultilingualString, required) - オファー名称
++ name: (Transactions.MultilingualString, required) - オファー名称
 + id: `001` (string, required) - オファーコード
 + available_num: 1 (number, required) - 在庫数
 

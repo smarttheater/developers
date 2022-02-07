@@ -14,3 +14,8 @@ aglio.renderFile('./blueprints/index.md', './public/docs/index.html', options, f
     if (err) return console.log(err);
     if (warnings) console.log(warnings);
 });
+
+aglio.renderFile('./blueprints/pos.md', './public/docs/pos.html', options, function (err, warnings) {
+    if (err) return console.log(err);
+    if (warnings) console.log(warnings);
+});

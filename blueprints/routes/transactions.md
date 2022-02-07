@@ -37,9 +37,9 @@
 ## イベント検索 w/ 車椅子 [/performances{?page,limit,day,performanceId}]
 
 + Parameters
-    + page: `2` (number, optional) - ページ
+    + page: `1` (number, optional) - ページ
       + Default: `1`
-    + limit: `25` (number, optional) - 最大取得件数
+    + limit: `10` (number, optional) - 最大取得件数
       + Default: `100`
     + day: `20110101` (string, optional) - 開催日
     + performanceId: `xxxxxxxxxxxx` (string, optional) - イベントID

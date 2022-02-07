@@ -51,9 +51,9 @@
 ## 施設コンテンツ検索 [/events/ScreeningEventSeries{?page,limit,locationBranchCode,workPerformedIdentifier,startFrom,startThrough,endFrom,endThrough}]
 
 + Parameters
-    + page: `2` (number, optional) - ページ
+    + page: `1` (number, optional) - ページ
       + Default: `1`
-    + limit: `25` (number, optional) - 最大取得件数
+    + limit: `10` (number, optional) - 最大取得件数
       + Default: `100`
     + locationBranchCode: `xxx` (string, optional) - 施設コード
     + workPerformedIdentifier: `xxx` (string, optional) - コンテンツコード
@@ -74,9 +74,9 @@
 ## イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough,superEventLocationBranchCode,superEventWorkPerformedIdentifier}]
 
 + Parameters
-    + page: `2` (number, optional) - ページ
+    + page: `1` (number, optional) - ページ
       + Default: `1`
-    + limit: `25` (number, optional) - 最大取得件数
+    + limit: `10` (number, optional) - 最大取得件数
       + Default: `100`
     + startFrom: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(から)
     + startThrough: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(まで)

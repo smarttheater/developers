@@ -1,8 +1,48 @@
 # Data Structure
 
+## Me.MultilingualString
++ en: `English` (string, optional) - 英語
++ ja: `日本語` (string, optional) - 日本語
+
+## Me.ReservationForLocation
++ branchCode: `xxx` (string, required) - コード
++ name: (Me.MultilingualString, optional) - 名称
+
+## Me.MovieTheater
++ branchCode: `xxx` (string, required) - コード
++ name: (Me.MultilingualString, optional) - 名称
+
+## Me.WorkPerformed
++ identifier: `xxx` (string, required) - コード
++ name: (string, required) - 名称
+
+## Me.ReservationForSuperEvent
++ kanaName: `xxx` (string, optional) - カナ名称
++ name: (Me.MultilingualString, required) - 名称
++ location: (Me.MovieTheater, required) - 施設
++ workPerformed: (Me.WorkPerformed, required) - コンテンツ
+
+## Me.ReservationFor
++ id: `xxx` (string, required) - ID
++ startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
++ endDate: `2021-04-01T00:00:00Z` (string) - 終了日時
++ name: (Me.MultilingualString, optional) - 名称
++ location: (Me.ReservationForLocation, optional) - ルーム
++ superEvent: (Me.ReservationForSuperEvent, optional) - 施設コンテンツ
+
+## Me.Offer
++ identifier: `xxx` (string, required) - コード
++ name: (Me.MultilingualString, optional) - 名称
+
+## Me.ReservedTicket
++ ticketType: (Me.Offer, required) - オファー
+
 ## Me.Reservation
 + id: `xxx` (string, required) - ID
 + reservationNumber: `xxx` (string, required) - 予約番号
++ bookingTime: `2021-04-01T00:00:00Z` (string) - 予約日時
++ reservationFor: (Me.ReservationFor, required) - 予約イベント
++ reservedTicket: (Me.ReservedTicket, required) - 予約チケット
 
 ## Me.Membership
 + identifier: `xxx` (string, required) - メンバーシップコード

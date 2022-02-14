@@ -77,13 +77,15 @@
 
 # Group 会員My所有権
 
-## My予約 [/peole/me/ownershipInfos/EventService{?page,limit}]
+## My予約 [/peole/me/ownershipInfos/EventService{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
       + Default: `1`
     + limit: `10` (number, optional) - 最大取得件数
       + Default: `100`
+    + ownedFrom: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(から)
+    + ownedThrough: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(まで)
 
 ### My予約検索 [GET]
 自分の所有する予約を検索します。
@@ -94,13 +96,15 @@
 
 <!-- include(../response/400.md) -->
 
-## Myメンバーシップ [/peole/me/ownershipInfos/MembershipService{?page,limit}]
+## Myメンバーシップ [/peole/me/ownershipInfos/MembershipService{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
       + Default: `1`
     + limit: `10` (number, optional) - 最大取得件数
       + Default: `100`
+    + ownedFrom: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(から)
+    + ownedThrough: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(まで)
 
 ### Myメンバーシップ検索 [GET]
 自分の所有するメンバーシップを検索します。
@@ -111,13 +115,15 @@
 
 <!-- include(../response/400.md) -->
 
-## Myペイメントカード [/peole/me/ownershipInfos/PaymentCard{?page,limit}]
+## Myペイメントカード [/peole/me/ownershipInfos/PaymentCard{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
       + Default: `1`
     + limit: `10` (number, optional) - 最大取得件数
       + Default: `100`
+    + ownedFrom: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(から)
+    + ownedThrough: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(まで)
 
 ### Myペイメントカード検索 [GET]
 自分の所有するペイメントカードを検索します。

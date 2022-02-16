@@ -68,6 +68,19 @@
 + ownedThrough: `2021-04-01T00:00:00Z` (string) - 所有終了日時
 + typeOfGood: (Me.PaymentCard, required) - 所有物
 
+## Me.MonetaryAmount
++ currency: `xxx` (string, required) - 通貨
++ value: 10 (number, required) - 金額値
+
+## Me.MoneyTransferActionPurpose
++ typeOf: `xxx` (string, required) - 取引タイプ
+
+## Me.MoneyTransferAction
++ amount: (Me.MonetaryAmount, required) - 金額
++ description: `xxx` (string, optional) - 説明
++ purpose: (Me.MoneyTransferActionPurpose, required) - 取引
++ startDate: `2021-04-01T00:00:00Z` (string, required) - 取引開始日時
+
 ## Me.CreditCard
 + cardSeq: `xxx` (string, required) - カード登録連番
 + cardName: `xxx` (string, required) - カード会社略称
@@ -75,9 +88,9 @@
 + expire: `xxx` (string, required) - 有効期限
 + holderName: `xxx` (string, required) - 名義人
 
-# Group 会員My所有権
+# Group 会員所有権
 
-## My予約 [/peole/me/ownershipInfos/EventService{?page,limit,ownedFrom,ownedThrough}]
+## 予約 [/peole/me/ownershipInfos/EventService{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
@@ -87,7 +100,7 @@
     + ownedFrom: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(から)
     + ownedThrough: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(まで)
 
-### My予約検索 [GET]
+### 予約検索 [GET]
 自分の所有する予約を検索します。
 
 + Response 200 (application/json)
@@ -96,7 +109,7 @@
 
 <!-- include(../response/400.md) -->
 
-## Myメンバーシップ [/peole/me/ownershipInfos/MembershipService{?page,limit,ownedFrom,ownedThrough}]
+## メンバーシップ [/peole/me/ownershipInfos/MembershipService{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
@@ -106,7 +119,7 @@
     + ownedFrom: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(から)
     + ownedThrough: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(まで)
 
-### Myメンバーシップ検索 [GET]
+### メンバーシップ検索 [GET]
 自分の所有するメンバーシップを検索します。
 
 + Response 200 (application/json)
@@ -115,7 +128,7 @@
 
 <!-- include(../response/400.md) -->
 
-## Myペイメントカード [/peole/me/ownershipInfos/PaymentCard{?page,limit,ownedFrom,ownedThrough}]
+## ペイメントカード [/peole/me/ownershipInfos/PaymentCard{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
@@ -125,7 +138,7 @@
     + ownedFrom: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(から)
     + ownedThrough: `2021-04-01T00:00:00Z` (string, optional) - 所有期間(まで)
 
-### Myペイメントカード検索 [GET]
+### ペイメントカード検索 [GET]
 自分の所有するペイメントカードを検索します。
 
 + Response 200 (application/json)
@@ -134,13 +147,43 @@
 
 <!-- include(../response/400.md) -->
 
-# Group 会員Myクレジットカード
+## ペイメントカード入出金 [/peole/me/ownershipInfos/PaymentCard/{ownershipInfoId}/actions/moneyTransfer{?page,limit}]
 
-## Myクレジットカード [/peole/me/ownershipInfos/creditCards]
++ Parameters
+    + ownershipInfoId: `xxxx` (string, required) - 所有権ID
+    + page: `1` (number, optional) - ページ
+      + Default: `1`
+    + limit: `10` (number, optional) - 最大取得件数
+      + Default: `100`
+
+### ペイメントカード入出金検索 [GET]
+自分の所有するペイメントカードの入出金履歴を検索します。
+
++ Response 200 (application/json)
+    + Attributes (array, fixed-type)
+        + (Me.MoneyTransferAction) - 入出金
+
+<!-- include(../response/400.md) -->
+
+## 所有権削除 [/peole/me/ownershipInfos/{ownershipInfoId}]
+
++ Parameters
+    + ownershipInfoId: `xxxx` (string, required) - 所有権ID
+
+### 所有権削除 [DELETE]
+所有権を削除します。
+
++ Response 204
+
+<!-- include(../response/400.md) -->
+
+# Group 会員クレジットカード
+
+## クレジットカード [/peole/me/ownershipInfos/creditCards]
 
 + Parameters
 
-### Myクレジットカード追加 [POST]
+### クレジットカード追加 [POST]
 自分の所有するクレジットカードを追加します。
 
 + Request (application/json)
@@ -155,7 +198,7 @@
 
 <!-- include(../response/400.md) -->
 
-### Myクレジットカード検索 [GET]
+### クレジットカード検索 [GET]
 自分の所有するクレジットカードを検索します。
 
 + Response 200 (application/json)
@@ -164,12 +207,12 @@
 
 <!-- include(../response/400.md) -->
 
-## Myクレジットカード削除 [/peole/me/ownershipInfos/creditCards/{cardSeq}]
+## クレジットカード削除 [/peole/me/ownershipInfos/creditCards/{cardSeq}]
 
 + Parameters
     + cardSeq: `xxx` (string, required) - カード登録連番
 
-### Myクレジットカード削除 [DELETE]
+### クレジットカード削除 [DELETE]
 自分の所有するクレジットカードを削除します。
 
 + Response 204

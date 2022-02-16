@@ -90,7 +90,7 @@
 
 # Group 会員所有権
 
-## 予約 [/peole/me/ownershipInfos/EventService{?page,limit,ownedFrom,ownedThrough}]
+## 予約 [/people/me/ownershipInfos/EventService{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
@@ -109,7 +109,7 @@
 
 <!-- include(../response/400.md) -->
 
-## メンバーシップ [/peole/me/ownershipInfos/MembershipService{?page,limit,ownedFrom,ownedThrough}]
+## メンバーシップ [/people/me/ownershipInfos/MembershipService{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
@@ -128,7 +128,7 @@
 
 <!-- include(../response/400.md) -->
 
-## ペイメントカード [/peole/me/ownershipInfos/PaymentCard{?page,limit,ownedFrom,ownedThrough}]
+## ペイメントカード [/people/me/ownershipInfos/PaymentCard{?page,limit,ownedFrom,ownedThrough}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
@@ -147,7 +147,7 @@
 
 <!-- include(../response/400.md) -->
 
-## ペイメントカード入出金 [/peole/me/ownershipInfos/PaymentCard/{ownershipInfoId}/actions/moneyTransfer{?page,limit}]
+## ペイメントカード入出金 [/people/me/ownershipInfos/PaymentCard/{ownershipInfoId}/actions/moneyTransfer{?page,limit}]
 
 + Parameters
     + ownershipInfoId: `xxxx` (string, required) - 所有権ID
@@ -165,7 +165,7 @@
 
 <!-- include(../response/400.md) -->
 
-## 所有権削除 [/peole/me/ownershipInfos/{ownershipInfoId}]
+## 所有権削除 [/people/me/ownershipInfos/{ownershipInfoId}]
 
 + Parameters
     + ownershipInfoId: `xxxx` (string, required) - 所有権ID
@@ -179,7 +179,7 @@
 
 # Group 会員クレジットカード
 
-## クレジットカード [/peole/me/ownershipInfos/creditCards]
+## クレジットカード [/people/me/ownershipInfos/creditCards]
 
 + Parameters
 
@@ -207,7 +207,7 @@
 
 <!-- include(../response/400.md) -->
 
-## クレジットカード削除 [/peole/me/ownershipInfos/creditCards/{cardSeq}]
+## クレジットカード削除 [/people/me/ownershipInfos/creditCards/{cardSeq}]
 
 + Parameters
     + cardSeq: `xxx` (string, required) - カード登録連番
@@ -221,7 +221,7 @@
 
 # Group 会員
 
-## 会員削除 [/peole/me]
+## 会員削除 [/people/me]
 
 + Parameters
 

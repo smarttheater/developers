@@ -5,13 +5,13 @@
 + ja: `日本語` (string, optional) - 日本語
 
 ## Transactions.TicketType
-+ charge: 1800 (number, required) - 価格
-+ name: (Transactions.MultilingualString, required) - オファー名称
-+ id: `001` (string, required) - オファーコード
++ charge: 1800 (number, required) - 発生金額
++ name: (Transactions.MultilingualString, required) - 名称
++ id: `001` (string, required) - コード
 + available_num: 1 (number, required) - 在庫数
 
 ## Transactions.Performance
-+ id: `xxxxxxxxxxxx` (string, required) - イベントID
++ id: `xxxxxxxxxxxx` (string, required) - ID
 + attributes (object)
     + day: `20171025` (string, required) - 開催日(YYYYMMDD)
     + open_time: `1210` (string, required) - 開場時刻(hhmm)
@@ -64,8 +64,7 @@ example:
 ## 注文取引開始 [/transactions/placeOrder/start]
 
 ### 注文取引開始 [POST]
-期限指定で注文取引を開始します。取引の期限が切れると、取引中で作成された仮予約は取り消され、取引を確定することはできなくなります。
-アプリケーションの購入フローで十分な期間を想定し、期限をセットしてください。
+期限指定で注文取引を開始します。取引の期限が切れると、取引中で作成された仮予約は取り消され、取引は継続不能となります。
 
 + Request (application/json)
     + Headers
@@ -76,10 +75,10 @@ example:
 
 + Response 201 (application/json)
     + Attributes
-        + id: `1234567890abcdefghijklmn` (string, required) - 取引ID
+        + id: `1234567890abcdefghijklmn` (string, required) - ID
         + seller: (object, required) - 販売者
-        + expires: `2017-05-10T07:42:25Z` (string, required) - 取引期限
-        + startDate: `2017-05-10T07:42:25Z` (string, required) - 取引開始日時
+        + expires: `2017-05-10T07:42:25Z` (string, required) - 期限
+        + startDate: `2017-05-10T07:42:25Z` (string, required) - 開始日時
 
 <!-- include(../response/400.md) -->
 <!-- include(../response/404.md) -->
@@ -93,7 +92,7 @@ example:
 
 ### 予約オファー承認 [POST]
 イベント指定で座席を仮予約します。複数座席予約の場合は、座席数分のオファーを指定してください。 
-本リクエストのレスポンスに含まれるIDは、承認取消の際に必要になります。アプリケーション側で大切に管理してください。
+本リクエストのレスポンスに含まれるIDは、承認取消の際に必要になります。
 空席がない場合、ステータスコード409を返却します。
 
 + Request (application/json)
@@ -143,7 +142,7 @@ example:
 購入者のプロフィールを設定します。
 
 ::: note
-購入者プロフィールが不要の場合、適宜固定値を渡してください。
+購入者プロフィールが不要の場合も、適宜適当な値を設定してください。
 :::
 
 + Request (application/json)

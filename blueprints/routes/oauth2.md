@@ -32,7 +32,7 @@
     + Attributes
         + `grant_type`: `client_credencials` (string, required) - 認証タイプ
 
-+ Request 認可コードフロー (application/x-www-form-urlencoded)
++ Request 認可コード (application/x-www-form-urlencoded)
     +  Headers
         Authorization: Basic ABC123
     + Attributes

@@ -34,8 +34,13 @@
 + identifier: `xxx` (string, required) - コード
 + name: (Me.MultilingualString, optional) - 名称
 
+## Me.COATicketInfo
++ salePrice: 10 (number, required) - 金額
+
 ## Me.ReservedTicket
 + ticketType: (Me.Offer, required) - オファー
++ ticketToken: `xxx` (string, optional) - チケットトークン
++ coaTicketInfo: (Me.COATicketInfo, optional) - COAチケット情報
 
 ## Me.Reservation
 + id: `xxx` (string, required) - ID
@@ -47,8 +52,12 @@
 ## Me.Membership
 + identifier: `xxx` (string, required) - メンバーシップコード
 
+## Me.PaymentAccount
++ balance: 10 (number, required) - 残高
+
 ## Me.PaymentCard
 + identifier: `xxx` (string, required) - ペイメントカードコード
++ paymentAccount: (Me.PaymentAccount, required) - 口座
 
 ## Me.OwnershipInfoOfReservation
 + id: `xxx` (string, required) - 所有権ID

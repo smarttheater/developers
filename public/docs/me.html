@@ -391,6 +391,10 @@
             "<span class="hljs-attribute">en</span>": <span class="hljs-value"><span class="hljs-string">"English"</span></span>,
             "<span class="hljs-attribute">ja</span>": <span class="hljs-value"><span class="hljs-string">"日本語"</span>
           </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">ticketToken</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+        "<span class="hljs-attribute">coaTicketInfo</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">salePrice</span>": <span class="hljs-value"><span class="hljs-number">10</span>
         </span>}
       </span>}
     </span>}
@@ -593,6 +597,23 @@
                   <span class="hljs-string">"identifier"</span>
                 ]</span>,
                 "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"オファー"</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">ticketToken</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"チケットトークン"</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">coaTicketInfo</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+                "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+                  "<span class="hljs-attribute">salePrice</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+                    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"金額"</span>
+                  </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+                  <span class="hljs-string">"salePrice"</span>
+                ]</span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"COAチケット情報"</span>
               </span>}
             </span>}</span>,
             "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -797,7 +818,10 @@
     "<span class="hljs-attribute">ownedFrom</span>": <span class="hljs-value"><span class="hljs-string">"2021-04-01T00:00:00Z"</span></span>,
     "<span class="hljs-attribute">ownedThrough</span>": <span class="hljs-value"><span class="hljs-string">"2021-04-01T00:00:00Z"</span></span>,
     "<span class="hljs-attribute">typeOfGood</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+      "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+      "<span class="hljs-attribute">paymentAccount</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">balance</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+      </span>}
     </span>}
   </span>}
 ]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
@@ -824,10 +848,24 @@
           "<span class="hljs-attribute">identifier</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
             "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ペイメントカードコード"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">paymentAccount</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">balance</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"残高"</span>
+              </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+              <span class="hljs-string">"balance"</span>
+            ]</span>,
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"口座"</span>
           </span>}
         </span>}</span>,
         "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-          <span class="hljs-string">"identifier"</span>
+          <span class="hljs-string">"identifier"</span>,
+          <span class="hljs-string">"paymentAccount"</span>
         ]</span>,
         "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"所有物"</span>
       </span>}

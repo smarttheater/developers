@@ -36,8 +36,16 @@
 
 ## Me.COATicketInfo
 + salePrice: 10 (number, required) - 金額
++ spseatKbn: `xxx` (string, required) - 特別席区分
++ spseatAdd2: 10 (number, required) - 特別席加算額２
++ ticketName: `xxx` (string, required) - チケット名
+
+## Me.TicketedSeat
++ seatNumber: `xxx` (string, required) - 座席コード
++ seatSection: `xxx` (string, required) - セクションコード
 
 ## Me.ReservedTicket
++ ticketedSeat: (Me.TicketedSeat, optional) - 座席(座席指定の場合のみ)
 + ticketType: (Me.Offer, required) - オファー
 + ticketToken: `xxx` (string, optional) - チケットトークン
 + coaTicketInfo: (Me.COATicketInfo, optional) - COAチケット情報

@@ -22,6 +22,9 @@
 + location: (Me.MovieTheater, required) - 施設
 + workPerformed: (Me.WorkPerformed, required) - コンテンツ
 
+## Me.COAInfo
++ dateJouei: `xxx` (string, required) - 上映日
+
 ## Me.ReservationFor
 + id: `xxx` (string, required) - ID
 + startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
@@ -29,6 +32,7 @@
 + name: (Me.MultilingualString, optional) - 名称
 + location: (Me.ReservationForLocation, optional) - ルーム
 + superEvent: (Me.ReservationForSuperEvent, optional) - 施設コンテンツ
++ coaInfo: (Me.COAInfo, optional) - COA情報
 
 ## Me.Offer
 + identifier: `xxx` (string, required) - コード

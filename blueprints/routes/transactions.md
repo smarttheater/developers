@@ -1,7 +1,30 @@
 # Data Structure
 
+## Transactions.MultilingualString
++ en: `English` (string, optional) - 英語
++ ja: `日本語` (string, optional) - 日本語
+
+## Transactions.TicketType
++ charge: 1800 (number, required) - 発生金額
++ name: (Transactions.MultilingualString, required) - 名称
++ id: `001` (string, required) - コード
++ available_num: 1 (number, required) - 在庫数
+
+## Transactions.Performance
++ id: `xxxxxxxxxxxx` (string, required) - ID
++ attributes (object)
+    + day: `20171025` (string, required) - 開催日(YYYYMMDD)
+    + open_time: `1210` (string, required) - 開場時刻(hhmm)
+    + start_time: `1210` (string, required) - 開場時刻(hhmm)
+    + end_time: `1230` (string, required) - 開演時刻(hhmm)
+    + seat_status: `35` (string, required) - 残席数
+    + tour_number: `213` (string, required) - ツアーナンバー
+    + wheelchair_available: 1 (number, required) - 車椅子残数
+    + ticket_types (array[Transactions.TicketType], fixed-type) - オファーリスト(イベントID指定での検索時のみ)
+    + online_sales_status: `Normal` (string, required) - 販売ステータス
+
 ## Transactions.EventReservation
-+ qr_str: `TTT281430206052148-0` (string, required) - 予約ID
++ qr_str: `TTT281430206052148-0` (string, required) - 予約QR文字列
 + payment_no: `56686` (string, required) - 確認番号
 + performance: `171222001001010915` (string, required) - イベントID
 
@@ -10,31 +33,52 @@
 + watcher_name: `メモメモ` (string, required) - 予約追加テキスト
 
 ## Transactions.Customer
-+ telephone: `+819012345678` (string, required) - 電話番号
++ telephone: `+819012345678` (string, required) - 電話番号(E164フォーマット)
 
 
-# Group Transactions
+# Group 取引 - LegacyPOS専用
+
+## イベント検索 w/ 車椅子 [/performances{?page,limit,day,performanceId}]
+
++ Parameters
+    + page: `1` (number, optional) - ページ
+      + Default: `1`
+    + limit: `10` (number, optional) - 最大取得件数
+      + Default: `100`
+    + day: `20110101` (string, optional) - 開催日
+    + performanceId: `xxxxxxxxxxxx` (string, optional) - イベントID
+
+### イベント検索 w/ 車椅子 [GET]
+イベントを検索します。
+検索結果のうち、オファーリスト(ticket_types)については、イベントID指定での検索時のみ含まれます。
+
+example:
+```no-highlight
+/performances?day=20110101&limit=5
+```
+
++ Response 200 (application/json)
+    + Attributes
+        + data: (array[Transactions.Performance], fixed-type) - イベントリスト
 
 ## 注文取引開始 [/transactions/placeOrder/start]
 
 ### 注文取引開始 [POST]
-期限指定で注文取引を開始します。取引の期限が切れると、それまでの仮予約は解除され、取引を確定することはできなくなります。
-アプリケーションの購入フローで十分な期間を想定し、期限をセットしてください。
+期限指定で注文取引を開始します。取引の期限が切れると、取引中で作成された仮予約は取り消され、取引は継続不能となります。
 
 + Request (application/json)
     + Headers
         Authentication: Bearer JWT
 
     + Attributes
-        + expires:  `2017-05-10T07:42:25Z` (string, required) - 取引有効期限
+        + expires:  `2017-05-10T07:42:25Z` (string, required) - 取引期限
 
 + Response 201 (application/json)
     + Attributes
-        + id: `59119065e3157c1884d3c333` (string, required) - 取引ID
-        + agent: (object, required) - 購入者
+        + id: `1234567890abcdefghijklmn` (string, required) - ID
         + seller: (object, required) - 販売者
-        + expires: `2017-05-10T07:42:25Z` (string, required) - 取引有効期限
-        + startDate: `2017-05-10T07:42:25Z` (string, required) - 取引開始日時
+        + expires: `2017-05-10T07:42:25Z` (string, required) - 期限
+        + startDate: `2017-05-10T07:42:25Z` (string, required) - 開始日時
 
 <!-- include(../response/400.md) -->
 <!-- include(../response/404.md) -->
@@ -44,11 +88,11 @@
 ## 予約オファー承認 [/transactions/placeOrder/{transactionId}/actions/authorize/seatReservation]
 
 + Parameters
-    + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
+    + transactionId: `1234567890abcdefghijklmn` (string, required) - 取引ID
 
 ### 予約オファー承認 [POST]
-イベント指定で座席を仮予約します。複数座席予約の場合は、座席分のofferを投げてください。 
-本リクエストのレスポンスに含まれるIDは、承認取消の際に必要になります。アプリケーション側で大切に管理してください。
+イベント指定で座席を仮予約します。複数座席予約の場合は、座席数分のオファーを指定してください。 
+本リクエストのレスポンスに含まれるIDは、承認取消の際に必要になります。
 空席がない場合、ステータスコード409を返却します。
 
 + Request (application/json)
@@ -56,12 +100,12 @@
         Authentication: Bearer JWT
 
     + Attributes
-        + performance_id: `59119065e3157c1884d3c333` (string, required) - イベントID
+        + performance_id: `xxxxxxxxxxxx` (string, required) - イベントID
         + offers: (array[Transactions.SeatReservationOffer], fixed-type) - 受け入れるオファーリスト
 
 + Response 201 (application/json)
     + Attributes
-        + id: `59119065e3157c1884d3c333` (string, required) - 承認アクションID
+        + id: `1234567890abcdefghijklmn` (string, required) - 承認アクションID
 
 <!-- include(../response/400.md) -->
 <!-- include(../response/404.md) -->
@@ -72,11 +116,11 @@
 ## 予約オファー承認取消 [/transactions/placeOrder/{transactionId}/actions/authorize/seatReservation/{actionId}]
 
 + Parameters
-    + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
-    + actionId: `59119065e3157c1884d3c333` (string, required) - 承認アクションID
+    + transactionId: `1234567890abcdefghijklmn` (string, required) - 取引ID
+    + actionId: `1234567890abcdefghijklmn` (string, required) - 承認アクションID
 
 ### 予約オファー承認取消 [DELETE]
-オファー承認を取り消します。仮予約された座席は空席として解放されます。
+オファー承認を取り消します。仮予約は取り消されます。
 
 + Request (application/json)
     + Headers
@@ -92,13 +136,13 @@
 ## 購入者プロフィール設定 [/transactions/placeOrder/{transactionId}/customerContact]
 
 + Parameters
-    + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
+    + transactionId: `1234567890abcdefghijklmn` (string, required) - 取引ID
 
 ### 購入者プロフィール設定 [PUT]
 購入者のプロフィールを設定します。
 
 ::: note
-購入者プロフィールが不要の場合、適宜固定値を渡してください。
+購入者プロフィールが不要の場合も、適宜適当な値を設定してください。
 :::
 
 + Request (application/json)
@@ -132,17 +176,20 @@
 ## 注文取引確定 [/transactions/placeOrder/{transactionId}/confirm]
 
 + Parameters
-    + transactionId: `59119065e3157c1884d3c333` (string, required) - 取引ID
+    + transactionId: `1234567890abcdefghijklmn` (string, required) - 取引ID
 
 ### 注文取引確定 [POST]
 注文取引を確定します。
-有効期限を超過していた場合、ステータスコード404を返却します。
+期限を超過していた場合、ステータスコード404を返却します。
 
 + Request (application/json)
     + Headers
         Authentication: Bearer JWT
 
     + Attributes
+        + result: (object, optional)
+            + order: (object, optional)
+                + price: 1800 (number, required) - 注文金額
 
 + Response 201 (application/json)
     + Attributes
@@ -154,11 +201,10 @@
 
 
 
-## 返品取引 [/transactions/returnOrder/confirm]
+## 注文返品 [/transactions/returnOrder/confirm]
 
-### 返品取引確定 [POST]
-注文番号と購入者情報、あるいは、イベント開催日と確認番号から注文の返品処理を開始します。
-イベント開催日と確認番号の組み合わせは、2021-04-20T15:00:00Zをもって廃止となります。
+### 注文返品 [POST]
+注文番号と購入者情報から注文の返品処理を開始します。
 該当注文がない場合、ステータスコード404を返却します。
 
 + Request (application/json)
@@ -166,14 +212,12 @@
         Authentication: Bearer JWT
 
     + Attributes
-        + orderNumber: `xxxxxxxx` (string) - 注文番号
+        + orderNumber: `xxxxxxxx` (string, required) - 注文番号
         + customer: (Transactions.Customer, fixed-type) - 購入者情報(注文番号指定の場合、必須)
-        + performance_day: `20170511` (string) - イベント開催日(非推奨)
-        + payment_no: `123456` (string) - 確認番号(イベント開催日指定の場合、必須)(非推奨)
 
 + Response 201 (application/json)
     + Attributes
-        + id: `59119065e3157c1884d3c333` (string, required) - 取引ID
+        + id: `1234567890abcdefghijklmn` (string, required) - 取引ID
 
 <!-- include(../response/400.md) -->
 <!-- include(../response/404.md) -->

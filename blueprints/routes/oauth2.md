@@ -1,9 +1,10 @@
-# Group OAuth
+# Group OAuth2
 
-## アクセストークン [/oauth2/token]
+## トークンエンドポイント [/oauth2/token]
 
-### アクセストークン発行 [POST]
+### トークンエンドポイント [POST]
 [OAuth2](https://tools.ietf.org/html/rfc6749) に準拠したトークンエンドポイントです。
+トークンエンドポイントは、ユーザーのトークンを取得します。
 
 ::: note
 エンドポイントは、
@@ -18,10 +19,10 @@
 **利用可能な認可タイプ**
 
 + `client_credentials`
++ `authorization_code`
++ `refresh_token`
 
 ::: note
-返却値には、`access_token`と`expires_in`が含まれます。
-
 アプリケーション側でアクセストークンの有効期間を管理し、適宜再取得してください。
 :::
 
@@ -29,14 +30,21 @@
     +  Headers
         Authorization: Basic ABC123
     + Attributes
-        + `grant_type`: `client_credencials` (string, required) - 認証タイプ(固定値)
-        + `state`: `state123456789` (string, required)
-            クライアント状態(クライアント側で現在のユーザー状態を表す文字列を送信してください。例えばセッションIDなどです)
+        + `grant_type`: `client_credencials` (string, required) - 認証タイプ
+
++ Request 認可コード (application/x-www-form-urlencoded)
+    +  Headers
+        Authorization: Basic ABC123
+    + Attributes
+        + `grant_type`: `authorization_code` (string, required) - 認証タイプ
+        + `redirect_uri`: `xxx` (string, required) - /oauth2/authorize で authorization_code を取得するために使用されたものと同じ redirect_uri である必要があります。
+        + `code`: `xxx` (string, required) - grant_typeがauthorization_codeの場合は必須です。
 
 + Response 200 (application/json)
     + Attributes
         + access_token: `JWT` (string, required) - アクセストークン
         + token_type: `Bearer` (string, required) - 発行されたトークンタイプ
         + expires_in: 1800 (number, required) - アクセストークンの有効期間
+        + refresh_token: `xxx` (string, optional) - grant_typeがauthorization_codeの場合にのみrefresh_tokeを返します。
 
 <!-- include(../response/400.md) -->

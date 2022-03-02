@@ -1,51 +1,93 @@
 # Data Structure
 
 ## Performances.MultilingualString
-+ en: `english name` (string, optional) - 英語名称
-+ ja: `日本語名称` (string, optional) - 日本語名称
++ en: `English` (string, optional) - 英語
++ ja: `日本語` (string, optional) - 日本語
 
-## Performances.TicketType
-+ charge: 1800 (number, required) - 価格
-+ name: (Performances.MultilingualString, required) - オファー名称(多言語対応)
-+ id: `001` (string, required) - オファーコード
-+ available_num: 1 (number, required) - 在庫数
+## Performances.Language
++ name: `Japanese` (string, optional) - 名称
 
-## Performances.Performance
-+ id: `171222001001012130` (string, required) - イベントID
-+ attributes (object)
-    + day: `20171025` (string, required) - 開催日(YYYYMMDD)
-    + open_time: `1210` (string, required) - 開場時刻(hhmm)
-    + start_time: `1210` (string, required) - 開場時刻(hhmm)
-    + end_time: `1230` (string, required) - 開演時刻(hhmm)
-    + seat_status: `35` (string, required) - 残席数
-    + tour_number: `213` (string, required) - ツアーナンバー
-    + wheelchair_available: 1 (number, required) - 車椅子残数
-    + ticket_types (array[Performances.TicketType], fixed-type) - オファーリスト(イベントID指定での検索時のみ)
-    + online_sales_status: `Normal` (string, required) - 販売ステータス
+## Performances.PropertyValue
++ name: `xxx` (string, required) - プロパティ名
++ value: `xxx` (string, required) - プロパティ値
 
-# Group Events
+## Performances.Event
++ additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
++ doorTime: `2021-04-01T00:00:00Z` (string) - 開場日時
++ endDate: `2021-04-01T00:00:00Z` (string) - 終了日時
++ eventStatus: `xxx` (string) - イベントステータス
++ id: `xxxxxxxxxxxx` (string, required) - イベントID
++ location (object)
+    + address: (Performances.MultilingualString, optional) - アドレス
+    + branchCode: `xxx` (string) - ルームコード
+    + name: (Performances.MultilingualString, optional) - 名称
++ maximumAttendeeCapacity: 1 (number, optional) - 最大収容席数
++ name: (Performances.MultilingualString, optional) - 名称
++ offers (object)
+    + validFrom: `2021-04-01T00:00:00Z` (string, optional) - 販売開始日時
+    + validThrough: `2021-04-01T00:00:00Z` (string, optional) - 販売終了日時
++ startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
++ superEvent (object)
+    + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
+    + description: (Performances.MultilingualString, optional) - 補足説明
+    + dubLanguage: (Performances.Language, optional) - 吹替言語
+    + subtitleLanguage: (Performances.Language, optional) - 字幕言語
++ remainingAttendeeCapacity: 1 (number, optional) - 残席数
++ workPerformed (object)
+    + identifier: `xxx` (string, required) - コンテンツコード
+    + headline: `xxx` (string, optional) - サブタイトル
+    + contentRating: `G` (string, optional) - レイティング
+    + duration: `PT15M` (string, optional) - 上映時間
 
-## イベント検索 [/performances{?page,limit,day,performanceId}]
+## Performances.ScreeningEventSeries
++ additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
++ id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
++ name: (Performances.MultilingualString, optional) - 名称
++ endDate: `2021-04-01T00:00:00Z` (string, optional) - 終了日時
++ startDate: `2021-04-01T00:00:00Z` (string, optional) - 開始日時
+
+# Group イベント
+
+## 施設コンテンツ検索 [/events/ScreeningEventSeries{?page,limit,locationBranchCode,workPerformedIdentifier,startFrom,startThrough,endFrom,endThrough}]
 
 + Parameters
-    + page: `2` (number, optional) - ページ
+    + page: `1` (number, optional) - ページ
       + Default: `1`
-    + limit: `25` (number, optional) - 最大取得件数
+    + limit: `10` (number, optional) - 最大取得件数
       + Default: `100`
-    + day: `20110101` (string, optional) - 開催日
-    + performanceId: `171222001001012130` (string, optional) - イベントID
+    + locationBranchCode: `xxx` (string, optional) - 施設コード
+    + workPerformedIdentifier: `xxx` (string, optional) - コンテンツコード
+    + startFrom: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(から)
+    + startThrough: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(まで)
+    + endFrom: `2021-04-01T00:00:00Z` (string, optional) - 終了日時範囲(から)
+    + endThrough: `2021-04-01T00:00:00Z` (string, optional) - 終了日時範囲(まで)
+
+### 施設コンテンツ検索 [GET]
+イベントを検索します。
+
++ Response 200 (application/json)
+    + Attributes (array, fixed-type)
+        + (Performances.ScreeningEventSeries) - 施設コンテンツ
+
+<!-- include(../response/400.md) -->
+
+## イベント検索 [/events/ScreeningEvent{?page,limit,startFrom,startThrough,superEventLocationBranchCode,superEventWorkPerformedIdentifier}]
+
++ Parameters
+    + page: `1` (number, optional) - ページ
+      + Default: `1`
+    + limit: `10` (number, optional) - 最大取得件数
+      + Default: `100`
+    + startFrom: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(から)
+    + startThrough: `2021-04-01T00:00:00Z` (string, optional) - 開始日時範囲(まで)
+    + superEventLocationBranchCode: `xxx` (string, optional) - 施設コード
+    + superEventWorkPerformedIdentifier: `xxx` (string, optional) - コンテンツコード
 
 ### イベント検索 [GET]
 イベントを検索します。
-検索結果のうち、オファーリスト(ticket_types)については、イベントID指定での検索時のみ含まれます。
-
-example:
-```no-highlight
-/performances?day=20110101&limit=5
-```
 
 + Response 200 (application/json)
-    + Attributes
-        + data: (array[Performances.Performance], fixed-type) - イベントリスト
+    + Attributes (array, fixed-type)
+        + (Performances.Event) - イベント
 
 <!-- include(../response/400.md) -->

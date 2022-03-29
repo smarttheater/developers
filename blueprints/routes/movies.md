@@ -15,6 +15,7 @@
 + headline: `xxx` (string, optional) - サブタイトル
 + identifier: `xxx` (string, required) - コード
 + name: (Movies.MultilingualString, optional) - 名称
++ thumbnailUrl: `xxx` (string, optional) - サムネイルURL
 
 # Group コンテンツ
 

@@ -101,7 +101,7 @@
 
 <!-- include(../response/400.md) -->
 
-## イベント座席検索 [/events/ScreeningEvent/{eventId}/seats{?page,limi}]
+## イベント座席検索 [/events/ScreeningEvent/{eventId}/seats{?page,limit}]
 
 + Parameters
     + eventId: `xxxx` (string, required) - イベントID

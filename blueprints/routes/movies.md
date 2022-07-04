@@ -19,7 +19,7 @@
 
 # Group コンテンツ
 
-## コンテンツ検索 [/creativeWorks/movie{?page,limit,datePublishedFrom,datePublishedThrough,offersAvailableFrom}]
+## コンテンツ検索 [/creativeWorks/movie{?page,limit,datePublishedFrom,datePublishedThrough,identifierEq,offersAvailableFrom}]
 
 + Parameters
     + page: `1` (number, optional) - ページ
@@ -28,6 +28,7 @@
       + Default: `100`
     + datePublishedFrom: `2021-04-01T00:00:00Z` (string, optional) - 公開日時範囲(から)
     + datePublishedThrough: `2021-04-01T00:00:00Z` (string, optional) - 公開日時範囲(まで)
+    + identifierEq: `xxxx` (string, optional) - コード(完全一致)
     + offersAvailableFrom: `2021-04-01T00:00:00Z` (string, optional) - 興行終了日時範囲(から)
 
 ### コンテンツ検索 [GET]

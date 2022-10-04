@@ -35,7 +35,6 @@
 + remainingAttendeeCapacity: 1 (number, optional) - 残席数
 + workPerformed (object)
     + identifier: `xxx` (string, required) - コンテンツコード
-    + headline: `xxx` (string, optional) - サブタイトル
     + contentRating: `G` (string, optional) - レイティング
     + duration: `PT15M` (string, optional) - 上映時間
 

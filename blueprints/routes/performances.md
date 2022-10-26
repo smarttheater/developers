@@ -44,6 +44,8 @@
 + name: (Performances.MultilingualString, optional) - 名称
 + endDate: `2021-04-01T00:00:00Z` (string, optional) - 終了日時
 + startDate: `2021-04-01T00:00:00Z` (string, optional) - 開始日時
++ videoFormat (array, fixed-type) - 上映方式
+    + `2D` (string)
 
 ## Performances.SeatOffer
 + availability: `InStock` (string, required) - 利用可能性(値については利用可能性タイプを参照)

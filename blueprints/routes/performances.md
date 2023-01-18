@@ -24,9 +24,12 @@
 + maximumAttendeeCapacity: 1 (number, optional) - 最大収容席数
 + name: (Performances.MultilingualString, optional) - 名称
 + offers (object)
-    + availabilityStarts: `2021-04-01T00:00:00Z` (string, optional) - 情報提供開始日時
-    + validFrom: `2021-04-01T00:00:00Z` (string, optional) - 販売開始日時
-    + validThrough: `2021-04-01T00:00:00Z` (string, optional) - 販売終了日時
+    + availabilityStarts: `2021-04-01T00:00:00Z` (string, optional) - 公開開始日時(非会員オンライン取引)
+    + validFrom: `2021-04-01T00:00:00Z` (string, optional) - 販売開始日時(非会員オンライン取引)
+    + validThrough: `2021-04-01T00:00:00Z` (string, optional) - 販売終了日時(非会員オンライン取引)
+    + availabilityStartsToMembers: `2021-04-01T00:00:00Z` (string, optional) - 公開開始日時(会員オンライン取引)
+    + validFromForMembers: `2021-04-01T00:00:00Z` (string, optional) - 販売開始日時(会員オンライン取引)
+    + validThroughForMembers: `2021-04-01T00:00:00Z` (string, optional) - 販売終了日時(会員オンライン取引)
 + startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
 + superEvent (object)
     + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID

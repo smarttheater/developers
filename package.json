@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "aglio": "^2.3.0",
-    "mocha": "^3.5.3",
+    "mocha": "^10.2.0",
     "request": "^2.88.0",
     "rimraf": "^2.6.3"
   }

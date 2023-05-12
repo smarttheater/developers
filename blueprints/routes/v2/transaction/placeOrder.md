@@ -40,6 +40,13 @@
 
 ### 取引確定[POST]
 
+メールテンプレート変数
+
+| variable                 | description |
+| :----------------------- | :---------- |
+| order.confirmationNumber | 確認番号    |
+| order.orderNumber        | 注文番号    |
+
 -   Parameters
 
     -   id: `xxx` (string, required) - プロジェクト id
@@ -48,6 +55,9 @@
 
     -   Attributes
         -   id: `xxx` (string, required) - 取引 id
+        -   email
+            -   about: `xxx` (string, required) - 件名
+            -   template: `| ご購入ありがとうございます。\n| 確認番号: #{order.confirmationNumber}\n| 注文番号: #{order.orderNumber}` (string, required) - 本文テンプレート PUG
 
 -   Response 200 (application/json)
 
@@ -56,6 +66,8 @@
         -   orderNumber: `xxx` (string, required) - 注文番号
 
 <!-- include(../../../response/400.md) -->
+
+
 
 ## 取引中止 [/projects/{id}/transaction/placeOrder/cancel]
 

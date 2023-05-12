@@ -81,6 +81,14 @@
 
 ### 確認番号で注文検索[GET]
 
+価格要素タイプ
+
+| type                               | description              |
+| :--------------------------------- | :----------------------- |
+| UnitPriceSpecification             | 単価仕様                 |
+| CategoryCodeChargeSpecification    | カテゴリーコード加算仕様 |
+| MovieTicketTypeChargeSpecification | ムビチケ加算仕様         |
+
 -   Parameters
 
     -   confirmationNumber: `xxx` (string, required) - 確認番号

@@ -25,8 +25,9 @@
         -   seller
             -   id: `xxx` (string, required) - 販売者 id
         -   expires: `2023-01-01T00:00:00.000Z` (string, required) - 取引期限 ISO 8601 date format
-        -   passport
-            -   token: `xxx` (string, optional) - パスポート token
+        -   object
+            -   passport
+                -   token: `xxx` (string, optional) - パスポート token
 
 -   Response 200 (application/json)
 
@@ -40,12 +41,12 @@
 
 ### 取引確定[POST]
 
-メールテンプレート変数
+<!-- メールテンプレート変数
 
 | variable                 | description |
 | :----------------------- | :---------- |
 | order.confirmationNumber | 確認番号    |
-| order.orderNumber        | 注文番号    |
+| order.orderNumber        | 注文番号    | -->
 
 -   Parameters
 
@@ -55,9 +56,9 @@
 
     -   Attributes
         -   id: `xxx` (string, required) - 取引 id
-        -   email
+        <!-- -   email
             -   about: `xxx` (string, required) - 件名
-            -   template: `| ご購入ありがとうございます。\n| 確認番号: #{order.confirmationNumber}\n| 注文番号: #{order.orderNumber}` (string, required) - 本文テンプレート PUG
+            -   template: `| ご購入ありがとうございます。\n| 確認番号: #{order.confirmationNumber}\n| 注文番号: #{order.orderNumber}` (string, required) - 本文テンプレート PUG -->
 
 -   Response 200 (application/json)
 

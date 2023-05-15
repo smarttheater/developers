@@ -96,7 +96,7 @@
 
 # Group イベント
 
-## イベント検索 [/v2/projects/{id}/event/screeningEvent/search{?page,limit,startFrom,startThrough,offers.availableFrom,offers.availableThrough}]
+## イベント検索 [/v2/projects/{id}/event/screeningEvent/search{?page,limit,startFrom,startThrough,offers.availableFrom,offers.availableThrough,superEventLocationBranchCodes}]
 
 ### イベント検索[GET]
 
@@ -109,6 +109,7 @@
         -   Default: `100
     -   startFrom: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時範囲(から) ISO 8601 date format
     -   startThrough: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時範囲(まで) ISO 8601 date format
+    -   superEventLocationBranchCodes: `xxx` (string, optional) - 施設コード
 
 -   Response 200 (application/json)
     -   Attributes (array, fixed-type)
@@ -116,7 +117,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## イベントオファー検索 [/v2/projects/{id}/event/screeningEvent/searchTicketOffers{?page,limit,event.id}]
+## イベントオファー検索 [/v2/projects/{id}/event/screeningEvent/searchTicketOffers{?page,limit,eventId}]
 
 ### イベントオファー検索[GET]
 
@@ -135,7 +136,7 @@
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数
         -   Default: `100
-    -   event.id: `xxx` (string, required) - イベント id
+    -   eventId: `xxx` (string, required) - イベント id
 
 -   Response 200 (application/json)
     -   Attributes (array, fixed-type)
@@ -143,7 +144,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 座席ステータス検索 [/v2/projects/{id}/event/screeningEvent/searchSeats{?page,limit,event.id}]
+## 座席ステータス検索 [/v2/projects/{id}/event/screeningEvent/searchSeats{?page,limit,eventId}]
 
 ### 座席ステータス検索[GET]
 
@@ -154,7 +155,7 @@
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数
         -   Default: `100
-    -   event.id: `xxx` (string, required) - イベント id
+    -   eventId: `xxx` (string, required) - イベント id
 
 -   Response 200 (application/json)
     -   Attributes (array, fixed-type)

@@ -3,10 +3,12 @@
 ## Types.Place.SearchMovieTheaters
 
 -   id: `xxx` (string, required) - 施設 id
-    -   name
-        -   ja: `xxx` (string, required) - 施設名称（日本語）
-        -   en: `xxx` (string, required) - 施設名称（英語）
-    -   branchCode: `xxx` (string, required) - 施設コード
+-   name
+    -   ja: `xxx` (string, required) - 施設名称（日本語）
+    -   en: `xxx` (string, required) - 施設名称（英語）
+-   branchCode: `xxx` (string, required) - 施設コード
+-   parentOrganization
+    -   id: `xxx` (string, required) - 親組織 id
 
 ## Types.Place.SearchScreeningRooms
 

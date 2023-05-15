@@ -39,7 +39,7 @@
 
 ## 取引確定 [/v2/projects/{id}/transaction/placeOrder/confirm]
 
-### 取引確定[POST]
+### 取引確定[PUT]
 
 <!-- メールテンプレート変数
 
@@ -72,7 +72,7 @@
 
 ## 取引中止 [/v2/projects/{id}/transaction/placeOrder/cancel]
 
-### 取引中止[POST]
+### 取引中止[PUT]
 
 -   Parameters
 
@@ -113,7 +113,7 @@
 
 ## イベントオファー承認取り消し [/v2/projects/{id}/transaction/placeOrder/voidSeatReservation]
 
-### イベントオファー承認取り消し[POST]
+### イベントオファー承認取り消し[PUT]
 
 -   Parameters
 
@@ -132,7 +132,7 @@
 
 ## 取引人プロフィール設定 [/v2/projects/{id}/transaction/placeOrder/setProfile]
 
-### 取引人プロフィール設定[POST]
+### 取引人プロフィール設定[PUT]
 
 -   Parameters
 

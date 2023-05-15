@@ -13,3 +13,5 @@
 <!-- include(routes/v2/transaction/placeOrder.md) -->
 
 <!-- include(routes/v2/transaction/returnOrder.md) -->
+
+<!-- include(routes/v2/passports.md) -->

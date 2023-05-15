@@ -8,7 +8,7 @@
 
 # Group 返品取引
 
-## 取引開始 [/projects/{id}/transaction/returnOrder/start]
+## 取引開始 [/v2/projects/{id}/transaction/returnOrder/start]
 
 ### 取引開始[POST]
 
@@ -32,7 +32,7 @@
 
 <!-- include(../../../response/400.md) -->
 
-## 取引確定 [/projects/{id}/transaction/returnOrder/confirm]
+## 取引確定 [/v2/projects/{id}/transaction/returnOrder/confirm]
 
 ### 取引確定[POST]
 

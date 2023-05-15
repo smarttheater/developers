@@ -55,7 +55,7 @@
 
 # Group 注文
 
-<!-- ## 注文検索 [/projects/{id}/order/search{?page,limit,orderDate.lte,orderDate.gte,orderNumbers,confirmationNumbers}]
+<!-- ## 注文検索 [/v2/projects/{id}/order/search{?page,limit,orderDate.lte,orderDate.gte,orderNumbers,confirmationNumbers}]
 
 ### 注文検索[GET]
 
@@ -77,7 +77,7 @@
         -   (Types.Order.Search) - 注文` -->
         
 
-## 確認番号で注文検索 [/projects/{id}/order/findByConfirmationNumber{?confirmationNumber,customer.telephone}]
+## 確認番号で注文検索 [/v2/projects/{id}/order/findByConfirmationNumber{?confirmationNumber,customer.telephone}]
 
 ### 確認番号で注文検索[GET]
 
@@ -101,7 +101,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 注文アイテム検索 [/projects/{id}/order/searchAcceptedOffersByConfirmationNumber{?page,limit,confirmationNumber,orderNumber}]
+## 注文アイテム検索 [/v2/projects/{id}/order/searchAcceptedOffersByConfirmationNumber{?page,limit,confirmationNumber,orderNumber}]
 
 ### 注文アイテム検索[GET]
 
@@ -121,7 +121,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 注文コード発行 [/projects/{id}/order/authorize]
+## 注文コード発行 [/v2/projects/{id}/order/authorize]
 
 ### 注文コード発行[POST]
 

@@ -10,7 +10,7 @@
 
 # Group 販売者
 
-## 販売者検索 [/projects/{id}/seller/search{?page,limit}]
+## 販売者検索 [/v2/projects/{id}/seller/search{?page,limit}]
 
 ### 販売者検索[GET]
 

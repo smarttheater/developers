@@ -96,7 +96,7 @@
 
 # Group イベント
 
-## イベント検索 [/projects/{id}/event/screeningEvent/search{?page,limit,startFrom,startThrough,offers.availableFrom,offers.availableThrough}]
+## イベント検索 [/v2/projects/{id}/event/screeningEvent/search{?page,limit,startFrom,startThrough,offers.availableFrom,offers.availableThrough}]
 
 ### イベント検索[GET]
 
@@ -116,7 +116,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## イベントオファー検索 [/projects/{id}/event/screeningEvent/searchTicketOffers{?page,limit,event.id}]
+## イベントオファー検索 [/v2/projects/{id}/event/screeningEvent/searchTicketOffers{?page,limit,event.id}]
 
 ### イベントオファー検索[GET]
 
@@ -143,7 +143,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 座席ステータス検索 [/projects/{id}/event/screeningEvent/searchSeats{?page,limit,event.id}]
+## 座席ステータス検索 [/v2/projects/{id}/event/screeningEvent/searchSeats{?page,limit,event.id}]
 
 ### 座席ステータス検索[GET]
 

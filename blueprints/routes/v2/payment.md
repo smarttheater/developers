@@ -1,6 +1,6 @@
 # Group 決済
 
-## クレジットカード決済承認 [/projects/{id}/payment/authorizeCreditCard]
+## クレジットカード決済承認 [/v2/projects/{id}/payment/authorizeCreditCard]
 
 ### クレジットカード決済承認[POST]
 
@@ -28,7 +28,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 決済承認取り消し [/projects/{id}/payment/voidTransaction]
+## 決済承認取り消し [/v2/projects/{id}/payment/voidTransaction]
 
 ### 決済承認取り消し[POST]
 

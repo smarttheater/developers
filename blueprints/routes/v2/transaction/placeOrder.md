@@ -11,7 +11,7 @@
 
 # Group 取引
 
-## 取引開始 [/projects/{id}/transaction/placeOrder/start]
+## 取引開始 [/v2/projects/{id}/transaction/placeOrder/start]
 
 ### 取引開始[POST]
 
@@ -37,7 +37,7 @@
 
 <!-- include(../../../response/400.md) -->
 
-## 取引確定 [/projects/{id}/transaction/placeOrder/confirm]
+## 取引確定 [/v2/projects/{id}/transaction/placeOrder/confirm]
 
 ### 取引確定[POST]
 
@@ -70,7 +70,7 @@
 
 
 
-## 取引中止 [/projects/{id}/transaction/placeOrder/cancel]
+## 取引中止 [/v2/projects/{id}/transaction/placeOrder/cancel]
 
 ### 取引中止[POST]
 
@@ -85,7 +85,7 @@
 
 -   Response 200
 
-## イベントオファー承認 [/projects/{id}/transaction/placeOrder/authorizeSeatReservation]
+## イベントオファー承認 [/v2/projects/{id}/transaction/placeOrder/authorizeSeatReservation]
 
 ### イベントオファー承認[POST]
 
@@ -111,7 +111,7 @@
 
 <!-- include(../../../response/400.md) -->
 
-## イベントオファー承認取り消し [/projects/{id}/transaction/placeOrder/voidSeatReservation]
+## イベントオファー承認取り消し [/v2/projects/{id}/transaction/placeOrder/voidSeatReservation]
 
 ### イベントオファー承認取り消し[POST]
 
@@ -130,7 +130,7 @@
 
 <!-- include(../../../response/400.md) -->
 
-## 取引人プロフィール設定 [/projects/{id}/transaction/placeOrder/setProfile]
+## 取引人プロフィール設定 [/v2/projects/{id}/transaction/placeOrder/setProfile]
 
 ### 取引人プロフィール設定[POST]
 

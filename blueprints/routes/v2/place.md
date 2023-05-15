@@ -17,7 +17,7 @@
 
 # Group 施設
 
-## 施設検索 [/projects/{id}/place/searchMovieTheaters{?page,limit}]
+## 施設検索 [/v2/projects/{id}/place/searchMovieTheaters{?page,limit}]
 
 ### 施設検索[GET]
 
@@ -36,7 +36,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## ルーム検索 [/projects/{id}/place/searchScreeningRooms{?page,limit}]
+## ルーム検索 [/v2/projects/{id}/place/searchScreeningRooms{?page,limit}]
 
 ### ルーム検索[GET]
 

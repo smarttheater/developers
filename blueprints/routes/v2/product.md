@@ -19,7 +19,7 @@
 
 # Group プロダクト
 
-## 決済サービス検索 [/projects/{id}/product/searchCreditCard{?page,limit}]
+## 決済サービス検索 [/v2/projects/{id}/product/searchCreditCard{?page,limit}]
 
 ### 決済サービス検索[GET]
 

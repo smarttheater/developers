@@ -92,7 +92,7 @@
 -   Parameters
 
     -   confirmationNumber: `xxx` (string, required) - 確認番号
-    -   customer.telephone: `+819012345678` (string, required) - 購入者電話番号 E.164
+    -   telephone: `+819012345678` (string, required) - 購入者電話番号 E.164
 
 -   Response 200 (application/json)
 

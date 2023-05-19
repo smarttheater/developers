@@ -34,7 +34,7 @@
 
 ## 取引確定 [/v2/projects/{id}/transaction/returnOrder/confirm]
 
-### 取引確定[POST]
+### 取引確定[PUT]
 
 -   Parameters
 

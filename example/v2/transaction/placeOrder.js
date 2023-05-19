@@ -1,7 +1,16 @@
-const authentication = require('./authentication');
-const api = require('./api');
+const authentication = require('../authentication');
+const api = require('../api');
+const readline = require('readline/promises');
+
+const readInterface = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
 async function main() {
+    const email = await readInterface.question("input email >");
+    const telephone = await readInterface.question("input telephone >");
+
     const { access_token } = await authentication.getAcccesToken();
     const apiRequest = new api.Request();
     apiRequest.setOptions({
@@ -107,28 +116,16 @@ async function main() {
     await apiRequest.put('transaction/placeOrder/setProfile', {
         id: transaction.id,
         agent: {
-            familyName: process.env.CUSTOMERE_FAMILY_NAME,
-            givenName: process.env.CUSTOMERE_GIVEN_NAME,
-            email: process.env.CUSTOMERE_MAIL,
-            telephone: process.env.CUSTOMERE_TELEPHONE
+            familyName: 'API',
+            givenName: 'TEST',
+            email,
+            telephone
         }
     });
     const result = await apiRequest.put('transaction/placeOrder/confirm', {
         id: transaction.id
     });
     console.log('result', result);
-
-    const order = await apiRequest.get('order/findByConfirmationNumber', {
-        confirmationNumber: result.confirmationNumber,
-        telephone: process.env.CUSTOMERE_TELEPHONE
-    });
-    console.log('order', order);
-
-    const items = await apiRequest.get('order/searchAcceptedOffersByConfirmationNumber', {
-        confirmationNumber: result.confirmationNumber,
-        orderNumber: result.orderNumber
-    });
-    console.log('items', items);
 }
 
 main()
@@ -137,4 +134,7 @@ main()
     })
     .catch((error) => {
         console.error(error);
-    });
+    })
+    .finally(()=> {
+        process.exit();
+    });;

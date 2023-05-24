@@ -31,9 +31,11 @@ class Request {
                     })
                 );
             }
-            if (Number(response.headers.get("content-length")) > 0) {
-                const result = await response.json()
+            try {
+                const result = await response.json();
                 return result;
+            } catch (error) {
+                return;
             }
         } catch (error) {
             console.error(error);
@@ -61,9 +63,11 @@ class Request {
                     })
                 );
             }
-            if (Number(response.headers.get("content-length")) > 0) {
-                const result = await response.json()
+            try {
+                const result = await response.json();
                 return result;
+            } catch (error) {
+                return;
             }
         } catch (error) {
             console.error(error);
@@ -91,9 +95,11 @@ class Request {
                     })
                 );
             }
-            if (Number(response.headers.get("content-length")) > 0) {
-                const result = await response.json()
+            try {
+                const result = await response.json();
                 return result;
+            } catch (error) {
+                return;
             }
         } catch (error) {
             console.error(error);

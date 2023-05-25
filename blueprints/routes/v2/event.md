@@ -56,9 +56,12 @@
     -   `UnitPriceSpecification` (string) - 単価仕様
     -   `CategoryCodeChargeSpecification` (string) - カテゴリーコード加算仕様
     -   `MovieTicketTypeChargeSpecification` (string) - ムビチケ加算仕様
--   referenceQuantity
-
+-   referenceQuantity (object, optional)
     -   value: `1` (number, optional) - 価格要素基準数量
+-   appliesToMovieTicket (object, optional)
+    -   serviceType: `1` (number, required) - 決済カード区分コード
+    -   serviceOutput
+        -   serviceType: `1` (number, required) - 決済方法区分コード
 
 ## Types.Event.ScreeningEvent.SearchTicketOffers
 

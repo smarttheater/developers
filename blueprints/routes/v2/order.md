@@ -77,7 +77,7 @@
         -   (Types.Order.Search) - 注文` -->
         
 
-## 確認番号で注文検索 [/v2/projects/{id}/order/findByConfirmationNumber{?confirmationNumber,customer.telephone}]
+## 確認番号で注文検索 [/v2/projects/{id}/order/findByConfirmationNumber{?confirmationNumber,telephone}]
 
 ### 確認番号で注文検索[GET]
 
@@ -91,6 +91,7 @@
 
 -   Parameters
 
+    -   id: `xxx` (string, required) - プロジェクト id
     -   confirmationNumber: `xxx` (string, required) - 確認番号
     -   telephone: `+819012345678` (string, required) - 購入者電話番号 E.164
 

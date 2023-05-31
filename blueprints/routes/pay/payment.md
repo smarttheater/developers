@@ -10,6 +10,8 @@
 Location: redirectUrl?id=xxx
 ```
 
+※アクセストークンの期限は取引期限より長いものをセットしてください。
+
 -   Request (application/x-www-form-urlencoded)
 
     -   Attributes
@@ -29,6 +31,8 @@ Location: redirectUrl?id=xxx
 ```
 Location: redirectUrl?id=xxx
 ```
+
+※アクセストークンの期限は取引期限より長いものをセットしてください。
 
 -   Request (application/x-www-form-urlencoded)
 

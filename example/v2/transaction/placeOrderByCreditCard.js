@@ -19,8 +19,7 @@ async function main() {
         projectId: process.env.PROJECT_ID
     });
     let date = new Date();
-    const movieTheaters =
-        await apiRequest.get('place/searchMovieTheaters');
+    const movieTheaters = await apiRequest.get('place/searchMovieTheaters');
     if (movieTheaters.length === 0) {
         throw new Error('movieTheaters not found');
     }
@@ -57,7 +56,7 @@ async function main() {
         priceComponent?.forEach(p => price += p.price);
         const UnitPriceSpecification =
             priceComponent.find(p => p.typeOf === 'UnitPriceSpecification');
-        return price === 0
+        return price !== 0
             && UnitPriceSpecification?.referenceQuantity?.value === 1
             && priceComponent.length === 1;
     });
@@ -126,6 +125,24 @@ async function main() {
             telephone
         }
     });
+    const priceComponent = ticketOffer.priceSpecification.priceComponent;
+    let amount = 0;
+    priceComponent?.forEach(p => amount += p.price);
+    if (amount > 0) {
+        const { access_token } = await authentication.getAcccesToken();
+        // ブラウザからSmart Theater Payを実行してください
+        // Smart Theater Payでクレジットカード決済承認を実行
+        // post: https://xxx/payment/creditcard
+        // body: {
+        //     "accessToken": access_token,
+        //     "amount": amount,
+        //     "projectId": process.env.PROJECT_ID,
+        //     "redirectUrl": "https://xxx",
+        //     "sellerId": seller.id,
+        //     "transactionId": transaction.id
+        // }
+    }
+    // 各決済承認実行後に次を実行してください
     const result = await apiRequest.put('transaction/placeOrder/confirm', {
         id: transaction.id
     });

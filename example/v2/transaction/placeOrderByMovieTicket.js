@@ -19,8 +19,7 @@ async function main() {
         projectId: process.env.PROJECT_ID
     });
     let date = new Date();
-    const movieTheaters =
-        await apiRequest.get('place/searchMovieTheaters');
+    const movieTheaters = await apiRequest.get('place/searchMovieTheaters');
     if (movieTheaters.length === 0) {
         throw new Error('movieTheaters not found');
     }
@@ -33,11 +32,12 @@ async function main() {
     const seller = sellers.find(s => s.id === movieTheater.parentOrganization.id);
     console.log('seller', seller);
     date = new Date();
-    const screeningEvents = await apiRequest.get('event/screeningEvent/search', {
-        startFrom: new Date().toISOString(),
-        startThrough: new Date(date.setDate(date.getDate() + 1)).toISOString(),
-        superEventLocationBranchCodes: movieTheater.branchCode
-    });
+    const screeningEvents =
+        await apiRequest.get('event/screeningEvent/search', {
+            startFrom: new Date().toISOString(),
+            startThrough: new Date(date.setDate(date.getDate() + 1)).toISOString(),
+            superEventLocationBranchCodes: movieTheater.branchCode
+        });
     if (screeningEvents.length === 0) {
         throw new Error('screeningEvents not found');
     }
@@ -57,9 +57,11 @@ async function main() {
         priceComponent?.forEach(p => price += p.price);
         const UnitPriceSpecification =
             priceComponent.find(p => p.typeOf === 'UnitPriceSpecification');
-        return price === 0
-            && UnitPriceSpecification?.referenceQuantity?.value === 1
-            && priceComponent.length === 1;
+        const MovieTicketTypeChargeSpecification =
+            priceComponent.find(p => p.typeOf === 'MovieTicketTypeChargeSpecification');
+        return UnitPriceSpecification?.referenceQuantity?.value === 1
+            && priceComponent.length === 1
+            && MovieTicketTypeChargeSpecification !== undefined;
     });
     console.log('ticketOffer', ticketOffer);
 
@@ -126,6 +128,46 @@ async function main() {
             telephone
         }
     });
+    const priceComponent = ticketOffer.priceSpecification.priceComponent;
+    let amount = 0;
+    priceComponent?.forEach(p => amount += p.price);
+    if (amount > 0) {
+        const acccesToken = (await authentication.getAcccesToken()).access_token;
+        // ブラウザからSmart Theater Payを実行してください
+        // Smart Theater Payでクレジットカード決済承認を実行
+        // post: https://xxx/payment/creditcard
+        // body: {
+        //     "accessToken": acccesToken,
+        //     "amount": amount,
+        //     "projectId": process.env.PROJECT_ID,
+        //     "redirectUrl": "https://xxx",
+        //     "sellerId": seller.id,
+        //     "transactionId": transaction.id
+        // }
+    }
+    const MovieTicketTypeChargeSpecification =
+        priceComponent.find(p => p.typeOf === 'MovieTicketTypeChargeSpecification');
+    MovieTicketTypeChargeSpecification.appliesToMovieTicket.serviceType
+    if (MovieTicketTypeChargeSpecification !== undefined) {
+        const acccesToken = (await authentication.getAcccesToken()).access_token;
+        // ブラウザからSmart Theater Payを実行してください
+        // Smart Theater Payでムビチケ決済承認を実行
+        // post: https://xxx/payment/movieticket
+        // body: {
+        //     "accessToken": acccesToken,
+        //     "amount": amount,
+        //     "projectId": process.env.PROJECT_ID,
+        //     "redirectUrl": "https://xxx",
+        //     "sellerId": seller.id,
+        //     "transactionId": transaction.id,
+        //     "eventId": screeningEvent.id,
+        //     "paymentMethodCode": MovieTicketTypeChargeSpecification.appliesToMovieTicket.serviceOutput.typeOf,
+        //     "paymentCardCode": MovieTicketTypeChargeSpecification.appliesToMovieTicket.serviceType,
+        //     "seatNumber": seat.branchCode,
+        //     "seatSection": seat.seatSection
+        // }
+    }
+    // 各決済承認実行後に次を実行してください
     const result = await apiRequest.put('transaction/placeOrder/confirm', {
         id: transaction.id
     });

@@ -12,6 +12,7 @@ class Request {
     }
 
     async get(url, params) {
+        console.log('Request get', url, params);
         const query = new URLSearchParams(params);
         try {
             const response = await fetch(`${this.apiEndpoint}/v2/projects/${this.projectId}/${url}?${query}`,
@@ -24,10 +25,17 @@ class Request {
                 }
             );
             if (!response.ok) {
+                let body;
+                try {
+                    body = await response.json();
+                } catch (error) {
+                    console.log(error);
+                }
                 throw new Error(
                     JSON.stringify({
                         status: response.status,
                         statusText: response.statusText,
+                        body
                     })
                 );
             }
@@ -38,12 +46,12 @@ class Request {
                 return;
             }
         } catch (error) {
-            console.error(error);
             throw error;
         }
     }
 
     async post(url, body) {
+        console.log('Request post', url, body);
         try {
             const response = await fetch(`${this.apiEndpoint}/v2/projects/${this.projectId}/${url}`,
                 {
@@ -56,10 +64,17 @@ class Request {
                 }
             );
             if (!response.ok) {
+                let body;
+                try {
+                    body = await response.json();
+                } catch (error) {
+                    console.log(error);
+                }
                 throw new Error(
                     JSON.stringify({
                         status: response.status,
                         statusText: response.statusText,
+                        body
                     })
                 );
             }
@@ -70,12 +85,12 @@ class Request {
                 return;
             }
         } catch (error) {
-            console.error(error);
             throw error;
         }
     }
 
     async put(url, body) {
+        console.log('Request put', url, body);
         try {
             const response = await fetch(`${this.apiEndpoint}/v2/projects/${this.projectId}/${url}`,
                 {
@@ -88,10 +103,17 @@ class Request {
                 }
             );
             if (!response.ok) {
+                let body;
+                try {
+                    body = await response.json();
+                } catch (error) {
+                    console.log(error);
+                }
                 throw new Error(
                     JSON.stringify({
                         status: response.status,
                         statusText: response.statusText,
+                        body,
                     })
                 );
             }
@@ -102,7 +124,6 @@ class Request {
                 return;
             }
         } catch (error) {
-            console.error(error);
             throw error;
         }
     }

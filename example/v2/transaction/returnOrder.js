@@ -8,8 +8,8 @@ const readInterface = readline.createInterface({
 });
 
 async function main() {
-    const orderNumber = await readInterface.question("input orderNumber >");
-    const confirmationNumber = await readInterface.question("input confirmationNumber >");
+    const orderNumber = await readInterface.question("Please enter your orderNumber >");
+    const confirmationNumber = await readInterface.question("Please enter your confirmationNumber >");
 
     const { access_token } = await authentication.getAcccesToken();
     const apiRequest = new api.Request();

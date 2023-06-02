@@ -8,8 +8,14 @@ const readInterface = readline.createInterface({
 });
 
 async function main() {
-    const email = await readInterface.question("input email >");
-    const telephone = await readInterface.question("input telephone >");
+    let familyName = await readInterface.question("Please enter your familyName >");
+    let givenName = await readInterface.question("Please enter your givenName >");
+    let email = await readInterface.question("Please enter your email >");
+    let telephone = await readInterface.question("Please enter your telephone >");
+    familyName = familyName === '' ? process.env.TEST_FAMILY_NAME : familyName;
+    givenName = givenName === '' ? process.env.TEST_GIVEN_NAME : givenName;
+    email = email === '' ? process.env.TEST_EMAIL : email;
+    telephone = telephone === '' ? process.env.TEST_TELEPHONE : telephone;
 
     const { access_token } = await authentication.getAcccesToken();
     const apiRequest = new api.Request();
@@ -120,8 +126,8 @@ async function main() {
     await apiRequest.put('transaction/placeOrder/setProfile', {
         id: transaction.id,
         agent: {
-            familyName: 'API',
-            givenName: 'TEST',
+            familyName,
+            givenName,
             email,
             telephone
         }

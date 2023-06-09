@@ -1,15 +1,5 @@
 # Data Structure
 
-## Types.Order.Search
-
--   orderDate: `xxx` (string, optional) - 注文日時 ISO 8601 date format
--   confirmationNumber: `xxx` (string, required) - 確認番号
--   orderNumber: `xxx` (string, required) - 注文番号
--   price: `1000` (number, required) - 注文金額
--   orderStatus: `OrderDelivered` (enum, optional) - 注文ステータス OrderDelivered(注文済み) or OrderReturned(注文返品済み)
-    -   `OrderDelivered` (string) - 注文済み
-    -   `OrderReturned` (string) - 注文返品済み
-
 ## Types.Order.FindByConfirmationNumber
 
 -   orderDate: `xxx` (string, optional) - 注文日時 ISO 8601 date format
@@ -54,27 +44,6 @@
             -   (Types.Order.SearchAcceptedOffersByConfirmationNumber.priceComponent) - 価格要素
 
 # Group 注文
-
-<!-- ## 注文検索 [/v2/projects/{id}/order/search{?page,limit,orderDate.lte,orderDate.gte,orderNumbers,confirmationNumbers}]
-
-### 注文検索[GET]
-
--   Parameters
-
-    -   id: `xxx` (string, required) - プロジェクトid
-    -   page: `1` (number, optional) - ページ
-        -   Default: `1
-    -   limit: `10` (number, optional) - 最大取得件数
-        -   Default: `100
-    -   orderDate.lte: `2023-01-01T00:00:00.000Z` (string, optional) - 注文日時範囲(から)ISO 8601 date format
-    -   orderDate.gte: `2023-01-01T00:00:00.000Z` (string, optional) - 注文日時範囲(まで)ISO 8601 date format
-    -   orderNumbers: `['xxx']` (array, optional) - 注文番号リスト
-    -   confirmationNumbers: `['xxx']` (array, optional) - 確認番号リスト
-
--   Response 200 (application/json)
-
-    -   Attributes (array, fixed-type)
-        -   (Types.Order.Search) - 注文` -->
         
 
 ## 確認番号で注文検索 [/v2/projects/{id}/order/findByConfirmationNumber{?confirmationNumber,telephone}]

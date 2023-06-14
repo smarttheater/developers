@@ -46,7 +46,7 @@
 # Group 注文
         
 
-## 確認番号で注文検索 [/v2/projects/{id}/order/findByConfirmationNumber{?confirmationNumber,telephone}]
+## 確認番号で注文検索 [/order/findByConfirmationNumber{?confirmationNumber,telephone}]
 
 ### 確認番号で注文検索[GET]
 
@@ -60,7 +60,6 @@
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
     -   confirmationNumber: `xxx` (string, required) - 確認番号
     -   telephone: `+819012345678` (string, required) - 購入者電話番号 E.164
 
@@ -71,7 +70,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 注文アイテム検索 [/v2/projects/{id}/order/searchAcceptedOffersByConfirmationNumber{?page,limit,confirmationNumber,orderNumber}]
+## 注文アイテム検索 [/order/searchAcceptedOffersByConfirmationNumber{?page,limit,confirmationNumber,orderNumber}]
 
 ### 注文アイテム検索[GET]
 
@@ -91,13 +90,12 @@
 
 <!-- include(../../response/400.md) -->
 
-## 注文コード発行 [/v2/projects/{id}/order/authorize]
+## 注文コード発行 [/order/authorize]
 
 ### 注文コード発行[POST]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 

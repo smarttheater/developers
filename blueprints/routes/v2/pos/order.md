@@ -12,7 +12,7 @@
 
 # Group 注文
 
-## 注文検索 [/v2/projects/{id}/order/search{?page,limit,orderDateLte,orderDateGte}]
+## 注文検索 [/order/search{?page,limit,orderDateLte,orderDateGte}]
 
 ### 注文検索[GET]
 
@@ -25,7 +25,6 @@
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
     -   page: `1` (number, optional) - ページ
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数

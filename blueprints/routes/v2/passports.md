@@ -1,6 +1,6 @@
 # Group パスポート
 
-## パスポート取得 [/v2/projects/{id}/passports]
+## パスポート取得 [/passports]
 
 ### パスポート取得[POST]
 
@@ -12,7 +12,6 @@
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 

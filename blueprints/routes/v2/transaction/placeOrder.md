@@ -11,13 +11,12 @@
 
 # Group 取引
 
-## 取引開始 [/v2/projects/{id}/transaction/placeOrder/start]
+## 取引開始 [/transaction/placeOrder/start]
 
 ### 取引開始[POST]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 
@@ -37,7 +36,7 @@
 
 <!-- include(../../../response/400.md) -->
 
-## 取引確定 [/v2/projects/{id}/transaction/placeOrder/confirm]
+## 取引確定 [/transaction/placeOrder/confirm]
 
 ### 取引確定[PUT]
 
@@ -50,7 +49,6 @@
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 
@@ -70,13 +68,12 @@
 
 
 
-## 取引中止 [/v2/projects/{id}/transaction/placeOrder/cancel]
+## 取引中止 [/transaction/placeOrder/cancel]
 
 ### 取引中止[PUT]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 
@@ -85,13 +82,12 @@
 
 -   Response 200
 
-## イベントオファー承認 [/v2/projects/{id}/transaction/placeOrder/authorizeSeatReservation]
+## イベントオファー承認 [/transaction/placeOrder/authorizeSeatReservation]
 
 ### イベントオファー承認[POST]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 
@@ -111,13 +107,12 @@
 
 <!-- include(../../../response/400.md) -->
 
-## イベントオファー承認取り消し [/v2/projects/{id}/transaction/placeOrder/voidSeatReservation]
+## イベントオファー承認取り消し [/transaction/placeOrder/voidSeatReservation]
 
 ### イベントオファー承認取り消し[PUT]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 
@@ -130,13 +125,12 @@
 
 <!-- include(../../../response/400.md) -->
 
-## 取引人プロフィール設定 [/v2/projects/{id}/transaction/placeOrder/setProfile]
+## 取引人プロフィール設定 [/transaction/placeOrder/setProfile]
 
 ### 取引人プロフィール設定[PUT]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 

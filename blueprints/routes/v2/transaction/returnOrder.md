@@ -8,13 +8,12 @@
 
 # Group 返品取引
 
-## 取引開始 [/v2/projects/{id}/transaction/returnOrder/start]
+## 取引開始 [/transaction/returnOrder/start]
 
 ### 取引開始[POST]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 
@@ -32,13 +31,12 @@
 
 <!-- include(../../../response/400.md) -->
 
-## 取引確定 [/v2/projects/{id}/transaction/returnOrder/confirm]
+## 取引確定 [/transaction/returnOrder/confirm]
 
 ### 取引確定[PUT]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 

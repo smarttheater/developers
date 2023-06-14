@@ -19,13 +19,12 @@
 
 # Group 施設
 
-## 施設検索 [/v2/projects/{id}/place/searchMovieTheaters{?page,limit}]
+## 施設検索 [/place/searchMovieTheaters{?page,limit}]
 
 ### 施設検索[GET]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
     -   page: `1` (number, optional) - ページ
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数
@@ -38,13 +37,12 @@
 
 <!-- include(../../response/400.md) -->
 
-## ルーム検索 [/v2/projects/{id}/place/searchScreeningRooms{?page,limit}]
+## ルーム検索 [/place/searchScreeningRooms{?page,limit}]
 
 ### ルーム検索[GET]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
     -   page: `1` (number, optional) - ページ
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数

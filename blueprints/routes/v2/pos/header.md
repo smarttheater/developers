@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://example.com
+HOST: https://example.com/xxx
 
 # Smart Theater API For POS Documentation
 

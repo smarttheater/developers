@@ -99,13 +99,12 @@
 
 # Group イベント
 
-## イベント検索 [/v2/projects/{id}/event/screeningEvent/search{?page,limit,startFrom,startThrough,offers.availableFrom,offers.availableThrough,superEventLocationBranchCodes}]
+## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,offers.availableFrom,offers.availableThrough,superEventLocationBranchCodes}]
 
 ### イベント検索[GET]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
     -   page: `1` (number, optional) - ページ
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数
@@ -120,7 +119,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## イベントオファー検索 [/v2/projects/{id}/event/screeningEvent/searchTicketOffers{?page,limit,eventId}]
+## イベントオファー検索 [/event/screeningEvent/searchTicketOffers{?page,limit,eventId}]
 
 ### イベントオファー検索[GET]
 
@@ -134,7 +133,6 @@
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
     -   page: `1` (number, optional) - ページ
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数
@@ -147,13 +145,12 @@
 
 <!-- include(../../response/400.md) -->
 
-## 座席ステータス検索 [/v2/projects/{id}/event/screeningEvent/searchSeats{?page,limit,eventId}]
+## 座席ステータス検索 [/event/screeningEvent/searchSeats{?page,limit,eventId}]
 
 ### 座席ステータス検索[GET]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
     -   page: `1` (number, optional) - ページ
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数

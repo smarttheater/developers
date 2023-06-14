@@ -2,13 +2,12 @@
 
 # Group トークン
 
-## トークンを取得 [/v2/projects/{id}/token/getToken]
+## トークンを取得 [/token/getToken]
 
 ### トークンを取得[POST]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 

@@ -1,12 +1,11 @@
 # Group 決済
 
-<!-- ## クレジットカード決済承認 [/v2/projects/{id}/payment/authorizeCreditCard]
+<!-- ## クレジットカード決済承認 [/payment/authorizeCreditCard]
 
 ### クレジットカード決済承認[POST]
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 
@@ -28,7 +27,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 決済承認取り消し [/v2/projects/{id}/payment/voidTransaction]
+## 決済承認取り消し [/payment/voidTransaction]
 
 ### 決済承認取り消し[POST]
 
@@ -41,7 +40,6 @@
 
 -   Parameters
 
-    -   id: `xxx` (string, required) - プロジェクト id
 
 -   Request (application/json)
 

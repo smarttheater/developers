@@ -98,111 +98,7 @@
 </tr>
 </tbody>
 </table>
-</div><div class="middle"><section id="oauth2" class="resource-group"><h2 class="group-heading">OAuth2 <a href="#oauth2" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="oauth2-トークンエンドポイント" class="resource"><h3 class="resource-heading">トークンエンドポイント <a href="#oauth2-トークンエンドポイント" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/oauth2/token</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">クライアント認証</span><span class="tab-button">認可コード</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Basic ABC123</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">grant_type</span>": <span class="hljs-value"><span class="hljs-string">"client_credencials"</span>
-</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">grant_type</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"認証タイプ"</span>
-    </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-    <span class="hljs-string">"grant_type"</span>
-  ]</span>,
-  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">access_token</span>": <span class="hljs-value"><span class="hljs-string">"JWT"</span></span>,
-  "<span class="hljs-attribute">token_type</span>": <span class="hljs-value"><span class="hljs-string">"Bearer"</span></span>,
-  "<span class="hljs-attribute">expires_in</span>": <span class="hljs-value"><span class="hljs-number">1800</span></span>,
-  "<span class="hljs-attribute">refresh_token: `xxx` (string, optional) - grant_typeがauthorization_codeの場合にのみrefresh_tokeを返します。</span>": <span class="hljs-value"><span class="hljs-string">"Hello, world!"</span>
-</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
-  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">access_token</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"アクセストークン"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">token_type</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"発行されたトークンタイプ"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">expires_in</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"アクセストークンの有効期間"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">refresh_token: `xxx` (string, optional) - grant_typeがauthorization_codeの場合にのみrefresh_tokeを返します。</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
-    </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-    <span class="hljs-string">"access_token"</span>,
-    <span class="hljs-string">"token_type"</span>,
-    <span class="hljs-string">"expires_in"</span>
-  ]
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">error</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">400</span></span>,
-    "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
-      {
-        "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"message"</span></span>,
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"SomeError"</span></span>,
-        "<span class="hljs-attribute">reason</span>": <span class="hljs-value"><span class="hljs-string">"Argument"</span>
-      </span>}
-    ]</span>,
-    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"message"</span>
-  </span>}
-</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
-  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">error</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">code</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
-          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"HTTPステータスコード"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">errors</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
-          "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">message</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラーメッセージ"</span>
-              </span>}</span>,
-              "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラー名称"</span>
-              </span>}</span>,
-              "<span class="hljs-attribute">reason</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラー原因"</span>
-              </span>}
-            </span>}</span>,
-            "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-              <span class="hljs-string">"message"</span>,
-              <span class="hljs-string">"name"</span>,
-              <span class="hljs-string">"reason"</span>
-            ]
-          </span>}</span>,
-          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラーリスト"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">message</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラーメッセージ"</span>
-        </span>}
-      </span>}</span>,
-      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-        <span class="hljs-string">"code"</span>,
-        <span class="hljs-string">"message"</span>
-      ]
-    </span>}
-  </span>}
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Basic ABC123</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+</div><div class="middle"><section id="oauth2" class="resource-group"><h2 class="group-heading">OAuth2 <a href="#oauth2" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="oauth2-トークンエンドポイント" class="resource"><h3 class="resource-heading">トークンエンドポイント <a href="#oauth2-トークンエンドポイント" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/oauth2/token</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">認可コード</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span><br><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">Basic ABC123</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">grant_type</span>": <span class="hljs-value"><span class="hljs-string">"authorization_code"</span></span>,
   "<span class="hljs-attribute">redirect_uri</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
   "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
@@ -228,7 +124,7 @@
     <span class="hljs-string">"code"</span>
   ]</span>,
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span>
-</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+</span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">access_token</span>": <span class="hljs-value"><span class="hljs-string">"JWT"</span></span>,
   "<span class="hljs-attribute">token_type</span>": <span class="hljs-value"><span class="hljs-string">"Bearer"</span></span>,
   "<span class="hljs-attribute">expires_in</span>": <span class="hljs-value"><span class="hljs-number">1800</span></span>,
@@ -258,66 +154,6 @@
     <span class="hljs-string">"token_type"</span>,
     <span class="hljs-string">"expires_in"</span>
   ]
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">error</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">400</span></span>,
-    "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
-      {
-        "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"message"</span></span>,
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"SomeError"</span></span>,
-        "<span class="hljs-attribute">reason</span>": <span class="hljs-value"><span class="hljs-string">"Argument"</span>
-      </span>}
-    ]</span>,
-    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"message"</span>
-  </span>}
-</span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
-  "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
-  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-  "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">error</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">code</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
-          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"HTTPステータスコード"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">errors</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
-          "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-              "<span class="hljs-attribute">message</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラーメッセージ"</span>
-              </span>}</span>,
-              "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラー名称"</span>
-              </span>}</span>,
-              "<span class="hljs-attribute">reason</span>": <span class="hljs-value">{
-                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラー原因"</span>
-              </span>}
-            </span>}</span>,
-            "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-              <span class="hljs-string">"message"</span>,
-              <span class="hljs-string">"name"</span>,
-              <span class="hljs-string">"reason"</span>
-            ]
-          </span>}</span>,
-          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラーリスト"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">message</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"エラーメッセージ"</span>
-        </span>}
-      </span>}</span>,
-      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-        <span class="hljs-string">"code"</span>,
-        <span class="hljs-string">"message"</span>
-      ]
-    </span>}
-  </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="oauth2-トークンエンドポイント-post" class="action post"><h4 class="action-heading"><div class="name">トークンエンドポイント</div><a href="#oauth2-トークンエンドポイント-post" class="method post">POST</a><code class="uri">/oauth2/token</code></h4><p><a href="https://tools.ietf.org/html/rfc6749">OAuth2</a> に準拠したトークンエンドポイントです。
 トークンエンドポイントは、ユーザーのトークンを取得します。</p>
 <div class="note">
@@ -328,15 +164,7 @@
 </div>
 <p><strong>利用可能な認可タイプ</strong></p>
 <ul>
-<li>
-<p><code>client_credentials</code></p>
-</li>
-<li>
-<p><code>authorization_code</code></p>
-</li>
-<li>
-<p><code>refresh_token</code></p>
-</li>
+<li><code>authorization_code</code></li>
 </ul>
 <div class="note">
 <p>アプリケーション側でアクセストークンの有効期間を管理し、適宜再取得してください。</p>

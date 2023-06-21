@@ -42,7 +42,8 @@ async function main() {
     const screeningEvents = await apiRequest.get('event/screeningEvent/search', {
         startFrom: new Date().toISOString(),
         startThrough: new Date(date.setDate(date.getDate() + 1)).toISOString(),
-        superEventLocationBranchCodes: movieTheater.branchCode
+        superEventLocationBranchCodes: movieTheater.branchCode,
+        clientId: process.env.CLIENT_ID,
     });
     if (screeningEvents.length === 0) {
         throw new Error('screeningEvents not found');

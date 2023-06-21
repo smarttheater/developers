@@ -15,12 +15,7 @@
     -   validFrom: `2023-01-01T00:00:00.000Z` (string, optional) - 販売開始日時 ISO 8601 date format
     -   validThrough: `2023-01-01T00:00:00.000Z` (string, optional) - 販売終了日時 ISO 8601 date format
     -   availableFrom: `2023-01-01T00:00:00.000Z` (string, optional) - 表示開始日時 ISO 8601 date format
-    -   availableThrough: `2023-01-01T00:00:00.000Z` (string, optional) - 表示終了日時 ISO 8601 date login
-    -   login (object, optional) - ログイン時販売表示情報
-        -   validFrom: `2023-01-01T00:00:00.000Z` (string, optional) - 販売開始日時 ISO 8601 date format
-        -   validThrough: `2023-01-01T00:00:00.000Z` (string, optional) - 販売終了日時 ISO 8601 date format
-        -   availableFrom: `2023-01-01T00:00:00.000Z` (string, optional) - 表示開始日時 ISO 8601 date format
-        -   availableThrough: `2023-01-01T00:00:00.000Z` (string, optional) - 表示終了日時 ISO 8601 date format
+    -   availableThrough: `2023-01-01T00:00:00.000Z` (string, optional) - 表示終了日時 ISO 8601 date 
 -   location
     -   name
         -   ja: `xxx` (string, optional) - ルーム名称（日本語）
@@ -99,7 +94,7 @@
 
 # Group イベント
 
-## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,offers.availableFrom,offers.availableThrough,superEventLocationBranchCodes}]
+## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,superEventLocationBranchCodes,clientId}]
 
 ### イベント検索[GET]
 
@@ -112,6 +107,7 @@
     -   startFrom: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時範囲(から) ISO 8601 date format
     -   startThrough: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時範囲(まで) ISO 8601 date format
     -   superEventLocationBranchCodes: `xxx` (string, optional) - 施設コード
+    -   clientId: `xxx` (string, optional) - 取得したい販売表示情報のクライアントid
 
 -   Response 200 (application/json)
     -   Attributes (array, fixed-type)

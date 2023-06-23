@@ -1,21 +1,17 @@
-// const fetch = require('node-fetch');
+const { API_ENDPOINT } = require('./setting');
 
 class Request {
     acccesToken;
-    apiEndpoint;
-    projectId;
 
     setOptions(params) {
         this.acccesToken = params.acccesToken;
-        this.apiEndpoint = params.apiEndpoint;
-        this.projectId = params.projectId;
     }
 
     async get(url, params) {
         console.log('Request get', url, params);
         const query = new URLSearchParams(params);
         try {
-            const response = await fetch(`${this.apiEndpoint}/v2/projects/${this.projectId}/${url}?${query}`,
+            const response = await fetch(`${API_ENDPOINT}/${url}?${query}`,
                 {
                     method: 'GET',
                     headers: {
@@ -53,7 +49,7 @@ class Request {
     async post(url, body) {
         console.log('Request post', url, body);
         try {
-            const response = await fetch(`${this.apiEndpoint}/v2/projects/${this.projectId}/${url}`,
+            const response = await fetch(`${API_ENDPOINT}/${url}`,
                 {
                     body: JSON.stringify(body),
                     method: 'POST',
@@ -92,7 +88,7 @@ class Request {
     async put(url, body) {
         console.log('Request put', url, body);
         try {
-            const response = await fetch(`${this.apiEndpoint}/v2/projects/${this.projectId}/${url}`,
+            const response = await fetch(`${API_ENDPOINT}/${url}`,
                 {
                     body: JSON.stringify(body),
                     method: 'PUT',

@@ -1,12 +1,14 @@
 const api = require('../../api');
 
+/**
+ * サンプルコード
+ * 予約検索
+ */
 async function main() {
-    const access_token = process.env.ACCESS_TOKEN;
+    const { access_token } = await authentication.getAcccesToken('authorization_code');
     const apiRequest = new api.Request();
     apiRequest.setOptions({
         acccesToken: access_token,
-        apiEndpoint: process.env.API_ENDPOINT,
-        projectId: process.env.PROJECT_ID
     });
     const date = new Date();
     date.setDate(date.getDate() - 10);

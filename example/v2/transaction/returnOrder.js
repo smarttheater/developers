@@ -7,16 +7,18 @@ const readInterface = readline.createInterface({
     output: process.stdout
 });
 
+/**
+ * サンプルコード
+ * 注文返品
+ */
 async function main() {
     const orderNumber = await readInterface.question("Please enter your orderNumber >");
     const confirmationNumber = await readInterface.question("Please enter your confirmationNumber >");
 
-    const { access_token } = await authentication.getAcccesToken();
+    const { access_token } = await authentication.getAcccesToken('client_credentials');
     const apiRequest = new api.Request();
     apiRequest.setOptions({
         acccesToken: access_token,
-        apiEndpoint: process.env.API_ENDPOINT,
-        projectId: process.env.PROJECT_ID
     });
     let date = new Date();
     const transaction = await apiRequest.post('transaction/returnOrder/start', {

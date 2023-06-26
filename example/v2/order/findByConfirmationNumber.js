@@ -11,12 +11,10 @@ async function main() {
     const confirmationNumber = await readInterface.question("Please enter your confirmationNumber >");
     const telephone = await readInterface.question("Please enter your telephone >");
 
-    const { access_token } = await authentication.getAcccesToken();
+    const { access_token } = await authentication.getAcccesToken('client_credentials');
     const apiRequest = new api.Request();
     apiRequest.setOptions({
         acccesToken: access_token,
-        apiEndpoint: process.env.API_ENDPOINT,
-        projectId: process.env.PROJECT_ID
     });
     const orders = await apiRequest.get('order/findByConfirmationNumber', {
         confirmationNumber,

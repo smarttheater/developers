@@ -47,3 +47,25 @@ Location: redirectUrl?id=xxx
         -   paymentCardCode: `xxx` (string, required) - 決済カード区分コード
         -   seatNumber: `xxx` (string, required) - 座席コード
         -   seatSection: `xxx` (string, required) - セクションコード
+
+## 対面決済承認 [/payment/faceToFace]
+
+### 対面決済承認[POST]
+
+指定したリダイレクトURLへ決済承認idを伴ってアプリにリダイレクトします。
+
+```
+Location: redirectUrl?id=xxx
+```
+
+※アクセストークンの期限は取引期限より長いものをセットしてください。
+
+-   Request (application/x-www-form-urlencoded)
+
+    -   Attributes
+        -   accessToken: `xxx` (string, required) - アクセストークン
+        -   projectId: `xxx` (string, required) - プロジェクトid
+        -   redirectUrl: `https://xxx` (string, required) - リダイレクトURL
+        -   transactionId: `xxx` (string, required) - 取引id
+        -   paymentMethodCode: `xxx` (string, required) - 決済方法区分コード
+        -   amount: `1000` (number, required) - 決済金額

@@ -100,7 +100,7 @@
 -   Request (application/json)
 
     -   Attributes
-        -   confirmationNumber: `xxx` (string, required) - 確認番号
+        -   orderNumber: `xxx` (string, required) - 注文番号
         -   expiresInSeconds: `2023-01-01T00:00:00.000Z` (string, required) - コード期限 ISO 8601 date format
         -   customer
             -   telephone: `+819012345678` (string, optional) - 購入者電話番号 E.164

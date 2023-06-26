@@ -1,3 +1,4 @@
+const { CLIENT_ID, FAMILY_NAME, GIVEN_NAME, EMAIL, TELEPHONE } = require('../setting');
 const authentication = require('../authentication');
 const api = require('../api');
 const readline = require('readline/promises');
@@ -7,22 +8,24 @@ const readInterface = readline.createInterface({
     output: process.stdout
 });
 
+/**
+ * サンプルコード
+ * 注文取引クレジットカード決済
+ */
 async function main() {
     let familyName = await readInterface.question("Please enter your familyName >");
     let givenName = await readInterface.question("Please enter your givenName >");
     let email = await readInterface.question("Please enter your email >");
     let telephone = await readInterface.question("Please enter your telephone >");
-    familyName = familyName === '' ? process.env.TEST_FAMILY_NAME : familyName;
-    givenName = givenName === '' ? process.env.TEST_GIVEN_NAME : givenName;
-    email = email === '' ? process.env.TEST_EMAIL : email;
-    telephone = telephone === '' ? process.env.TEST_TELEPHONE : telephone;
+    familyName = familyName === '' ? FAMILY_NAME : familyName;
+    givenName = givenName === '' ? GIVEN_NAME : givenName;
+    email = email === '' ? EMAIL : email;
+    telephone = telephone === '' ? TELEPHONE : telephone;
 
-    const { access_token } = await authentication.getAcccesToken();
+    const { access_token } = await authentication.getAcccesToken('client_credentials');
     const apiRequest = new api.Request();
     apiRequest.setOptions({
         acccesToken: access_token,
-        apiEndpoint: process.env.API_ENDPOINT,
-        projectId: process.env.PROJECT_ID
     });
     let date = new Date();
     const movieTheaters = await apiRequest.get('place/searchMovieTheaters');
@@ -41,7 +44,8 @@ async function main() {
     const screeningEvents = await apiRequest.get('event/screeningEvent/search', {
         startFrom: new Date().toISOString(),
         startThrough: new Date(date.setDate(date.getDate() + 1)).toISOString(),
-        superEventLocationBranchCodes: movieTheater.branchCode
+        superEventLocationBranchCodes: movieTheater.branchCode,
+        clientId: CLIENT_ID,
     });
     if (screeningEvents.length === 0) {
         throw new Error('screeningEvents not found');
@@ -143,7 +147,7 @@ async function main() {
         // body: {
         //     "accessToken": acccesToken,
         //     "amount": amount,
-        //     "projectId": process.env.PROJECT_ID,
+        //     "projectId": "xxx",
         //     "redirectUrl": "https://xxx",
         //     "sellerId": seller.id,
         //     "transactionId": transaction.id

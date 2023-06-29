@@ -1,4 +1,5 @@
 const api = require('../../api');
+const authentication = require('../../authentication');
 
 /**
  * サンプルコード
@@ -11,7 +12,7 @@ async function main() {
         acccesToken: access_token,
     });
     const date = new Date();
-    date.setDate(date.getDate() - 10);
+    date.setDate(date.getDate() - 30);
     const reservations = await apiRequest.get('reservation/search', {
         bookingFrom: date.toISOString(),
         bookingThrough: new Date().toISOString(),

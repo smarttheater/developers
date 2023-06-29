@@ -8,7 +8,7 @@ class Request {
     }
 
     async get(url, params) {
-        console.log('Request get', url, params);
+        console.log('Request get', `${API_ENDPOINT}/${url}`, params);
         const query = new URLSearchParams(params);
         try {
             const response = await fetch(`${API_ENDPOINT}/${url}?${query}`,
@@ -47,7 +47,7 @@ class Request {
     }
 
     async post(url, body) {
-        console.log('Request post', url, body);
+        console.log('Request post', `${API_ENDPOINT}/${url}`, body);
         try {
             const response = await fetch(`${API_ENDPOINT}/${url}`,
                 {
@@ -86,7 +86,7 @@ class Request {
     }
 
     async put(url, body) {
-        console.log('Request put', url, body);
+        console.log('Request put', `${API_ENDPOINT}/${url}`, body);
         try {
             const response = await fetch(`${API_ENDPOINT}/${url}`,
                 {

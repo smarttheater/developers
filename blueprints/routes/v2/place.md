@@ -16,6 +16,7 @@
     -   ja: `xxx` (string, required) - ルーム名称（日本語）
     -   en: `xxx` (string, required) - ルーム名称（英語）
 -   branchCode: `xxx` (string, required) - ルームコード
+-   openSeatingAllowed: true (boolean , optional) - 自由席フラグ
 
 # Group 施設
 

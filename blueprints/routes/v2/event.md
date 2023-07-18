@@ -47,7 +47,12 @@
         -   identifier: `xxx` (string, required) - コンテンツコード
 -   additionalProperty (array[Types.Event.PropertyValue], fixed-type) - 追加特性
 
-## Types.Event.ScreeningEvent.SearchTicketOffers.priceComponent
+## Types.Event.ScreeningEvent.SearchTicketOffers.AddOn
+
+-   itemOffered
+    -   id: `xxx` (string, optional) - アドオンオファー id
+
+## Types.Event.ScreeningEvent.SearchTicketOffers.PriceComponent
 
 -   name (object, optional)
     -   ja: `xxx` (string, optional) - 価格要素名称（日本語）
@@ -76,7 +81,9 @@
 -   sortIndex: `1` (string, optional) - オファー並び順
 -   priceSpecification
     -   priceComponent (array, required, fixed-type)
-        -   (Types.Event.ScreeningEvent.SearchTicketOffers.priceComponent) - 価格要素
+        -   (Types.Event.ScreeningEvent.SearchTicketOffers.PriceComponent) - 価格要素
+-   addOn (array, optional, fixed-type)
+    -   (Types.Event.ScreeningEvent.SearchTicketOffers.AddOn) - アドオン情報
 
 ## Types.Event.ScreeningEvent.SearchSeats.Offers
 

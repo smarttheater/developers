@@ -1,5 +1,9 @@
 # Data Structure
 
+## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AddOn
+
+-   id: `xxx` (string, required) - アドオンオファー id
+
 ## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer
 
 -   id: `xxx` (string, required) - チケットオファー id
@@ -8,6 +12,8 @@
         -   reservedTicket
             -   seatNumber: `xxx` (string, required) - 座席コード
             -   seatSection: `xxx` (string, required) - セクションコード
+-   addOn (array, optional, fixed-type)
+    -   (Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AddOn) - アドオンオファー
 
 # Group 取引
 
@@ -16,7 +22,6 @@
 ### 取引開始[POST]
 
 -   Parameters
-
 
 -   Request (application/json)
 
@@ -49,14 +54,10 @@
 
 -   Parameters
 
-
 -   Request (application/json)
 
     -   Attributes
         -   id: `xxx` (string, required) - 取引 id
-        <!-- -   email
-            -   about: `xxx` (string, required) - 件名
-            -   template: `| ご購入ありがとうございます。\n| 確認番号: #{order.confirmationNumber}\n| 注文番号: #{order.orderNumber}` (string, required) - 本文テンプレート PUG -->
 
 -   Response 200 (application/json)
 
@@ -66,14 +67,11 @@
 
 <!-- include(../../../response/400.md) -->
 
-
-
 ## 取引中止 [/transaction/placeOrder/cancel]
 
 ### 取引中止[PUT]
 
 -   Parameters
-
 
 -   Request (application/json)
 
@@ -87,7 +85,6 @@
 ### イベントオファー承認[POST]
 
 -   Parameters
-
 
 -   Request (application/json)
 
@@ -113,7 +110,6 @@
 
 -   Parameters
 
-
 -   Request (application/json)
 
     -   Attributes
@@ -130,7 +126,6 @@
 ### 取引人プロフィール設定[PUT]
 
 -   Parameters
-
 
 -   Request (application/json)
 

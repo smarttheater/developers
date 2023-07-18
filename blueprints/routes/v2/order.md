@@ -37,7 +37,6 @@
                 -   en: `xxx` (string, optional) - オファー名称（英語）
         -   ticketedSeat (object, optional)
             -   seatNumber: `xxx` (string, required) - 座席コード
-            <!-- -   seatRow: `xxx` (string, required) - 座席行` -->
             -   seatSection: `xxx` (string, required) - 座席セクション
     -   priceSpecification
         -   priceComponent (array, required, fixed-type)

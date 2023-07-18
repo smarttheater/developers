@@ -8,6 +8,8 @@
 
 <!-- include(routes/v2/place.md) -->
 
+<!-- include(routes/v2/product.md) -->
+
 <!-- include(routes/v2/seller.md) -->
 
 <!-- include(routes/v2/transaction/placeOrder.md) -->

@@ -45,12 +45,16 @@
 
 ### 取引確定[PUT]
 
-<!-- メールテンプレート変数
+メール本文をカスタマイズしたい場合、PUG テンプレートを指定
+
+参考 -> https://pugjs.org/api/getting-started.html
+
+挿入変数として下記を使用できます。
 
 | variable                 | description |
 | :----------------------- | :---------- |
 | order.confirmationNumber | 確認番号    |
-| order.orderNumber        | 注文番号    | -->
+| order.orderNumber        | 注文番号    |
 
 -   Parameters
 
@@ -58,6 +62,10 @@
 
     -   Attributes
         -   id: `xxx` (string, required) - 取引 id
+        -   sendEmailMessage: true (boolean, required) - 注文配送メール送信フラグ
+        -   email: (optional)
+            -   about: `予約完了のお知らせ` (string, required) - 件名
+            -   template: `| ご購入ありがとうございます。\n| 確認番号: #{order.confirmationNumber}\n| 注文番号: #{order.orderNumber}` (string, required) - 本文テンプレート
 
 -   Response 200 (application/json)
 

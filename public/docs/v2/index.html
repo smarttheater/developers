@@ -2143,7 +2143,12 @@
     </span>}
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="取引-取引開始-post" class="action post"><h4 class="action-heading"><div class="name">取引開始</div><a href="#取引-取引開始-post" class="method post">POST</a><code class="uri">/transaction/placeOrder/start</code></h4></div></div><hr class="split"><div class="middle"><div id="取引-取引確定" class="resource"><h3 class="resource-heading">取引確定 <a href="#取引-取引確定" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/transaction/placeOrder/confirm</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+  "<span class="hljs-attribute">sendEmailMessage</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">about</span>": <span class="hljs-value"><span class="hljs-string">"予約完了のお知らせ"</span></span>,
+    "<span class="hljs-attribute">template</span>": <span class="hljs-value"><span class="hljs-string">"| ご購入ありがとうございます。\\n| 確認番号: #{order.confirmationNumber}\\n| 注文番号: #{order.orderNumber}"</span>
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
@@ -2151,10 +2156,32 @@
     "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"取引 id"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">sendEmailMessage</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"boolean"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"注文配送メール送信フラグ"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">about</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"件名"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">template</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"本文テンプレート"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"about"</span>,
+        <span class="hljs-string">"template"</span>
+      ]
     </span>}
   </span>}</span>,
   "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-    <span class="hljs-string">"id"</span>
+    <span class="hljs-string">"id"</span>,
+    <span class="hljs-string">"sendEmailMessage"</span>
   ]
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">confirmationNumber</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
@@ -2236,12 +2263,28 @@
       ]
     </span>}
   </span>}
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="取引-取引確定-put" class="action put"><h4 class="action-heading"><div class="name">取引確定</div><a href="#取引-取引確定-put" class="method put">PUT</a><code class="uri">/transaction/placeOrder/confirm</code></h4><!-- メールテンプレート変数
-
-| variable                 | description |
-| :----------------------- | :---------- |
-| order.confirmationNumber | 確認番号    |
-| order.orderNumber        | 注文番号    | --></div></div><hr class="split"><div class="middle"><div id="取引-取引中止" class="resource"><h3 class="resource-heading">取引中止 <a href="#取引-取引中止" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/transaction/placeOrder/cancel</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="取引-取引確定-put" class="action put"><h4 class="action-heading"><div class="name">取引確定</div><a href="#取引-取引確定-put" class="method put">PUT</a><code class="uri">/transaction/placeOrder/confirm</code></h4><p>メール本文をカスタマイズしたい場合、PUG テンプレートを指定</p>
+<p>参考 -&gt; <a href="https://pugjs.org/api/getting-started.html">https://pugjs.org/api/getting-started.html</a></p>
+<p>挿入変数として下記を使用できます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">variable</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">order.confirmationNumber</td>
+<td style="text-align:left">確認番号</td>
+</tr>
+<tr>
+<td style="text-align:left">order.orderNumber</td>
+<td style="text-align:left">注文番号</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><div id="取引-取引中止" class="resource"><h3 class="resource-heading">取引中止 <a href="#取引-取引中止" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/transaction/placeOrder/cancel</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
@@ -2771,7 +2814,21 @@
     </span>}
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="返品取引-取引開始-post" class="action post"><h4 class="action-heading"><div class="name">取引開始</div><a href="#返品取引-取引開始-post" class="method post">POST</a><code class="uri">/transaction/returnOrder/start</code></h4></div></div><hr class="split"><div class="middle"><div id="返品取引-取引確定" class="resource"><h3 class="resource-heading">取引確定 <a href="#返品取引-取引確定" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/transaction/returnOrder/confirm</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+  "<span class="hljs-attribute">potentialActions</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">returnOrder</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">potentialActions</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">sendEmailMessage</span>": <span class="hljs-value">[
+          {
+            "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">about</span>": <span class="hljs-value"><span class="hljs-string">"返品完了のお知らせ"</span></span>,
+              "<span class="hljs-attribute">template</span>": <span class="hljs-value"><span class="hljs-string">"| 返品完了しました。\\n| 確認番号: #{order.confirmationNumber}\\n| 注文番号: #{order.orderNumber}"</span>
+            </span>}
+          </span>}
+        ]
+      </span>}
+    </span>}
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
@@ -2779,6 +2836,46 @@
     "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"取引 id"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">potentialActions</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">returnOrder</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">potentialActions</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+              "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">sendEmailMessage</span>": <span class="hljs-value">{
+                  "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+                  "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+                    "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+                      "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+                        "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+                          "<span class="hljs-attribute">about</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"件名"</span>
+                          </span>}</span>,
+                          "<span class="hljs-attribute">template</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"本文テンプレート"</span>
+                          </span>}
+                        </span>}</span>,
+                        "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+                          <span class="hljs-string">"about"</span>,
+                          <span class="hljs-string">"template"</span>
+                        ]
+                      </span>}
+                    </span>}
+                  </span>}
+                </span>}
+              </span>}
+            </span>}
+          </span>}
+        </span>}
+      </span>}
     </span>}
   </span>}</span>,
   "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -2844,7 +2941,28 @@
       ]
     </span>}
   </span>}
-</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="返品取引-取引確定-put" class="action put"><h4 class="action-heading"><div class="name">取引確定</div><a href="#返品取引-取引確定-put" class="method put">PUT</a><code class="uri">/transaction/returnOrder/confirm</code></h4></div></div><hr class="split"><div class="middle"><section id="パスポート" class="resource-group"><h2 class="group-heading">パスポート <a href="#パスポート" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="パスポート-パスポート取得" class="resource"><h3 class="resource-heading">パスポート取得 <a href="#パスポート-パスポート取得" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/passports</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="返品取引-取引確定-put" class="action put"><h4 class="action-heading"><div class="name">取引確定</div><a href="#返品取引-取引確定-put" class="method put">PUT</a><code class="uri">/transaction/returnOrder/confirm</code></h4><p>メール本文をカスタマイズしたい場合、PUG テンプレートを指定</p>
+<p>参考 -&gt; <a href="https://pugjs.org/api/getting-started.html">https://pugjs.org/api/getting-started.html</a></p>
+<p>挿入変数として下記を使用できます。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">variable</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">order.confirmationNumber</td>
+<td style="text-align:left">確認番号</td>
+</tr>
+<tr>
+<td style="text-align:left">order.orderNumber</td>
+<td style="text-align:left">注文番号</td>
+</tr>
+</tbody>
+</table>
+</div></div><hr class="split"><div class="middle"><section id="パスポート" class="resource-group"><h2 class="group-heading">パスポート <a href="#パスポート" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="パスポート-パスポート取得" class="resource"><h3 class="resource-heading">パスポート取得 <a href="#パスポート-パスポート取得" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/passports</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">scope</span>": <span class="hljs-value"><span class="hljs-string">"Transaction:PlaceOrder:xxx"</span>
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
@@ -2947,7 +3065,7 @@
 </tr>
 </tbody>
 </table>
-</div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 18 Jul 2023</p></div></div></div></div><script>/* eslint-env browser */
+</div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 20 Jul 2023</p></div></div></div></div><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 

@@ -74,13 +74,11 @@ async function main() {
     console.log('ticketOffer', ticketOffer);
 
     const addOnIds = [];
-    ticketOffers.forEach((t) => {
-        t.addOn?.forEach((a) => {
-            if (a.itemOffered.id === undefined) {
-                return;
-            }
-            addOnIds.push(a.itemOffered.id);
-        });
+    ticketOffer.addOn?.forEach((a) => {
+        if (a.itemOffered.id === undefined) {
+            return;
+        }
+        addOnIds.push(a.itemOffered.id);
     });
     const addOnOffers = [];
     for (const addOnId of [...new Set(addOnIds)]) {
@@ -174,7 +172,8 @@ async function main() {
         }
     });
     const result = await apiRequest.put('transaction/placeOrder/confirm', {
-        id: transaction.id
+        id: transaction.id,
+        sendEmailMessage: false,
     });
     console.log('result', result);
 }

@@ -174,7 +174,8 @@ async function main() {
         }
     });
     const result = await apiRequest.put('transaction/placeOrder/confirm', {
-        id: transaction.id
+        id: transaction.id,
+        sendEmailMessage: false,
     });
     console.log('result', result);
 }

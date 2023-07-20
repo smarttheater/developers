@@ -31,8 +31,22 @@ async function main() {
         }
     });
     console.log('transaction', transaction);
-    await apiRequest.post('transaction/returnOrder/confirm', {
-        id: transaction.id
+    await apiRequest.put('transaction/returnOrder/confirm', {
+        id: transaction.id,
+        potentialActions: {
+            returnOrder: {
+                potentialActions: {
+                    sendEmailMessage: [
+                        {
+                            object: {
+                                about: '返品完了のお知らせ',
+                                template: `| 返品完了しました。\n| 確認番号: #{order.confirmationNumber}\n| 注文番号: #{order.orderNumber}`
+                            }
+                        }
+                    ]
+                }
+            }
+        }
     });
 }
 
@@ -43,6 +57,6 @@ main()
     .catch((error) => {
         console.error(error);
     })
-    .finally(()=> {
+    .finally(() => {
         process.exit();
     });

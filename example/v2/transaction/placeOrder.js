@@ -137,7 +137,12 @@ async function main() {
         }
     });
     const result = await apiRequest.put('transaction/placeOrder/confirm', {
-        id: transaction.id
+        id: transaction.id,
+        sendEmailMessage: true,
+        email: {
+            about: '予約完了のお知らせ',
+            template: `| ご購入ありがとうございます。\n| 確認番号: #{order.confirmationNumber}\n| 注文番号: #{order.orderNumber}`
+        }
     });
     console.log('result', result);
 }

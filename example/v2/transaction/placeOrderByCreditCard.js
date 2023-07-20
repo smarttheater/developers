@@ -155,7 +155,8 @@ async function main() {
     }
     // 各決済承認実行後に次を実行してください
     const result = await apiRequest.put('transaction/placeOrder/confirm', {
-        id: transaction.id
+        id: transaction.id,
+        sendEmailMessage: false,
     });
     console.log('result', result);
 }

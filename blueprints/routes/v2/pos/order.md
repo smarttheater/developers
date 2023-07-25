@@ -9,10 +9,11 @@
 -   orderStatus: `OrderDelivered` (enum, optional) - 注文ステータス
     -   `OrderDelivered` (string) - 注文済み
     -   `OrderReturned` (string) - 注文返品済み
+-   sellerId: `xxx` (string, required) - 販売者id
 
 # Group 注文
 
-## 注文検索 [/order/search{?page,limit,orderDateLte,orderDateGte}]
+## 注文検索 [/order/search{?page,limit,orderDateLte,orderDateGte,sellerId}]
 
 ### 注文検索[GET]
 

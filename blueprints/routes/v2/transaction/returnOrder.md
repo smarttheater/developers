@@ -28,6 +28,8 @@
         -   object
            -   order (array, fixed-type)
                 -   (Types.Transaction.ReturnOrder.Start.Object.Order) - 注文
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 
@@ -64,6 +66,8 @@
                 -   potentialActions (optional)
                     -   sendEmailMessage (array, fixed-type)
                         -   (Types.Transaction.ReturnOrder.Confirm.SendEmailMessage) - メール設定
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 

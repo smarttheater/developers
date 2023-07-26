@@ -69,3 +69,4 @@ Location: redirectUrl?id=xxx
         -   transactionId: `xxx` (string, required) - 取引id
         -   paymentMethodCode: `xxx` (string, required) - 決済方法区分コード
         -   amount: `1000` (number, required) - 決済金額
+        -   sellerId: `xxx` (string, required) - 販売者id

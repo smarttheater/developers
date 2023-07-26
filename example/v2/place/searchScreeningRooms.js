@@ -12,8 +12,14 @@ async function main() {
     apiRequest.setOptions({
         acccesToken: access_token,
     });
+    const sellers = await apiRequest.get('seller/search');
+    if (sellers.length === 0) {
+        throw new Error('seller not found');
+    }
+    const seller = sellers[0];
+    console.log('seller', seller);
     const screeningRooms =
-        await apiRequest.get('place/searchScreeningRooms');
+        await apiRequest.get('place/searchScreeningRooms', { sellerId: seller.id });
     console.log('screeningRooms', screeningRooms);
 }
 

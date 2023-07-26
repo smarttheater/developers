@@ -21,6 +21,12 @@ async function main() {
         acccesToken: access_token,
     });
     let date = new Date();
+    const sellers = await apiRequest.get('seller/search');
+    if (sellers.length === 0) {
+        throw new Error('seller not found');
+    }
+    const seller = sellers[0];
+    console.log('seller', seller);
     const transaction = await apiRequest.post('transaction/returnOrder/start', {
         expires: new Date(date.setDate(date.getMinutes() + 10)).toISOString(),
         object: {
@@ -28,7 +34,10 @@ async function main() {
                 orderNumber,
                 confirmationNumber,
             }]
-        }
+        },
+        seller: {
+            id: seller.id
+        },
     });
     console.log('transaction', transaction);
     await apiRequest.put('transaction/returnOrder/confirm', {
@@ -46,7 +55,10 @@ async function main() {
                     ]
                 }
             }
-        }
+        },
+        seller: {
+            id: seller.id
+        },
     });
 }
 

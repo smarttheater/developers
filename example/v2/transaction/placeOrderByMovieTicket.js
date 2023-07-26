@@ -28,18 +28,18 @@ async function main() {
         acccesToken: access_token,
     });
     let date = new Date();
-    const movieTheaters = await apiRequest.get('place/searchMovieTheaters');
+    const sellers = await apiRequest.get('seller/search');
+    if (sellers.length === 0) {
+        throw new Error('seller not found');
+    }
+    const seller = sellers[0];
+    console.log('seller', seller);
+    const movieTheaters = await apiRequest.get('place/searchMovieTheaters', { sellerId: seller.id });
     if (movieTheaters.length === 0) {
         throw new Error('movieTheaters not found');
     }
     const movieTheater = movieTheaters[0];
     console.log('movieTheater', movieTheater);
-    const sellers = await apiRequest.get('seller/search');
-    if (sellers.length === 0) {
-        throw new Error('seller not found');
-    }
-    const seller = sellers.find(s => s.id === movieTheater.parentOrganization.id);
-    console.log('seller', seller);
     date = new Date();
     const screeningEvents =
         await apiRequest.get('event/screeningEvent/search', {
@@ -47,6 +47,7 @@ async function main() {
             startThrough: new Date(date.setDate(date.getDate() + 1)).toISOString(),
             superEventLocationBranchCodes: movieTheater.branchCode,
             clientId: CLIENT_ID,
+            sellerId: seller.id
         });
     if (screeningEvents.length === 0) {
         throw new Error('screeningEvents not found');
@@ -56,7 +57,8 @@ async function main() {
 
     const ticketOffers =
         await apiRequest.get('event/screeningEvent/searchTicketOffers', {
-            eventId: screeningEvent.id
+            eventId: screeningEvent.id,
+            sellerId: seller.id
         });
     if (ticketOffers.length === 0) {
         throw new Error('ticketOffers not found');
@@ -76,7 +78,8 @@ async function main() {
     console.log('ticketOffer', ticketOffer);
 
     const seats = await apiRequest.get('event/screeningEvent/searchSeats', {
-        eventId: screeningEvent.id
+        eventId: screeningEvent.id,
+        sellerId: seller.id
     });
     if (seats.length === 0) {
         throw new Error('seats not found');
@@ -126,7 +129,10 @@ async function main() {
             },
             purpose: {
                 id: transaction.id
-            }
+            },
+            seller: {
+                id: seller.id
+            },
         });
     console.log('authorizeSeatReservation', authorizeSeatReservation);
     await apiRequest.put('transaction/placeOrder/setProfile', {
@@ -136,7 +142,10 @@ async function main() {
             givenName,
             email,
             telephone
-        }
+        },
+        seller: {
+            id: seller.id
+        },
     });
     const priceComponent = ticketOffer.priceSpecification.priceComponent;
     let amount = 0;
@@ -183,6 +192,9 @@ async function main() {
     const result = await apiRequest.put('transaction/placeOrder/confirm', {
         id: transaction.id,
         sendEmailMessage: false,
+        seller: {
+            id: seller.id
+        },
     });
     console.log('result', result);
 }

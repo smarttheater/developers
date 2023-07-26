@@ -30,6 +30,7 @@
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数
         -   Default: `100
+    -   sellerId: `xxx` (string, required) - 販売者id
 
 -   Response 200 (application/json)
 
@@ -48,6 +49,7 @@
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数
         -   Default: `100
+    -   sellerId: `xxx` (string, required) - 販売者id
 
 -   Response 200 (application/json)
 

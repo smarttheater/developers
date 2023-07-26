@@ -17,6 +17,8 @@
             -   paymentMethod: `xxx` (string, required) - 決済方法区分コード
             -   issuedThrough
                 -   id: `xxx` (string, required) - 決済サービス id
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 
@@ -51,6 +53,8 @@
                 -   `CreditCard` (string) - クレジットカード
                 -   `MovieTicket` (string) - ムビチケ
                 -   `FaceToFace` (string) - 対面決済
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 

@@ -51,6 +51,8 @@
             -   typeOf: (enum, required) - 決済承認タイプ
                 -   `CreditCard` (string) - クレジットカード
                 -   `MovieTicket` (string) - ムビチケ
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 

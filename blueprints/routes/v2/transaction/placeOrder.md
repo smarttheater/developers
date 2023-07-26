@@ -32,6 +32,8 @@
         -   object
             -   passport
                 -   token: `xxx` (string, optional) - パスポート token
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 
@@ -66,6 +68,8 @@
         -   email: (optional)
             -   about: `予約完了のお知らせ` (string, required) - 件名
             -   template: `| ご購入ありがとうございます。\n| 確認番号: #{order.confirmationNumber}\n| 注文番号: #{order.orderNumber}` (string, required) - 本文テンプレート
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 
@@ -85,6 +89,8 @@
 
     -   Attributes
         -   id: `xxx` (string, required) - 取引 id
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200
 
@@ -104,6 +110,8 @@
                 -   (Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer) - チケットオファー
         -   purpose
             -   id: `xxx` (string, required) - 取引 id
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 
@@ -124,6 +132,8 @@
         -   id: `xxx` (string, required) - アクション id
         -   purpose
             -   id: `xxx` (string, required) - 取引 id
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 
@@ -144,6 +154,8 @@
             -   givenName: `xxx` (string, required) - 名
             -   email: `xxx@xxx.com` (string, required) - メールアドレス
             -   telephone: `+819012345678` (string, required) - 電話番号 E.164
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200
 

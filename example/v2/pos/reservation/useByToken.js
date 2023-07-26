@@ -20,9 +20,16 @@ async function main() {
     apiRequest.setOptions({
         acccesToken: access_token,
     });
+    const sellers = await apiRequest.get('seller/search');
+    if (sellers.length === 0) {
+        throw new Error('seller not found');
+    }
+    const seller = sellers[0];
+    console.log('seller', seller);
     const orders = await apiRequest.get('order/findByConfirmationNumber', {
         confirmationNumber,
         telephone,
+        sellerId: seller.id
     });
     if (orders.length === 0) {
         throw new Error('orders not found');
@@ -32,7 +39,8 @@ async function main() {
 
     const items = await apiRequest.get('order/searchAcceptedOffersByConfirmationNumber', {
         confirmationNumber,
-        orderNumber: order.orderNumber
+        orderNumber: order.orderNumber,
+        sellerId: seller.id
     });
     if (items.length === 0) {
         throw new Error('items not found');
@@ -48,11 +56,15 @@ async function main() {
             telephone
         },
         expiresInSeconds: date.toISOString(),
+        seller: {
+            id: seller.id
+        },
     });
     console.log('code', code);
 
     const reservations = await apiRequest.get('reservation/search', {
         ids: item.itemOffered.id,
+        sellerId: seller.id
     });
     if (reservations.length === 0) {
         throw new Error('reservations not found');
@@ -62,6 +74,9 @@ async function main() {
 
     const { token } = await apiRequest.post('token/getToken', {
         code,
+        seller: {
+            id: seller.id
+        },
     });
 
     await apiRequest.post('reservation/useByToken', {
@@ -70,11 +85,15 @@ async function main() {
         },
         instrument: {
             token
-        }
+        },
+        seller: {
+            id: seller.id
+        },
     });
 
     const useActions = await apiRequest.get('reservation/searchUseActions', {
-        id: item.itemOffered.id
+        id: item.itemOffered.id,
+        sellerId: seller.id
     });
     console.log('useActions', useActions)
 }

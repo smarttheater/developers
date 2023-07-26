@@ -234,8 +234,11 @@
     "<span class="hljs-attribute">offers</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">validFrom</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
       "<span class="hljs-attribute">validThrough</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
-      "<span class="hljs-attribute">availableFrom</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
-      "<span class="hljs-attribute">availableThrough</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span>
+      "<span class="hljs-attribute">availabilityStarts</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
+      "<span class="hljs-attribute">availabilityEnds</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
+      "<span class="hljs-attribute">itemOffered</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+      </span>}
     </span>}</span>,
     "<span class="hljs-attribute">location</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
@@ -331,13 +334,22 @@
             "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
             "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売終了日時 ISO 8601 date format"</span>
           </span>}</span>,
-          "<span class="hljs-attribute">availableFrom</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">availabilityStarts</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
             "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"表示開始日時 ISO 8601 date format"</span>
           </span>}</span>,
-          "<span class="hljs-attribute">availableThrough</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">availabilityEnds</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"表示終了日時 ISO 8601 date"</span>
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"表示終了日時 ISO 8601 date format"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">itemOffered</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"興行Id"</span>
+              </span>}
+            </span>}
           </span>}
         </span>}</span>,
         "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売表示情報"</span>
@@ -555,6 +567,7 @@
 </dd><dt>startThrough</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>2023-01-01T00:00:00.000Z</span></span><p>開始日時範囲(まで) ISO 8601 date format</p>
 </dd><dt>superEventLocationBranchCodes</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>施設コード</p>
 </dd><dt>clientId</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>取得したい販売表示情報のクライアント id</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="イベント-イベントオファー検索" class="resource"><h3 class="resource-heading">イベントオファー検索 <a href="#イベント-イベントオファー検索" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/event/screeningEvent/searchTicketOffers?<span class="hljs-attribute">page=</span><span class="hljs-literal">1</span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span>&<span class="hljs-attribute">eventId=</span><span class="hljs-literal">xxx</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
   {
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
@@ -823,6 +836,7 @@
 <div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`1</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>ページ</p>
 </dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`100</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>最大取得件数</p>
 </dd><dt>eventId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>イベント id</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="イベント-座席ステータス検索" class="resource"><h3 class="resource-heading">座席ステータス検索 <a href="#イベント-座席ステータス検索" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/event/screeningEvent/searchSeats?<span class="hljs-attribute">page=</span><span class="hljs-literal">1</span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span>&<span class="hljs-attribute">eventId=</span><span class="hljs-literal">xxx</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
   {
     "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
@@ -969,6 +983,7 @@
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="イベント-座席ステータス検索-get" class="action get"><h4 class="action-heading"><div class="name">座席ステータス検索</div><a href="#イベント-座席ステータス検索-get" class="method get">GET</a><code class="uri">/event/screeningEvent/searchSeats{?page,limit,eventId}</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`1</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>ページ</p>
 </dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`100</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>最大取得件数</p>
 </dd><dt>eventId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>イベント id</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><section id="注文" class="resource-group"><h2 class="group-heading">注文 <a href="#注文" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="注文-確認番号で注文検索" class="resource"><h3 class="resource-heading">確認番号で注文検索 <a href="#注文-確認番号で注文検索" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/order/findByConfirmationNumber?<span class="hljs-attribute">confirmationNumber=</span><span class="hljs-literal">xxx</span>&<span class="hljs-attribute">telephone=</span><span class="hljs-literal">+819012345678</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
   {
     "<span class="hljs-attribute">orderDate</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
@@ -1099,6 +1114,7 @@
 </table>
 <div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>confirmationNumber</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>確認番号</p>
 </dd><dt>telephone</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>+819012345678</span></span><p>購入者電話番号 E.164</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="注文-注文アイテム検索" class="resource"><h3 class="resource-heading">注文アイテム検索 <a href="#注文-注文アイテム検索" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/order/searchAcceptedOffersByConfirmationNumber?<span class="hljs-attribute">page=</span><span class="hljs-literal">1</span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span>&<span class="hljs-attribute">confirmationNumber=</span><span class="hljs-literal">xxx</span>&<span class="hljs-attribute">orderNumber=</span><span class="hljs-literal">xxx</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
   {
     "<span class="hljs-attribute">itemOffered</span>": <span class="hljs-value">{
@@ -1325,11 +1341,15 @@
 </dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`100</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>最大取得件数</p>
 </dd><dt>confirmationNumber</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>確認番号</p>
 </dd><dt>orderNumber</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>注文番号</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="注文-注文コード発行" class="resource"><h3 class="resource-heading">注文コード発行 <a href="#注文-注文コード発行" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/order/authorize</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">orderNumber</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
   "<span class="hljs-attribute">expiresInSeconds</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
   "<span class="hljs-attribute">customer</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">telephone</span>": <span class="hljs-value"><span class="hljs-string">"+819012345678"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
@@ -1351,6 +1371,18 @@
           "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"購入者電話番号 E.164"</span>
         </span>}
       </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
+      ]
     </span>}
   </span>}</span>,
   "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -1560,6 +1592,7 @@
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="施設-施設検索-get" class="action get"><h4 class="action-heading"><div class="name">施設検索</div><a href="#施設-施設検索-get" class="method get">GET</a><code class="uri">/place/searchMovieTheaters{?page,limit}</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`1</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>ページ</p>
 </dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`100</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>最大取得件数</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="施設-ルーム検索" class="resource"><h3 class="resource-heading">ルーム検索 <a href="#施設-ルーム検索" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/place/searchScreeningRooms?<span class="hljs-attribute">page=</span><span class="hljs-literal">1</span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
   {
     "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
@@ -1667,6 +1700,7 @@
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div><div class="middle"><div id="施設-ルーム検索-get" class="action get"><h4 class="action-heading"><div class="name">ルーム検索</div><a href="#施設-ルーム検索-get" class="method get">GET</a><code class="uri">/place/searchScreeningRooms{?page,limit}</code></h4><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>page</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`1</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>ページ</p>
 </dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`100</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>最大取得件数</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><section id="プロダクト" class="resource-group"><h2 class="group-heading">プロダクト <a href="#プロダクト" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="プロダクト-オファー検索" class="resource"><h3 class="resource-heading">オファー検索 <a href="#プロダクト-オファー検索" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/product/searchOffers?<span class="hljs-attribute">page=</span><span class="hljs-literal">1</span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span>&<span class="hljs-attribute">itemOfferedId=</span><span class="hljs-literal">xxx</span>&<span class="hljs-attribute">sellerId=</span><span class="hljs-literal">xxx</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
   {
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
@@ -2028,18 +2062,6 @@
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
   "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
-      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
-        </span>}
-      </span>}</span>,
-      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-        <span class="hljs-string">"id"</span>
-      ]
-    </span>}</span>,
     "<span class="hljs-attribute">expires</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"取引期限 ISO 8601 date format"</span>
@@ -2057,6 +2079,18 @@
           </span>}
         </span>}
       </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
+      ]
     </span>}
   </span>}</span>,
   "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -2148,6 +2182,9 @@
   "<span class="hljs-attribute">email</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">about</span>": <span class="hljs-value"><span class="hljs-string">"予約完了のお知らせ"</span></span>,
     "<span class="hljs-attribute">template</span>": <span class="hljs-value"><span class="hljs-string">"| ご購入ありがとうございます。\\n| 確認番号: #{order.confirmationNumber}\\n| 注文番号: #{order.orderNumber}"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
@@ -2176,6 +2213,18 @@
       "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
         <span class="hljs-string">"about"</span>,
         <span class="hljs-string">"template"</span>
+      ]
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
       ]
     </span>}
   </span>}</span>,
@@ -2285,7 +2334,10 @@
 </tbody>
 </table>
 </div></div><hr class="split"><div class="middle"><div id="取引-取引中止" class="resource"><h3 class="resource-heading">取引中止 <a href="#取引-取引中止" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/transaction/placeOrder/cancel</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+  "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
@@ -2293,6 +2345,18 @@
     "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"取引 id"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
+      ]
     </span>}
   </span>}</span>,
   "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -2323,6 +2387,9 @@
     ]
   </span>}</span>,
   "<span class="hljs-attribute">purpose</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
@@ -2414,6 +2481,18 @@
       "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
         <span class="hljs-string">"id"</span>
       ]
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
+      ]
     </span>}
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -2494,6 +2573,9 @@
   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
   "<span class="hljs-attribute">purpose</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
@@ -2509,6 +2591,18 @@
         "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
           "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"取引 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
+      ]
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
         </span>}
       </span>}</span>,
       "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -2586,6 +2680,9 @@
     "<span class="hljs-attribute">givenName</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
     "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"xxx@xxx.com"</span></span>,
     "<span class="hljs-attribute">telephone</span>": <span class="hljs-value"><span class="hljs-string">"+819012345678"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
@@ -2620,6 +2717,18 @@
         <span class="hljs-string">"givenName"</span>,
         <span class="hljs-string">"email"</span>,
         <span class="hljs-string">"telephone"</span>
+      ]
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
       ]
     </span>}
   </span>}</span>,
@@ -2695,6 +2804,9 @@
         "<span class="hljs-attribute">confirmationNumber</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
       </span>}
     ]
+  </span>}</span>,
+  "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
@@ -2728,6 +2840,18 @@
           </span>}
         </span>}
       </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
+      ]
     </span>}
   </span>}</span>,
   "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -2828,6 +2952,9 @@
         ]
       </span>}
     </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
@@ -2876,6 +3003,18 @@
           </span>}
         </span>}
       </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+      "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"販売者 id"</span>
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+        <span class="hljs-string">"id"</span>
+      ]
     </span>}
   </span>}</span>,
   "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -3065,7 +3204,7 @@
 </tr>
 </tbody>
 </table>
-</div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 20 Jul 2023</p></div></div></div></div><script>/* eslint-env browser */
+</div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 26 Jul 2023</p></div></div></div></div><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 

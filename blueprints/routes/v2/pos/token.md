@@ -13,6 +13,8 @@
 
     -   Attributes
         -   code: `xxx` (string, required) - 注文コード
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
     -   Attributes

@@ -19,8 +19,10 @@
 -   offers (object, optional) - 販売表示情報
     -   validFrom: `2023-01-01T00:00:00.000Z` (string, optional) - 販売開始日時 ISO 8601 date format
     -   validThrough: `2023-01-01T00:00:00.000Z` (string, optional) - 販売終了日時 ISO 8601 date format
-    -   availableFrom: `2023-01-01T00:00:00.000Z` (string, optional) - 表示開始日時 ISO 8601 date format
-    -   availableThrough: `2023-01-01T00:00:00.000Z` (string, optional) - 表示終了日時 ISO 8601 date
+    -   availabilityStarts: `2023-01-01T00:00:00.000Z` (string, optional) - 表示開始日時 ISO 8601 date format
+    -   availabilityEnds: `2023-01-01T00:00:00.000Z` (string, optional) - 表示終了日時 ISO 8601 date format
+    -   itemOffered
+        -   id: `xxx` (string, optional) - 興行Id
 -   location
     -   name
         -   ja: `xxx` (string, optional) - ルーム名称（日本語）
@@ -121,6 +123,8 @@
     -   startThrough: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時範囲(まで) ISO 8601 date format
     -   superEventLocationBranchCodes: `xxx` (string, optional) - 施設コード
     -   clientId: `xxx` (string, optional) - 取得したい販売表示情報のクライアント id
+    -   sellerId: `xxx` (string, required) - 販売者id
+    
 
 -   Response 200 (application/json)
     -   Attributes (array, fixed-type)
@@ -147,6 +151,7 @@
     -   limit: `10` (number, optional) - 最大取得件数
         -   Default: `100
     -   eventId: `xxx` (string, required) - イベント id
+    -   sellerId: `xxx` (string, required) - 販売者id
 
 -   Response 200 (application/json)
     -   Attributes (array, fixed-type)
@@ -165,6 +170,7 @@
     -   limit: `10` (number, optional) - 最大取得件数
         -   Default: `100
     -   eventId: `xxx` (string, required) - イベント id
+    -   sellerId: `xxx` (string, required) - 販売者id
 
 -   Response 200 (application/json)
     -   Attributes (array, fixed-type)

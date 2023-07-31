@@ -73,7 +73,8 @@
 
 ## Types.Event.ScreeningEvent.SearchTicketOffers
 
--   id: `xxx` (string, required) - オファー id
+-   id: `xxx` (string, optional) - オファーid
+-   id: `xxx` (string, required) - オファーコード
 -   name
     -   ja: `xxx` (string, optional) - オファー名称（日本語）
     -   en: `xxx` (string, optional) - オファー名称（英語）

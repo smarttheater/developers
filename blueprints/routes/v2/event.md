@@ -13,7 +13,7 @@
     -   en: `xxx` (string, optional) - イベント名称（英語）
 -   startDate: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時 ISO 8601 date format
 -   endDate: `2023-01-01T00:00:00.000Z` (string, required) - 終了日時 ISO 8601 date format
--   doorTime: `2023-01-01T00:00:00.000Z` (string, required) - 開場日時 ISO 8601 date format
+-   doorTime: `2023-01-01T00:00:00.000Z` (string, optional) - 開場日時 ISO 8601 date format
 -   maximumAttendeeCapacity: `10` (number, optional) - 最大収容人数
 -   remainingAttendeeCapacity: `10` (number, optional) - 残り収容人数
 -   offers (object, optional) - 販売表示情報

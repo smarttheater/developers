@@ -140,7 +140,10 @@ async function main() {
             familyName,
             givenName,
             email,
-            telephone
+            telephone,
+            additionalProperty: [
+                {name: 'postCode', value: '1638001'}
+            ]
         },
         seller: {
             id: seller.id

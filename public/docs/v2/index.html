@@ -2758,7 +2758,13 @@
     "<span class="hljs-attribute">familyName</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
     "<span class="hljs-attribute">givenName</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
     "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"xxx@xxx.com"</span></span>,
-    "<span class="hljs-attribute">telephone</span>": <span class="hljs-value"><span class="hljs-string">"+819012345678"</span>
+    "<span class="hljs-attribute">telephone</span>": <span class="hljs-value"><span class="hljs-string">"+819012345678"</span></span>,
+    "<span class="hljs-attribute">additionalProperty</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+      </span>}
+    ]
   </span>}</span>,
   "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
@@ -2789,6 +2795,27 @@
         "<span class="hljs-attribute">telephone</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
           "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"電話番号 E.164"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">additionalProperty</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+          "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"プロパティ名"</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">value</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"プロパティ値"</span>
+              </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+              <span class="hljs-string">"name"</span>,
+              <span class="hljs-string">"value"</span>
+            ]
+          </span>}</span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"追加特性"</span>
         </span>}
       </span>}</span>,
       "<span class="hljs-attribute">required</span>": <span class="hljs-value">[

@@ -1,5 +1,10 @@
 # Data Structure
 
+## Types.Transaction.PlaceOrder.SetProfile.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AddOn
 
 -   id: `xxx` (string, required) - アドオンオファー id
@@ -155,6 +160,7 @@
             -   givenName: `xxx` (string, required) - 名
             -   email: `xxx@xxx.com` (string, required) - メールアドレス
             -   telephone: `+819012345678` (string, required) - 電話番号 E.164
+            -   additionalProperty (array[Types.Transaction.PlaceOrder.SetProfile.PropertyValue], fixed-type) - 追加特性
         -   seller
             -   id: `xxx` (string, required) - 販売者 id
 

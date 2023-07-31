@@ -497,8 +497,7 @@
     "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
       <span class="hljs-string">"id"</span>,
       <span class="hljs-string">"startDate"</span>,
-      <span class="hljs-string">"endDate"</span>,
-      <span class="hljs-string">"doorTime"</span>
+      <span class="hljs-string">"endDate"</span>
     ]
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
@@ -1114,12 +1113,28 @@
 </table>
 <div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>confirmationNumber</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>確認番号</p>
 </dd><dt>telephone</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>+819012345678</span></span><p>購入者電話番号 E.164</p>
-</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者 id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="注文-注文アイテム検索" class="resource"><h3 class="resource-heading">注文アイテム検索 <a href="#注文-注文アイテム検索" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/order/searchAcceptedOffersByConfirmationNumber?<span class="hljs-attribute">page=</span><span class="hljs-literal">1</span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">10</span>&<span class="hljs-attribute">confirmationNumber=</span><span class="hljs-literal">xxx</span>&<span class="hljs-attribute">orderNumber=</span><span class="hljs-literal">xxx</span></span></div><div class="tabs"><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>[
   {
     "<span class="hljs-attribute">itemOffered</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
       "<span class="hljs-attribute">reservationNumber</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">reservationFor</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">ja</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+          "<span class="hljs-attribute">en</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">startDate</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
+        "<span class="hljs-attribute">endDate</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
+        "<span class="hljs-attribute">doorTime</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
+        "<span class="hljs-attribute">location</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">ja</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+            "<span class="hljs-attribute">en</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+          </span>}
+        </span>}
+      </span>}</span>,
       "<span class="hljs-attribute">reservedTicket</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">ticketType</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
@@ -1166,6 +1181,63 @@
           "<span class="hljs-attribute">reservationNumber</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"number"</span></span>,
             "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"予約番号"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">reservationFor</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"イベントid"</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+                "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+                  "<span class="hljs-attribute">ja</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"イベント名称（日本語）"</span>
+                  </span>}</span>,
+                  "<span class="hljs-attribute">en</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"イベント名称（英語）"</span>
+                  </span>}
+                </span>}
+              </span>}</span>,
+              "<span class="hljs-attribute">startDate</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"開始日時 ISO 8601 date format"</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">endDate</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"終了日時 ISO 8601 date format"</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">doorTime</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"開場日時 ISO 8601 date format"</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">location</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+                "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+                  "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+                    "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+                      "<span class="hljs-attribute">ja</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ルーム名称（日本語）"</span>
+                      </span>}</span>,
+                      "<span class="hljs-attribute">en</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ルーム名称（英語）"</span>
+                      </span>}
+                    </span>}
+                  </span>}
+                </span>}
+              </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+              <span class="hljs-string">"id"</span>,
+              <span class="hljs-string">"startDate"</span>,
+              <span class="hljs-string">"endDate"</span>
+            ]
           </span>}</span>,
           "<span class="hljs-attribute">reservedTicket</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
@@ -1341,7 +1413,7 @@
 </dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-info default"><strong>Default:&nbsp;</strong><span>`100</span></span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>最大取得件数</p>
 </dd><dt>confirmationNumber</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>確認番号</p>
 </dd><dt>orderNumber</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>注文番号</p>
-</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者id</p>
+</dd><dt>sellerId</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>xxx</span></span><p>販売者 id</p>
 </dd></dl></div></div></div><hr class="split"><div class="middle"><div id="注文-注文コード発行" class="resource"><h3 class="resource-heading">注文コード発行 <a href="#注文-注文コード発行" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/order/authorize</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">orderNumber</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
   "<span class="hljs-attribute">expiresInSeconds</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
@@ -2686,7 +2758,13 @@
     "<span class="hljs-attribute">familyName</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
     "<span class="hljs-attribute">givenName</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
     "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"xxx@xxx.com"</span></span>,
-    "<span class="hljs-attribute">telephone</span>": <span class="hljs-value"><span class="hljs-string">"+819012345678"</span>
+    "<span class="hljs-attribute">telephone</span>": <span class="hljs-value"><span class="hljs-string">"+819012345678"</span></span>,
+    "<span class="hljs-attribute">additionalProperty</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+      </span>}
+    ]
   </span>}</span>,
   "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
@@ -2717,6 +2795,27 @@
         "<span class="hljs-attribute">telephone</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
           "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"電話番号 E.164"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">additionalProperty</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+          "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+            "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"プロパティ名"</span>
+              </span>}</span>,
+              "<span class="hljs-attribute">value</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"プロパティ値"</span>
+              </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+              <span class="hljs-string">"name"</span>,
+              <span class="hljs-string">"value"</span>
+            ]
+          </span>}</span>,
+          "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"追加特性"</span>
         </span>}
       </span>}</span>,
       "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
@@ -3211,7 +3310,7 @@
 </tr>
 </tbody>
 </table>
-</div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 28 Jul 2023</p></div></div></div></div><script>/* eslint-env browser */
+</div></div><hr class="split"><div class="middle"><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 31 Jul 2023</p></div></div></div></div><script>/* eslint-env browser */
 /* eslint quotes: [2, "single"] */
 'use strict';
 

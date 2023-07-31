@@ -21,7 +21,6 @@
     -   `CategoryCodeChargeSpecification` (string) - カテゴリーコード加算仕様
     -   `MovieTicketTypeChargeSpecification` (string) - ムビチケ加算仕様
 -   referenceQuantity
-
     -   value: `1` (number, optional) - 価格要素基準数量
 
 ## Types.Order.SearchAcceptedOffersByConfirmationNumber
@@ -29,6 +28,18 @@
 -   itemOffered (object, optional)
     -   id: `xxx` (number, required) - 予約 id
     -   reservationNumber: `xxx` (number, required) - 予約番号
+    -   reservationFor
+        -   id: `xxx` (string, required) - イベントid 
+        -   name (object, optional)
+            -   ja: `xxx` (string, optional) - イベント名称（日本語）
+            -   en: `xxx` (string, optional) - イベント名称（英語）
+        -   startDate: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時 ISO 8601 date format
+        -   endDate: `2023-01-01T00:00:00.000Z` (string, required) - 終了日時 ISO 8601 date format
+        -   doorTime: `2023-01-01T00:00:00.000Z` (string, optional) - 開場日時 ISO 8601 date format
+        -   location
+            -   name (object, optional)
+                -   ja: `xxx` (string, optional) - ルーム名称（日本語）
+                -   en: `xxx` (string, optional) - ルーム名称（英語）
     -   reservedTicket
         -   ticketType
             -   identifier: `xxx` (string, required) - オファーコード
@@ -43,7 +54,6 @@
             -   (Types.Order.SearchAcceptedOffersByConfirmationNumber.priceComponent) - 価格要素
 
 # Group 注文
-        
 
 ## 確認番号で注文検索 [/order/findByConfirmationNumber{?confirmationNumber,telephone}]
 
@@ -61,7 +71,7 @@
 
     -   confirmationNumber: `xxx` (string, required) - 確認番号
     -   telephone: `+819012345678` (string, required) - 購入者電話番号 E.164
-    -   sellerId: `xxx` (string, required) - 販売者id
+    -   sellerId: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 
@@ -82,7 +92,7 @@
         -   Default: `100
     -   confirmationNumber: `xxx` (string, required) - 確認番号
     -   orderNumber: `xxx` (string, required) - 注文番号
-    -   sellerId: `xxx` (string, required) - 販売者id
+    -   sellerId: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
 
@@ -96,7 +106,6 @@
 ### 注文コード発行[POST]
 
 -   Parameters
-
 
 -   Request (application/json)
 

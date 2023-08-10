@@ -49,6 +49,7 @@ Location: redirectUrl?id=xxx
         -   seatSection: `xxx` (string, required) - セクションコード
         -   identifier: `xxx` (string, optional) - 購入管理番号
         -   accessCode: `xxx` (string, optional) - pinコード
+        -   categoryCodeValue: `xxx` (string, optional) - 前売券（カード）の種類 全国券,劇場券など
 
 ## 対面決済承認 [/payment/faceToFace]
 

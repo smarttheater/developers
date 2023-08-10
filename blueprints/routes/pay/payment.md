@@ -47,6 +47,8 @@ Location: redirectUrl?id=xxx
         -   paymentCardCode: `xxx` (string, required) - 決済カード区分コード
         -   seatNumber: `xxx` (string, required) - 座席コード
         -   seatSection: `xxx` (string, required) - セクションコード
+        -   identifier: `xxx` (string, optional) - 購入管理番号
+        -   accessCode: `xxx` (string, optional) - pinコード
 
 ## 対面決済承認 [/payment/faceToFace]
 

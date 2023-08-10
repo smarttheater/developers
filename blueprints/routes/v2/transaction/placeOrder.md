@@ -18,6 +18,8 @@
             -   ticketedSeat
                 -   seatNumber: `xxx` (string, required) - 座席コード
                 -   seatSection: `xxx` (string, required) - セクションコード
+                -   seatingType (array, optional, fixed-type)
+                    -   `xxx` (string) - 座席タイプ
 -   addOn (array, optional, fixed-type)
     -   (Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AddOn) - アドオンオファー
 

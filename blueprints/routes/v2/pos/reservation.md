@@ -8,6 +8,8 @@
 
 -   id: `xxx` (string, optional) - 予約 id
 -   bookingTime: `xxx` (string, optional) - 予約日時 ISO 8601 date format
+-   checkedIn: true (boolean, optional) - 注文コード発行フラグ
+-   attended: true (boolean, optional) - 予約使用フラグ
 
 # Group 予約
 

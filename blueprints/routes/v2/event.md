@@ -71,10 +71,14 @@
     -   serviceOutput
         -   serviceType: `1` (number, required) - 決済方法区分コード
 
+## Types.Event.ScreeningEvent.SearchTicketOffers.EligibleSeatingType
+
+-   codeValue: `xxx` (string, required) - 座席タイプ
+
 ## Types.Event.ScreeningEvent.SearchTicketOffers
 
 -   id: `xxx` (string, optional) - オファーid
--   id: `xxx` (string, required) - オファーコード
+-   identifier: `xxx` (string, required) - オファーコード
 -   name
     -   ja: `xxx` (string, optional) - オファー名称（日本語）
     -   en: `xxx` (string, optional) - オファー名称（英語）
@@ -85,6 +89,8 @@
 -   priceSpecification
     -   priceComponent (array, required, fixed-type)
         -   (Types.Event.ScreeningEvent.SearchTicketOffers.PriceComponent) - 価格要素
+-   eligibleSeatingType  (array, optional, fixed-type)
+    -   (Types.Event.ScreeningEvent.SearchTicketOffers.EligibleSeatingType) - 有効な座席タイプ
 -   addOn (array, optional, fixed-type)
     -   (Types.Event.ScreeningEvent.SearchTicketOffers.AddOn) - アドオン情報
 
@@ -105,6 +111,8 @@
         -   ja: `xxx` (string, optional) - セクション名称（日本語）
         -   en: `xxx` (string, optional) - セクション名称（英語）
     -   branchCode: `xxx` (string, optional) - セクションコード
+-   seatingType (array, optional, fixed-type)
+    -   `xxx` (string) - 座席タイプ
 -   offers (array, optional, fixed-type)
     -   (Types.Event.ScreeningEvent.SearchSeats.Offers) - 在庫ステータス
 

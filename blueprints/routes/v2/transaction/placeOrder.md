@@ -9,6 +9,12 @@
 
 -   id: `xxx` (string, required) - アドオンオファー id
 
+## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AppliesToMovieTicket
+
+-   identifier: `xxx` (string, required) - 適用決済カード識別子
+    - serviceOutput
+        - typeOf: `xxx` (string, required) - 決済方法区分
+
 ## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer
 
 -   id: `xxx` (string, required) - チケットオファー id
@@ -22,6 +28,9 @@
                     -   `xxx` (string) - 座席タイプ
 -   addOn (array, optional, fixed-type)
     -   (Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AddOn) - アドオンオファー
+-   priceSpecification (optional)
+    -   appliesToMovieTicket (array, optional, fixed-type)
+        -   (Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AppliesToMovieTicket) - ムビチケオファー
 
 # Group 取引
 

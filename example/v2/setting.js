@@ -10,3 +10,6 @@ exports.FAMILY_NAME = process.env.FAMILY_NAME;
 exports.GIVEN_NAME = process.env.GIVEN_NAME;
 exports.EMAIL = process.env.EMAIL;
 exports.TELEPHONE = process.env.TELEPHONE;
+// ムビチケ
+exports.MOVIE_TICKET_IDENTIFIER = process.env.MOVIE_TICKET_IDENTIFIER;
+exports.MOVIE_TICKET_SERVICE_OUTPUT_TYPE_OF = process.env.MOVIE_TICKET_SERVICE_OUTPUT_TYPE_OF;

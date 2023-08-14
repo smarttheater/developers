@@ -47,7 +47,7 @@ Location: redirectUrl?id=xxx
         -   paymentCardCode: `xxx` (string, required) - 決済カード区分コード
         -   seatNumber: `xxx` (string, required) - 座席コード
         -   seatSection: `xxx` (string, required) - セクションコード
-        -   identifier: `xxx` (string, optional) - 購入管理番号
+        -   identifier: `xxx` (string, optional) - 適用決済カード識別子
         -   accessCode: `xxx` (string, optional) - pinコード
         -   categoryCodeValue: `xxx` (string, optional) - 前売券（カード）の種類 全国券,劇場券など
 

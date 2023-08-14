@@ -148,7 +148,7 @@ async function main() {
     let amount = 0;
     priceComponent?.forEach(p => amount += p.price);
     if (amount > 0) {
-        const acccesToken = (await authentication.getAcccesToken()).access_token;
+        const acccesToken = (await authentication.getAcccesToken("client_credentials")).access_token;
         await readInterface.question("Please press the key after executing creditCard payment approval >");
         // ブラウザからSmart Theater Payを実行してください
         // Smart Theater Payでクレジットカード決済承認を実行

@@ -5,7 +5,6 @@ const {
   EMAIL,
   TELEPHONE,
   MOVIE_TICKET_IDENTIFIER,
-  MOVIE_TICKET_SERVICE_OUTPUT_TYPE_OF,
 } = require("../setting");
 const authentication = require("../authentication");
 const api = require("../api");
@@ -94,6 +93,12 @@ async function main() {
     );
   });
   console.log("ticketOffer", ticketOffer);
+  const findPriceComponent = ticketOffer.priceSpecification.priceComponent.find(
+    (p) => p.typeOf === "MovieTicketTypeChargeSpecification"
+  );
+  if (findPriceComponent === undefined) {
+    throw new Error("findPriceComponent not found");
+  }
 
   const seats = await apiRequest.get("event/screeningEvent/searchSeats", {
     eventId: screeningEvent.id,
@@ -147,7 +152,7 @@ async function main() {
                 {
                   identifier: MOVIE_TICKET_IDENTIFIER,
                   serviceOutput: {
-                    typeOf: MOVIE_TICKET_SERVICE_OUTPUT_TYPE_OF,
+                    typeOf: findPriceComponent.appliesToMovieTicket.serviceOutput.typeOf,
                   },
                 },
               ],

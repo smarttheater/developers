@@ -2497,7 +2497,10 @@
         "<span class="hljs-attribute">priceSpecification</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">appliesToMovieTicket</span>": <span class="hljs-value">[
             {
-              "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+              "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+              "<span class="hljs-attribute">serviceOutput</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">typeOf</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+              </span>}
             </span>}
           ]
         </span>}
@@ -2602,10 +2605,23 @@
                         "<span class="hljs-attribute">identifier</span>": <span class="hljs-value">{
                           "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
                           "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"適用決済カード識別子"</span>
+                        </span>}</span>,
+                        "<span class="hljs-attribute">serviceOutput</span>": <span class="hljs-value">{
+                          "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
+                          "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
+                            "<span class="hljs-attribute">typeOf</span>": <span class="hljs-value">{
+                              "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                              "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"決済方法区分"</span>
+                            </span>}
+                          </span>}</span>,
+                          "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+                            <span class="hljs-string">"typeOf"</span>
+                          ]
                         </span>}
                       </span>}</span>,
                       "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-                        <span class="hljs-string">"identifier"</span>
+                        <span class="hljs-string">"identifier"</span>,
+                        <span class="hljs-string">"serviceOutput"</span>
                       ]
                     </span>}
                   </span>}

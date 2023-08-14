@@ -12,8 +12,8 @@
 ## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AppliesToMovieTicket
 
 -   identifier: `xxx` (string, required) - 適用決済カード識別子
-    - serviceOutput
-        - typeOf: `xxx` (string, required) - 決済方法区分
+-   serviceOutput (required)
+    -   typeOf: `xxx` (string, required) - 決済方法区分
 
 ## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer
 

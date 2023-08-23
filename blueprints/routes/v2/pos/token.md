@@ -18,6 +18,6 @@
 
 -   Response 200 (application/json)
     -   Attributes
-            -   token: `xxx` (string, required) - トークン
+        -   token: `xxx` (string, required) - トークン
 
 <!-- include(../../../response/400.md) -->

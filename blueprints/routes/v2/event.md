@@ -128,8 +128,8 @@
         -   Default: `1
     -   limit: `10` (number, optional) - 最大取得件数
         -   Default: `100
-    -   startFrom: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時範囲(から) ISO 8601 date format
-    -   startThrough: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時範囲(まで) ISO 8601 date format
+    -   startFrom: `2023-01-01T00:00:00.000Z` (string, optional) - 開始日時範囲(から) ISO 8601 date format
+    -   startThrough: `2023-01-01T00:00:00.000Z` (string, optional) - 開始日時範囲(まで) ISO 8601 date format
     -   superEventLocationBranchCodes: `xxx` (string, optional) - 施設コード
     -   clientId: `xxx` (string, optional) - 取得したい販売表示情報のクライアント id
     -   ids: `xxx,xxx` (string, optional) - イベントid 10件まで

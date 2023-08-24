@@ -1,16 +1,27 @@
 # Data Structure
 
+## Types.Order.FindByConfirmationNumber.Customer.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.Order.FindByConfirmationNumber
 
 -   orderDate: `xxx` (string, optional) - 注文日時 ISO 8601 date format
 -   confirmationNumber: `xxx` (string, required) - 確認番号
 -   orderNumber: `xxx` (string, required) - 注文番号
 -   price: `1000` (number, required) - 注文金額
--   orderStatus: `OrderDelivered` (enum, optional) - 注文ステータス OrderDelivered(注文済み) or OrderReturned(注文返品済み)
+-   orderStatus: `OrderDelivered` (enum, optional) - 注文ステータス
     -   `OrderDelivered` (string) - 注文済み
     -   `OrderReturned` (string) - 注文返品済み
+-   customer
+    -   additionalProperty (array[Types.Order.FindByConfirmationNumber.Customer.PropertyValue], fixed-type, optional) - 追加特性
+    -   email: `xxx` (string, optional) - メールアドレス
+    -   givenName: `xxx` (string, optional) - 名
+    -   familyName: `xxx` (string, optional) - 姓
+    -   telephone: `+819012345678` (string, optional) - 電話番号 E.164
 
-## Types.Order.SearchAcceptedOffersByConfirmationNumber.priceComponent
+## Types.Order.SearchAcceptedOffersByConfirmationNumber.PriceComponent
 
 -   name (object, optional)
     -   ja: `xxx` (string, optional) - 価格要素名称（日本語）
@@ -51,7 +62,7 @@
             -   seatSection: `xxx` (string, required) - 座席セクション
     -   priceSpecification
         -   priceComponent (array, required, fixed-type)
-            -   (Types.Order.SearchAcceptedOffersByConfirmationNumber.priceComponent) - 価格要素
+            -   (Types.Order.SearchAcceptedOffersByConfirmationNumber.PriceComponent) - 価格要素
 
 # Group 注文
 
@@ -59,13 +70,12 @@
 
 ### 確認番号で注文検索[GET]
 
-価格要素タイプ
+注文ステータス
 
-| type                               | description              |
-| :--------------------------------- | :----------------------- |
-| UnitPriceSpecification             | 単価仕様                 |
-| CategoryCodeChargeSpecification    | カテゴリーコード加算仕様 |
-| MovieTicketTypeChargeSpecification | ムビチケ加算仕様         |
+| type           | description  |
+| :------------- | :----------- |
+| OrderDelivered | 注文配送済み |
+| OrderReturned  | 注文返品済み |
 
 -   Parameters
 
@@ -83,6 +93,14 @@
 ## 注文アイテム検索 [/order/searchAcceptedOffersByConfirmationNumber{?page,limit,confirmationNumber,orderNumber}]
 
 ### 注文アイテム検索[GET]
+
+価格要素タイプ
+
+| type                               | description              |
+| :--------------------------------- | :----------------------- |
+| UnitPriceSpecification             | 単価仕様                 |
+| CategoryCodeChargeSpecification    | カテゴリーコード加算仕様 |
+| MovieTicketTypeChargeSpecification | ムビチケ加算仕様         |
 
 -   Parameters
 

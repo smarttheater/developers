@@ -1,5 +1,10 @@
 # Data Structure
 
+## Types.Order.Search.Customer.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.Order.Search
 
 -   orderDate: `xxx` (string, optional) - 注文日時 ISO 8601 date format
@@ -10,6 +15,12 @@
     -   `OrderDelivered` (string) - 注文済み
     -   `OrderReturned` (string) - 注文返品済み
 -   sellerId: `xxx` (string, required) - 販売者id
+-   customer
+    -   additionalProperty (array[Types.Order.Search.Customer.PropertyValue], fixed-type, optional) - 追加特性
+    -   email: `xxx` (string, optional) - メールアドレス
+    -   givenName: `xxx` (string, optional) - 名
+    -   familyName: `xxx` (string, optional) - 姓
+    -   telephone: `+819012345678` (string, optional) - 電話番号 E.164
 
 # Group 注文
 

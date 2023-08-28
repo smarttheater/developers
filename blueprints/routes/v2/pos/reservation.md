@@ -76,5 +76,25 @@
     -   Attributes (array, fixed-type)
         -   (Types.Reservation.Search) - 予約`
         
+<!-- include(../../../response/400.md) -->
+
+## 予約キャンセル [/reservation/cancel]
+
+### 予約キャンセル[POST]
+
+-   Parameters
+
+
+-   Request (application/json)
+
+    -   Attributes
+        -   agent
+            -   name: `xxx` (string, required) - 取消人名称
+        -   object
+            -   id: `xxx` (string, required) - 予約id
+        -   seller
+            -   id: `xxx` (string, required) - 販売者id
+
+-   Response 200 (application/json)
 
 <!-- include(../../../response/400.md) -->

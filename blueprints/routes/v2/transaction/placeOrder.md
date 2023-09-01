@@ -15,6 +15,11 @@
 -   serviceOutput (required)
     -   typeOf: `xxx` (string, required) - 決済方法区分
 
+## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.ItemOffered.ServiceOutput.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer
 
 -   id: `xxx` (string, required) - チケットオファー id
@@ -26,6 +31,7 @@
                 -   seatSection: `xxx` (string, required) - セクションコード
                 -   seatingType (array, optional, fixed-type)
                     -   `xxx` (string) - 座席タイプ
+        -   additionalProperty (array[Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.ItemOffered.ServiceOutput.PropertyValue], fixed-type, optional) - 追加特性
 -   addOn (array, optional, fixed-type)
     -   (Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AddOn) - アドオンオファー
 -   priceSpecification (optional)

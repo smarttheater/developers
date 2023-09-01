@@ -21,6 +21,11 @@
     -   familyName: `xxx` (string, optional) - 姓
     -   telephone: `+819012345678` (string, optional) - 電話番号 E.164
 
+## Types.Order.SearchAcceptedOffersByConfirmationNumber.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.Order.SearchAcceptedOffersByConfirmationNumber.PriceComponent
 
 -   name (object, optional)
@@ -39,6 +44,7 @@
 -   itemOffered (object, optional)
     -   id: `xxx` (number, required) - 予約 id
     -   reservationNumber: `xxx` (number, required) - 予約番号
+    -   additionalProperty (array[Types.Order.SearchAcceptedOffersByConfirmationNumber.PropertyValue], fixed-type, optional) - 追加特性
     -   reservationFor
         -   id: `xxx` (string, required) - イベントid 
         -   name (object, optional)

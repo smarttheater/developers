@@ -35,7 +35,7 @@ async function main() {
     const seller = sellers[0];
     console.log('seller', seller);
     const movieTheaters =
-        await apiRequest.get('place/searchMovieTheaters');
+        await apiRequest.get('place/searchMovieTheaters', { sellerId: seller.id });
     if (movieTheaters.length === 0) {
         throw new Error('movieTheaters not found');
     }

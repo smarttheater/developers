@@ -34,7 +34,7 @@ async function main() {
         orderNumber: orders[0].orderNumber,
         sellerId: seller.id
     });
-    console.log('items', JSON.stringify(items));
+    console.log('items', items);
 }
 
 main()

@@ -114,7 +114,6 @@ async function main() {
                         id: ticketOffer.id,
                         itemOffered: {
                             serviceOutput: {
-                                additionalProperty: [{ name: 'additionalProperty.name', value: 'additionalProperty.value' }],
                                 reservedTicket: {
                                     ticketedSeat: {
                                         seatNumber: seat.branchCode,

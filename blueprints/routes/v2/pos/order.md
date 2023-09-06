@@ -11,6 +11,7 @@
 -   confirmationNumber: `xxx` (string, required) - 確認番号
 -   orderNumber: `xxx` (string, required) - 注文番号
 -   price: `1000` (number, required) - 注文金額
+-   name: `xxx` (string, required) - 注文名称
 -   orderStatus: `OrderDelivered` (enum, optional) - 注文ステータス
     -   `OrderDelivered` (string) - 注文済み
     -   `OrderReturned` (string) - 注文返品済み

@@ -155,7 +155,12 @@ async function main() {
                                 }
                             }
                         },
-                        addOn: [{id: addOnOffer.id}]
+                        addOn: [{
+                            id: addOnOffer.id,
+                            priceSpecification: {
+                                referenceQuantity: { value: 3 }
+                            }
+                        }]
                     }
                 ]
 

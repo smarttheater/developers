@@ -8,6 +8,9 @@
 ## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AddOn
 
 -   id: `xxx` (string, required) - アドオンオファー id
+-   priceSpecification
+    -   referenceQuantity
+        -   value: `1` (number, required) - 数量指定
 
 ## Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer.AppliesToMovieTicket
 

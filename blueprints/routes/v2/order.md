@@ -148,3 +148,22 @@
         -   expires: `2023-01-01T00:00:00.000Z` (string, required) - 取引期限 ISO 8601 date format
 
 <!-- include(../../response/400.md) -->
+
+## 属性更新 [/order/updateChangeableAttributes]
+
+### 属性更新[POST]
+
+-   Parameters
+
+-   Request (application/json)
+
+    -   Attributes
+        -   orderNumber: `xxx` (string, required) - 注文番号
+        -   confirmationNumber: `xxx` (string, required) - 確認番号
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
+        -   name: `xxx` (string, optional) - 注文名称
+
+-   Response 200 (application/json)
+
+<!-- include(../../response/400.md) -->

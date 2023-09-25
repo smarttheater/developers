@@ -46,6 +46,7 @@
 + additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
 + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
 + name: (Performances.MultilingualString, optional) - 名称
++ kanaName: `カナ` (string, optional) - カナ名称
 + endDate: `2021-04-01T00:00:00Z` (string, optional) - 終了日時
 + startDate: `2021-04-01T00:00:00Z` (string, optional) - 開始日時
 + videoFormat (array, fixed-type) - 上映方式
@@ -77,7 +78,7 @@
     + endThrough: `2021-04-01T00:00:00Z` (string, optional) - 終了日時範囲(まで)
 
 ### 施設コンテンツ検索 [GET]
-イベントを検索します。
+施設コンテンツを検索します。
 
 + Response 200 (application/json)
     + Attributes (array, fixed-type)

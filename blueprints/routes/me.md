@@ -168,7 +168,7 @@
 
 <!-- include(../response/400.md) -->
 
-## ペイメントカード入出金 [/people/me/ownershipInfos/PaymentCard/{ownershipInfoId}/actions/moneyTransfer{?page,limit}]
+## ペイメントカード取引 [/people/me/ownershipInfos/PaymentCard/{ownershipInfoId}/actions/moneyTransfer{?page,limit}]
 
 + Parameters
     + ownershipInfoId: `xxxx` (string, required) - 所有権ID
@@ -177,12 +177,12 @@
     + limit: `10` (number, optional) - 最大取得件数
       + Default: `100`
 
-### ペイメントカード入出金検索 [GET]
-自分の所有するペイメントカードの入出金履歴を検索します。
+### ペイメントカード取引検索 [GET]
+自分の所有するペイメントカードの取引履歴を検索します。
 
 + Response 200 (application/json)
     + Attributes (array, fixed-type)
-        + (Me.MoneyTransferAction) - 入出金
+        + (Me.MoneyTransferAction) - 取引
 
 <!-- include(../response/400.md) -->
 

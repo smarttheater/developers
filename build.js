@@ -20,7 +20,22 @@ aglio.renderFile('./blueprints/pos.md', './public/docs/pos.html', options, funct
     if (warnings) console.log(warnings);
 });
 
-aglio.renderFile('./blueprints/me.md', './public/docs/me.html', options, function (err, warnings) {
+// aglio.renderFile('./blueprints/me.md', './public/docs/me.html', options, function (err, warnings) {
+//     if (err) return console.log(err);
+//     if (warnings) console.log(warnings);
+// });
+
+aglio.renderFile('./blueprints/v2/index.md', './public/docs/v2/index.html', options, function (err, warnings) {
+    if (err) return console.log(err);
+    if (warnings) console.log(warnings);
+});
+
+aglio.renderFile('./blueprints/v2/pos.md', './public/docs/v2/pos.html', options, function (err, warnings) {
+    if (err) return console.log(err);
+    if (warnings) console.log(warnings);
+});
+
+aglio.renderFile('./blueprints/pay/index.md', './public/docs/pay/index.html', options, function (err, warnings) {
     if (err) return console.log(err);
     if (warnings) console.log(warnings);
 });

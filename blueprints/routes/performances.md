@@ -24,8 +24,12 @@
 + maximumAttendeeCapacity: 1 (number, optional) - 最大収容席数
 + name: (Performances.MultilingualString, optional) - 名称
 + offers (object)
-    + validFrom: `2021-04-01T00:00:00Z` (string, optional) - 販売開始日時
-    + validThrough: `2021-04-01T00:00:00Z` (string, optional) - 販売終了日時
+    + availabilityStarts: `2021-04-01T00:00:00Z` (string, optional) - 公開開始日時(非会員オンライン取引)
+    + validFrom: `2021-04-01T00:00:00Z` (string, optional) - 販売開始日時(非会員オンライン取引)
+    + validThrough: `2021-04-01T00:00:00Z` (string, optional) - 販売終了日時(非会員オンライン取引)
+    + availabilityStartsToMembers: `2021-04-01T00:00:00Z` (string, optional) - 公開開始日時(会員オンライン取引)
+    + validFromForMembers: `2021-04-01T00:00:00Z` (string, optional) - 販売開始日時(会員オンライン取引)
+    + validThroughForMembers: `2021-04-01T00:00:00Z` (string, optional) - 販売終了日時(会員オンライン取引)
 + startDate: `2021-04-01T00:00:00Z` (string) - 開始日時
 + superEvent (object)
     + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
@@ -35,7 +39,6 @@
 + remainingAttendeeCapacity: 1 (number, optional) - 残席数
 + workPerformed (object)
     + identifier: `xxx` (string, required) - コンテンツコード
-    + headline: `xxx` (string, optional) - サブタイトル
     + contentRating: `G` (string, optional) - レイティング
     + duration: `PT15M` (string, optional) - 上映時間
 
@@ -43,8 +46,11 @@
 + additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
 + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
 + name: (Performances.MultilingualString, optional) - 名称
++ kanaName: `カナ` (string, optional) - カナ名称
 + endDate: `2021-04-01T00:00:00Z` (string, optional) - 終了日時
 + startDate: `2021-04-01T00:00:00Z` (string, optional) - 開始日時
++ videoFormat (array, fixed-type) - 上映方式
+    + `2D` (string)
 
 ## Performances.SeatOffer
 + availability: `InStock` (string, required) - 利用可能性(値については利用可能性タイプを参照)
@@ -72,7 +78,7 @@
     + endThrough: `2021-04-01T00:00:00Z` (string, optional) - 終了日時範囲(まで)
 
 ### 施設コンテンツ検索 [GET]
-イベントを検索します。
+施設コンテンツを検索します。
 
 + Response 200 (application/json)
     + Attributes (array, fixed-type)

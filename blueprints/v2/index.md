@@ -1,6 +1,6 @@
 <!-- include(routes/v2/header.md) -->
 
-<!-- include(routes/oauth.md) -->
+<!-- include(routes/v2/oauth.md) -->
 
 <!-- include(routes/v2/event.md) -->
 

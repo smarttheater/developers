@@ -5,6 +5,17 @@
 -   name: `xxx` (string, required) - プロパティ名
 -   value: `xxx` (string, required) - プロパティ値
 
+## Types.Order.Search.PaymentMethod
+
+-   name: `xxx` (string, required) - 決済方法名称
+-   paymentMethodId: `xxx` (string, optional) - 決済id
+-   accountId: `xxx` (string, optional) - アカウントid
+-   totalPaymentDue (object, optional)
+    -   currency: `xxx` (string, optional) - 通貨
+    -   value: `1000` (number, optional) - 値
+-   paymentMethod (object, optional)
+    -   identifier: `xxx` (string, optional) - 決済方法区分コード
+
 ## Types.Order.Search
 
 -   orderDate: `xxx` (string, optional) - 注文日時 ISO 8601 date format
@@ -22,6 +33,7 @@
     -   givenName: `xxx` (string, optional) - 名
     -   familyName: `xxx` (string, optional) - 姓
     -   telephone: `+819012345678` (string, optional) - 電話番号 E.164
+-   paymentMethods (array[Types.Order.Search.PaymentMethod], fixed-type, optional) - 決済情報
 
 # Group 注文
 

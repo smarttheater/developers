@@ -15,7 +15,7 @@
 
 # Group コンテンツ
 
-## コンテンツ検索 [/seller/searchMovies{?page,limit,identifiers}]
+## コンテンツ検索 [/creativeWork/searchMovies{?page,limit,identifiers}]
 
 ### コンテンツ検索[GET]
 

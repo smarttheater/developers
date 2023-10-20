@@ -15,7 +15,7 @@
 
 # Group コンテンツ
 
-## コンテンツ検索 [/creativeWork/searchMovies{?page,limit,identifiers}]
+## コンテンツ検索 [/creativeWork/searchMovies{?page,limit,identifiers,sellerId}]
 
 ### コンテンツ検索[GET]
 
@@ -26,6 +26,7 @@
     -   limit: `10` (number, optional) - 最大取得件数
         -   Default: `100
     -   identifiers: `xxx,xxx` (string, optional) - コンテンツコード 10件まで
+    -   sellerId: `xxx` (string, required) - 販売者id
 
 -   Response 200 (application/json)
 

@@ -9,7 +9,8 @@
     "test": "mocha",
     "preversion": "npm run clean && npm run build && npm test",
     "version": "git add -A",
-    "postversion": "git push origin --tags"
+    "postversion": "git push origin --tags",
+    "gcp-build": ""
   },
   "repository": {
     "type": "git",

@@ -36,16 +36,18 @@
     + description: (Performances.MultilingualString, optional) - 補足説明
     + dubLanguage: (Performances.Language, optional) - 吹替言語
     + subtitleLanguage: (Performances.Language, optional) - 字幕言語
+    + kanaName: `カナ` (string, optional) - カナ名称
 + remainingAttendeeCapacity: 1 (number, optional) - 残席数
 + workPerformed (object)
     + identifier: `xxx` (string, required) - コンテンツコード
     + contentRating: `G` (string, optional) - レイティング
-    + duration: `PT15M` (string, optional) - 上映時間
+    + duration: `PT15M` (string, optional) - 上映時間(https://en.wikipedia.org/wiki/ISO_8601#Durations)
 
 ## Performances.ScreeningEventSeries
 + additionalProperty (array[Performances.PropertyValue], fixed-type) - 追加特性
 + id: `xxxxxxxxxxxx` (string, required) - 施設コンテンツID
 + name: (Performances.MultilingualString, optional) - 名称
++ duration: `PT15M` (string, optional) - 上映時間(https://en.wikipedia.org/wiki/ISO_8601#Durations)
 + kanaName: `カナ` (string, optional) - カナ名称
 + endDate: `2021-04-01T00:00:00Z` (string, optional) - 終了日時
 + startDate: `2021-04-01T00:00:00Z` (string, optional) - 開始日時

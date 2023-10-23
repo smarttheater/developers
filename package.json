@@ -4,7 +4,7 @@
   "description": "Smart Theater Developers",
   "scripts": {
     "build": "node ./build.js",
-    "clean": "rimraf public/docs/**/* npm-debug.log*",
+    "clean": "rimraf public/docs/**/*.html npm-debug.log*",
     "start": "http-server ./public",
     "test": "mocha",
     "preversion": "npm run clean && npm run build && npm test",

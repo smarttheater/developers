@@ -47,7 +47,7 @@
     -   workPerformed
         -   id: `xxx` (string, required) - コンテンツ id
         -   identifier: `xxx` (string, required) - コンテンツコード
--   additionalProperty (array[Types.Event.PropertyValue], fixed-type) - 追加特性
+-   additionalProperty (array[Types.Event.PropertyValue], optional, fixed-type) - 追加特性
 
 ## Types.Event.ScreeningEvent.SearchTicketOffers.AddOn
 
@@ -93,6 +93,7 @@
     -   (Types.Event.ScreeningEvent.SearchTicketOffers.EligibleSeatingType) - 有効な座席タイプ
 -   addOn (array, optional, fixed-type)
     -   (Types.Event.ScreeningEvent.SearchTicketOffers.AddOn) - アドオン情報
+-   additionalProperty (array[Types.Event.PropertyValue], optional, fixed-type) - 追加特性
 
 ## Types.Event.ScreeningEvent.SearchSeats.Offers
 

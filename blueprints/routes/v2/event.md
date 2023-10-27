@@ -108,9 +108,6 @@
     -   en: `xxx` (string, optional) - 座席名称（英語）
 -   branchCode: `xxx` (string, optional) - 座席コード
 -   containedInPlace
-    -   name
-        -   ja: `xxx` (string, optional) - セクション名称（日本語）
-        -   en: `xxx` (string, optional) - セクション名称（英語）
     -   branchCode: `xxx` (string, optional) - セクションコード
 -   seatingType (array, optional, fixed-type)
     -   `xxx` (string) - 座席タイプ

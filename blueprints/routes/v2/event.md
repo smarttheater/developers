@@ -95,12 +95,6 @@
     -   (Types.Event.ScreeningEvent.SearchTicketOffers.AddOn) - アドオン情報
 -   additionalProperty (array[Types.Event.PropertyValue], optional, fixed-type) - 追加特性
 
-## Types.Event.ScreeningEvent.SearchSeats.Offers
-
--   `xxx` (enum, optional) - 商品在庫状況 InStock(在庫あり) or OutOfStock(在庫なし)
-    -   `InStock` (string) - 在庫あり
-    -   `OutOfStock` (string) - 在庫なし
-
 ## Types.Event.ScreeningEvent.SearchSeats
 
 -   name
@@ -111,8 +105,8 @@
     -   branchCode: `xxx` (string, optional) - セクションコード
 -   seatingType (array, optional, fixed-type)
     -   `xxx` (string) - 座席タイプ
--   offers (array, optional, fixed-type)
-    -   (Types.Event.ScreeningEvent.SearchSeats.Offers) - 在庫ステータス
+-   offers (array, optional) - 商品在庫状況
+    -   `xxx` (string) - 在庫ステータス
 
 # Group イベント
 
@@ -170,6 +164,13 @@
 ## 座席ステータス検索 [/event/screeningEvent/searchSeats{?page,limit,eventId}]
 
 ### 座席ステータス検索[GET]
+
+在庫ステータス
+
+| type           | description  |
+| :------------- | :----------- |
+| InStock | 在庫あり |
+| OutOfStock  | 在庫なし |
 
 -   Parameters
 

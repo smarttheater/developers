@@ -129,14 +129,14 @@
 -   Request (application/json)
 
     -   Attributes
-        -   object
-            -   reservationFor
+        -   object (required)
+            -   reservationFor (required)
                 -   id: `xxx` (string, required) - イベント id
-            -   acceptedOffer (array, fixed-type)
+            -   acceptedOffer (array, required, fixed-type)
                 -   (Types.Transaction.PlaceOrder.AuthorizeSeatReservation.AcceptedOffer) - チケットオファー
-        -   purpose
+        -   purpose (required)
             -   id: `xxx` (string, required) - 取引 id
-        -   seller
+        -   seller (required)
             -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)

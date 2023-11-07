@@ -110,7 +110,7 @@
 
 # Group イベント
 
-## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,superEventLocationBranchCodes,clientId}]
+## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,superEventLocationBranchCodes,clientId,ids,sellerId}]
 
 ### イベント検索[GET]
 
@@ -134,7 +134,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## イベントオファー検索 [/event/screeningEvent/searchTicketOffers{?page,limit,eventId}]
+## イベントオファー検索 [/event/screeningEvent/searchTicketOffers{?page,limit,eventId,sellerId}]
 
 ### イベントオファー検索[GET]
 
@@ -161,7 +161,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 座席ステータス検索 [/event/screeningEvent/searchSeats{?page,limit,eventId}]
+## 座席ステータス検索 [/event/screeningEvent/searchSeats{?page,limit,eventId,sellerId}]
 
 ### 座席ステータス検索[GET]
 

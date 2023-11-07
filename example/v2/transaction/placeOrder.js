@@ -100,6 +100,12 @@ async function main() {
             passport: {
                 token: passports.token,
             }
+        },
+        agent: {
+            identifier: [
+                { name: 'userAgent', value: 'xxx' },
+                { name: 'application:version', value: 'xxx' }
+            ]
         }
     });
     console.log('transaction', transaction);

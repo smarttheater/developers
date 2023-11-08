@@ -53,7 +53,7 @@ async function main() {
     if (screeningEvents.length === 0) {
         throw new Error('screeningEvents not found');
     }
-    const screeningEvent = screeningEvents[0];
+    const screeningEvent = screeningEvents[1];
     console.log('screeningEvent', screeningEvent);
 
     const ticketOffers =

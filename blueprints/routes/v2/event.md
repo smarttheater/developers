@@ -23,6 +23,9 @@
     -   availabilityEnds: `2023-01-01T00:00:00.000Z` (string, optional) - 表示終了日時 ISO 8601 date format
     -   itemOffered
         -   id: `xxx` (string, optional) - 興行Id
+    -   eligibleQuantity
+        -   maxValue: `1` (number, optional) - 販売上限席数
+        -   unitCode: `C62` (string, optional) - 単位
 -   location
     -   name
         -   ja: `xxx` (string, optional) - ルーム名称（日本語）

@@ -1,5 +1,10 @@
 # Data Structure
 
+## Types.Transaction.PlaceOrder.Start.Agent.Identifier
+
+-   name: `xxx` (string, required) - プロパティ名 (最小長 8)
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.Transaction.PlaceOrder.SetProfile.PropertyValue
 
 -   name: `xxx` (string, required) - プロパティ名
@@ -47,6 +52,15 @@
 
 ### 取引開始[POST]
 
+購入者情報予約語
+
+| type                | description                |
+| :------------------ | :------------------------- |
+| userAgent           | ユーザーエージェント       |
+| application:version | アプリケーションバージョン |
+| application:posId   | POS コード                 |
+| application:posName | POS 名称                   |
+
 -   Parameters
 
 -   Request (application/json)
@@ -60,6 +74,8 @@
                 -   token: `xxx` (string, optional) - パスポート token
         -   seller
             -   id: `xxx` (string, required) - 販売者 id
+        -   agent
+            -   identifier (array[Types.Transaction.PlaceOrder.Start.Agent.Identifier], fixed-type) - 購入者情報
 
 -   Response 200 (application/json)
 

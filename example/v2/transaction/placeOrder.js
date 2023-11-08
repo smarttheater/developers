@@ -53,7 +53,7 @@ async function main() {
     if (screeningEvents.length === 0) {
         throw new Error('screeningEvents not found');
     }
-    const screeningEvent = screeningEvents[0];
+    const screeningEvent = screeningEvents[1];
     console.log('screeningEvent', screeningEvent);
 
     const ticketOffers =
@@ -100,6 +100,12 @@ async function main() {
             passport: {
                 token: passports.token,
             }
+        },
+        agent: {
+            identifier: [
+                { name: 'userAgent', value: 'xxx' },
+                { name: 'application:version', value: 'xxx' }
+            ]
         }
     });
     console.log('transaction', transaction);

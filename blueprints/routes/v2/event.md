@@ -23,6 +23,9 @@
     -   availabilityEnds: `2023-01-01T00:00:00.000Z` (string, optional) - 表示終了日時 ISO 8601 date format
     -   itemOffered
         -   id: `xxx` (string, optional) - 興行Id
+    -   eligibleQuantity
+        -   maxValue: `1` (number, optional) - 販売上限席数
+        -   unitCode: `C62` (string, optional) - 単位
 -   location
     -   name
         -   ja: `xxx` (string, optional) - ルーム名称（日本語）
@@ -110,7 +113,7 @@
 
 # Group イベント
 
-## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,superEventLocationBranchCodes,clientId}]
+## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,superEventLocationBranchCodes,clientId,ids,sellerId}]
 
 ### イベント検索[GET]
 
@@ -134,7 +137,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## イベントオファー検索 [/event/screeningEvent/searchTicketOffers{?page,limit,eventId}]
+## イベントオファー検索 [/event/screeningEvent/searchTicketOffers{?page,limit,eventId,sellerId}]
 
 ### イベントオファー検索[GET]
 
@@ -161,7 +164,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 座席ステータス検索 [/event/screeningEvent/searchSeats{?page,limit,eventId}]
+## 座席ステータス検索 [/event/screeningEvent/searchSeats{?page,limit,eventId,sellerId}]
 
 ### 座席ステータス検索[GET]
 

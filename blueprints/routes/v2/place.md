@@ -18,9 +18,14 @@
 -   branchCode: `xxx` (string, required) - ルームコード
 -   openSeatingAllowed: true (boolean , optional) - 自由席フラグ
 
+## Types.Place.HasPOS
+
+-   branchCode: `xxx` (string, required) - POSコード
+-   name: `xxx` (string, required) - POS名称
+
 # Group 施設
 
-## 施設検索 [/place/searchMovieTheaters{?page,limit}]
+## 施設検索 [/place/searchMovieTheaters{?page,limit,sellerId}]
 
 ### 施設検索[GET]
 
@@ -39,7 +44,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## ルーム検索 [/place/searchScreeningRooms{?page,limit}]
+## ルーム検索 [/place/searchScreeningRooms{?page,limit,sellerId}]
 
 ### ルーム検索[GET]
 

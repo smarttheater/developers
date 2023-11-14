@@ -26,6 +26,8 @@ Location: redirectUrl?id=xxx
 
 ### ムビチケ決済承認[POST]
 
+#### 廃止予定
+
 指定したリダイレクトURLへ決済承認idを伴ってアプリにリダイレクトします。
 
 ```
@@ -54,6 +56,8 @@ Location: redirectUrl?id=xxx
 ## 対面決済承認 [/payment/faceToFace]
 
 ### 対面決済承認[POST]
+
+#### 廃止予定
 
 指定したリダイレクトURLへ決済承認idを伴ってアプリにリダイレクトします。
 

@@ -50,7 +50,7 @@
 
 <!-- include(../../../response/400.md) -->
 
-## 予約検索 [/reservation/search{?page,limit,bookingFrom,bookingThrough}]
+## 予約検索 [/reservation/search{?page,limit,bookingFrom,bookingThrough,ids,reservationForIds,sellerId}]
 
 ### 予約検索[GET]
 
@@ -70,6 +70,8 @@
     -   bookingFrom: `2023-06-01T00:00:00.000Z` (string, optional) - 予約日時範囲(から) ISO 8601 date format
     -   bookingThrough: `2023-06-01T00:00:00.000Z` (string, optional) - 予約日時範囲(まで) ISO 8601 date format
     -   ids: `xxx,xxx` (string, optional) - 予約id 10件まで
+    -   reservationForIds: `xxx,xxx` (string, optional) - イベントid 10件まで
+    -   sellerId: `xxx` (string, required) - 販売者id
 
 -   Response 200 (application/json)
 

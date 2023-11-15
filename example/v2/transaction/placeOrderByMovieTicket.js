@@ -229,32 +229,45 @@ async function main() {
     movieTicketTypeChargeSpecification.appliesToMovieTicket.serviceType;
     if (movieTicketTypeChargeSpecification !== undefined) {
         const { appliesToMovieTicket } = movieTicketTypeChargeSpecification;
+        const paymentServices = await apiRequest.get(
+            'seller/searchPaymentServices',
+            {
+                id: seller.id,
+            }
+        );
+        if (paymentServices.length === 0) {
+            throw new Error('paymentServices not found');
+        }
+        const paymentService = paymentServices.find(
+            (p) =>
+                p.serviceType.codeValue ===
+                appliesToMovieTicket.serviceOutput.typeOf
+        );
+        console.log('paymentService', paymentService);
         const movieTickets = [
-          {
-              typeOf: appliesToMovieTicket.serviceOutput.typeOf,
-              category: {
-                  codeValue: '',
-              },
-              identifier,
-              accessCode,
-              serviceType: appliesToMovieTicket.serviceType,
-              serviceOutput: {
-                  reservationFor: {
-                      id: screeningEvent.id,
-                  },
-                  reservedTicket: {
-                    ticketedSeat: {
-                        seatingType: seat.seatingType,
-                        seatNumber: seat.branchCode,
-                        seatSection:
-                            seat.containedInPlace.branchCode,
+            {
+                typeOf: appliesToMovieTicket.serviceOutput.typeOf,
+                category: {
+                    codeValue: '',
+                },
+                identifier,
+                accessCode,
+                serviceType: appliesToMovieTicket.serviceType,
+                serviceOutput: {
+                    reservationFor: {
+                        id: screeningEvent.id,
+                    },
+                    reservedTicket: {
+                        ticketedSeat: {
+                            seatingType: seat.seatingType,
+                            seatNumber: seat.branchCode,
+                            seatSection: seat.containedInPlace.branchCode,
+                        },
                     },
                 },
-              },
-              
-          },
-      ];
-        console.log('movieTickets', movieTickets)
+            },
+        ];
+        console.log('movieTickets', movieTickets);
         const authorizeMovieTicket = await apiRequest.post(
             'payment/authorizeMovieTicket',
             {
@@ -264,6 +277,7 @@ async function main() {
                 object: {
                     amount: 0,
                     paymentMethod: appliesToMovieTicket.serviceOutput.typeOf,
+                    issuedThrough: {id: paymentService.id },
                     movieTickets,
                 },
                 seller: {

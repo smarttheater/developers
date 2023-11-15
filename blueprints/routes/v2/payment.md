@@ -63,6 +63,8 @@
             -   amount: `1000` (number, required) - 決済金額
             -   paymentMethod: `xxx` (string, required) - 決済方法区分コード
             -   additionalProperty (array[Types.Payment.PropertyValue], optional, fixed-type) - 追加特性
+            -   issuedThrough
+                -   id: `xxx` (string, required) - 決済サービスid
             -   movieTickets (array[Types.Payment.AuthorizeMovieTicket.MovieTicket], required, fixed-type) - ムビチケ情報
             -   seller
                 -   id: `xxx` (string, required) - 販売者id

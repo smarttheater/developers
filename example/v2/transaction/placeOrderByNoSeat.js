@@ -39,7 +39,7 @@ async function main() {
     if (movieTheaters.length === 0) {
         throw new Error('movieTheaters not found');
     }
-    const movieTheater = movieTheaters.find(m => seller.id === m.parentOrganization.id);
+    const movieTheater = movieTheaters.filter(m => seller.id === m.parentOrganization.id)[1];
     console.log('movieTheater', movieTheater);
 
     date = new Date();
@@ -53,7 +53,7 @@ async function main() {
     if (screeningEvents.length === 0) {
         throw new Error('screeningEvents not found');
     }
-    const screeningEvent = screeningEvents[1];
+    const screeningEvent = screeningEvents[0];
     console.log('screeningEvent', screeningEvent);
 
     const ticketOffers =
@@ -80,11 +80,9 @@ async function main() {
         eventId: screeningEvent.id,
         sellerId: seller.id,
     });
-    if (seats.length === 0) {
-        throw new Error('seats not found');
+    if (seats.length > 0) {
+        throw new Error('seat exists');
     }
-    const seat = seats.find(s => s.offers[0] === 'InStock');
-    console.log('seat', seat);
 
     const passports = await apiRequest.post('passports', {
         scope: `Transaction:PlaceOrder:${seller.id}`
@@ -100,12 +98,6 @@ async function main() {
             passport: {
                 token: passports.token,
             }
-        },
-        agent: {
-            identifier: [
-                { name: 'userAgent', value: 'xxx' },
-                { name: 'application:version', value: 'xxx' }
-            ]
         }
     });
     console.log('transaction', transaction);
@@ -118,16 +110,6 @@ async function main() {
                 acceptedOffer: [
                     {
                         id: ticketOffer.id,
-                        itemOffered: {
-                            serviceOutput: {
-                                reservedTicket: {
-                                    ticketedSeat: {
-                                        seatNumber: seat.branchCode,
-                                        seatSection: seat.containedInPlace.branchCode,
-                                    }
-                                }
-                            }
-                        },
                     }
                 ]
 

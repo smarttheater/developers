@@ -108,7 +108,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## 注文アイテム検索 [/order/searchAcceptedOffersByConfirmationNumber{?page,limit,confirmationNumber,orderNumber}]
+## 注文アイテム検索 [/order/searchAcceptedOffersByConfirmationNumber{?page,limit,confirmationNumber,orderNumber,sellerId}]
 
 ### 注文アイテム検索[GET]
 

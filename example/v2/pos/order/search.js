@@ -6,7 +6,9 @@ const authentication = require('../../authentication');
  * 注文検索
  */
 async function main() {
-    const { access_token } = await authentication.getAcccesToken('authorization_code');
+    const { access_token } = await authentication.getAcccesToken(
+        'authorization_code'
+    );
     const apiRequest = new api.Request();
     apiRequest.setOptions({
         acccesToken: access_token,
@@ -22,7 +24,7 @@ async function main() {
     const orders = await apiRequest.get('order/search', {
         orderDateGte: date.toISOString(),
         orderDateLte: new Date().toISOString(),
-        sellerId: seller.id
+        sellerId: seller.id,
     });
     console.log('orders', orders);
 }
@@ -34,6 +36,6 @@ main()
     .catch((error) => {
         console.error(error);
     })
-    .finally(()=> {
+    .finally(() => {
         process.exit();
     });

@@ -23,6 +23,9 @@
     -   availabilityEnds: `2023-01-01T00:00:00.000Z` (string, optional) - 表示終了日時 ISO 8601 date format
     -   itemOffered
         -   id: `xxx` (string, optional) - 興行Id
+    -   eligibleQuantity
+        -   maxValue: `1` (number, optional) - 販売上限席数
+        -   unitCode: `C62` (string, optional) - 単位
 -   location
     -   name
         -   ja: `xxx` (string, optional) - ルーム名称（日本語）
@@ -47,7 +50,7 @@
     -   workPerformed
         -   id: `xxx` (string, required) - コンテンツ id
         -   identifier: `xxx` (string, required) - コンテンツコード
--   additionalProperty (array[Types.Event.PropertyValue], fixed-type) - 追加特性
+-   additionalProperty (array[Types.Event.PropertyValue], optional, fixed-type) - 追加特性
 
 ## Types.Event.ScreeningEvent.SearchTicketOffers.AddOn
 
@@ -93,12 +96,7 @@
     -   (Types.Event.ScreeningEvent.SearchTicketOffers.EligibleSeatingType) - 有効な座席タイプ
 -   addOn (array, optional, fixed-type)
     -   (Types.Event.ScreeningEvent.SearchTicketOffers.AddOn) - アドオン情報
-
-## Types.Event.ScreeningEvent.SearchSeats.Offers
-
--   `xxx` (enum, optional) - 商品在庫状況 InStock(在庫あり) or OutOfStock(在庫なし)
-    -   `InStock` (string) - 在庫あり
-    -   `OutOfStock` (string) - 在庫なし
+-   additionalProperty (array[Types.Event.PropertyValue], optional, fixed-type) - 追加特性
 
 ## Types.Event.ScreeningEvent.SearchSeats
 
@@ -107,18 +105,15 @@
     -   en: `xxx` (string, optional) - 座席名称（英語）
 -   branchCode: `xxx` (string, optional) - 座席コード
 -   containedInPlace
-    -   name
-        -   ja: `xxx` (string, optional) - セクション名称（日本語）
-        -   en: `xxx` (string, optional) - セクション名称（英語）
     -   branchCode: `xxx` (string, optional) - セクションコード
 -   seatingType (array, optional, fixed-type)
     -   `xxx` (string) - 座席タイプ
--   offers (array, optional, fixed-type)
-    -   (Types.Event.ScreeningEvent.SearchSeats.Offers) - 在庫ステータス
+-   offers (array, optional) - 商品在庫状況
+    -   `xxx` (string) - 在庫ステータス
 
 # Group イベント
 
-## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,superEventLocationBranchCodes,clientId}]
+## イベント検索 [/event/screeningEvent/search{?page,limit,startFrom,startThrough,superEventLocationBranchCodes,clientId,ids,sellerId}]
 
 ### イベント検索[GET]
 
@@ -142,7 +137,7 @@
 
 <!-- include(../../response/400.md) -->
 
-## イベントオファー検索 [/event/screeningEvent/searchTicketOffers{?page,limit,eventId}]
+## イベントオファー検索 [/event/screeningEvent/searchTicketOffers{?page,limit,eventId,sellerId}]
 
 ### イベントオファー検索[GET]
 
@@ -169,9 +164,16 @@
 
 <!-- include(../../response/400.md) -->
 
-## 座席ステータス検索 [/event/screeningEvent/searchSeats{?page,limit,eventId}]
+## 座席ステータス検索 [/event/screeningEvent/searchSeats{?page,limit,eventId,sellerId}]
 
 ### 座席ステータス検索[GET]
+
+在庫ステータス
+
+| type           | description  |
+| :------------- | :----------- |
+| InStock | 在庫あり |
+| OutOfStock  | 在庫なし |
 
 -   Parameters
 

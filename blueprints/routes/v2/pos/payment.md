@@ -1,11 +1,43 @@
+# Data Structure
+
+## Types.Payment.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
+## Types.Payment.AuthorizeMovieTicket.MovieTicket
+
+-   typeOf: `xxx` (string, required) - 決済方法区分コード
+-   category
+    -   codeValue: `xxx` (string, required) - カードの種類
+-   identifier: `xxx` (string, required) - 識別子
+-   accessCode: `xxx` (string, required) - pin コード
+-   serviceType: `xxx` (string, required) - 決済カード区分コード
+-   serviceOutput
+    -   reservationFor
+        -   id: `xxx` (string, required) - イベント id
+-   reservedTicket
+    -   ticketedSeat
+        -   seatingType (array, optional, fixed-type)
+            -   `xxx` (string) - 座席タイプ
+        -   seatNumber: `xxx` (string, required) - 座席コード
+        -   seatSection: `xxx` (string, required) - セクションコード
+
 # Group 決済
 
 ## 対面決済承認 [/payment/authorizeAnyPayment]
 
 ### 対面決済承認[POST]
 
--   Parameters
+追加特性予約語
 
+| name          | description       |
+| :------------ | :---------------- |
+| depositAmount | お預かり金額      |
+| change        | お釣り            |
+| difference    | 差額              |
+| tranId        | 決済端末:処理通番 |
+| orderId       | 決済端末:請求番号 |
 
 -   Request (application/json)
 
@@ -15,47 +47,13 @@
         -   object
             -   amount: `1000` (number, required) - 決済金額
             -   paymentMethod: `xxx` (string, required) - 決済方法区分コード
-            -   issuedThrough
-                -   id: `xxx` (string, required) - 決済サービス id
-        -   seller
-            -   id: `xxx` (string, required) - 販売者 id
+            -   additionalProperty (array[Types.Payment.PropertyValue], optional, fixed-type) - 追加特性
+            -   seller
+                -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
-
     -   Attributes
         -   id: `xxx` (string, required) - 決済承認 id
-
-<!-- include(../../../response/400.md) -->
-
-## 決済承認取り消し [/payment/voidTransaction]
-
-### 決済承認取り消し[POST]
-
-決済承認タイプ
-
-| type        | description      |
-| :---------- | :--------------- |
-| CreditCard  | クレジットカード |
-| MovieTicket | ムビチケ         |
-| FaceToFace  | 対面決済         |
-
--   Parameters
-
-
--   Request (application/json)
-
-    -   Attributes
-        -   purpose
-            -   id: `xxx` (string, required) - 取引 id
-        -   id: `xxx` (string, required) - 決済承認 id
-        -   object
-            -   typeOf: (enum, required) - 決済承認タイプ
-                -   `CreditCard` (string) - クレジットカード
-                -   `MovieTicket` (string) - ムビチケ
-                -   `FaceToFace` (string) - 対面決済
-        -   seller
-            -   id: `xxx` (string, required) - 販売者 id
-
--   Response 200 (application/json)
+        -   typeOf: `xxx` (string, required) - 決済承認タイプ
 
 <!-- include(../../../response/400.md) -->

@@ -37,7 +37,7 @@
 
 # Group 注文
 
-## 注文検索 [/order/search{?page,limit,orderDateLte,orderDateGte,sellerId}]
+## 注文検索 [/order/search{?page,limit,orderDateLte,orderDateGte,orderNumbers,confirmationNumbers,acceptedOffersItemOfferedReservationForIds,sellerId}]
 
 ### 注文検索[GET]
 
@@ -57,6 +57,8 @@
     -   orderDateGte: `2023-01-01T00:00:00.000Z` (string, optional) - 注文日時範囲(から)ISO 8601 date format
     -   orderDateLte: `2023-01-01T00:00:00.000Z` (string, optional) - 注文日時範囲(まで)ISO 8601 date format
     -   orderNumbers: `xxx,xxx` (string, optional) - 注文番号 10件まで
+    -   confirmationNumbers: `xxx,xxx` (string, optional) - 確認番号 10件まで
+    -   acceptedOffersItemOfferedReservationForIds: `xxx,xxx` (string, optional) - イベントid 10件まで
     -   sellerId: `xxx` (string, required) - 販売者id
 
 -   Response 200 (application/json)

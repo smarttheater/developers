@@ -6,7 +6,9 @@ const authentication = require('../../authentication');
  * 予約検索
  */
 async function main() {
-    const { access_token } = await authentication.getAcccesToken('authorization_code');
+    const { access_token } = await authentication.getAcccesToken(
+        'authorization_code'
+    );
     const apiRequest = new api.Request();
     apiRequest.setOptions({
         acccesToken: access_token,
@@ -22,9 +24,9 @@ async function main() {
     const reservations = await apiRequest.get('reservation/search', {
         bookingFrom: date.toISOString(),
         bookingThrough: new Date().toISOString(),
-        sellerId: seller.id
+        sellerId: seller.id,
     });
-    console.log('reservations', reservations);
+    console.log('reservations', reservations, reservations.length);
 }
 
 main()
@@ -34,6 +36,6 @@ main()
     .catch((error) => {
         console.error(error);
     })
-    .finally(()=> {
+    .finally(() => {
         process.exit();
     });

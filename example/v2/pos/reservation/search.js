@@ -26,7 +26,7 @@ async function main() {
         bookingThrough: new Date().toISOString(),
         sellerId: seller.id,
     });
-    console.log('reservations', reservations, reservations.length);
+    console.log('reservations', reservations);
 }
 
 main()

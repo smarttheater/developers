@@ -69,6 +69,7 @@
             -   name (object, optional)
                 -   ja: `xxx` (string, optional) - ルーム名称（日本語）
                 -   en: `xxx` (string, optional) - ルーム名称（英語）
+                -   branchCode: `xxx` (string, required) - ルームコード
     -   reservedTicket
         -   ticketType
             -   identifier: `xxx` (string, required) - オファーコード
@@ -78,6 +79,8 @@
         -   ticketedSeat (object, optional)
             -   seatNumber: `xxx` (string, required) - 座席コード
             -   seatSection: `xxx` (string, required) - 座席セクション
+            -   seatingType (array, optional, fixed-type)
+                -   `xxx` (string) - 座席タイプ
     -   priceSpecification
         -   priceComponent (array, required, fixed-type)
             -   (Types.Order.SearchAcceptedOffersByConfirmationNumber.PriceComponent) - 価格要素

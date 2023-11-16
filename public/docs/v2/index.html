@@ -235,7 +235,7 @@
     </span>}</span>,
     "<span class="hljs-attribute">contentRating</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
     "<span class="hljs-attribute">datePublished</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
-    "<span class="hljs-attribute">duration</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+    "<span class="hljs-attribute">duration</span>": <span class="hljs-value"><span class="hljs-string">"PT15M"</span></span>,
     "<span class="hljs-attribute">thumbnailUrl</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}
 ]</code></pre><div style="height: 1px;"></div><h5>Schema</h5><pre><code>{
@@ -279,7 +279,7 @@
       </span>}</span>,
       "<span class="hljs-attribute">duration</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"上映時間 ISO 8601 date format"</span>
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"上映時間 (https://en.wikipedia.org/wiki/ISO_8601#Durations)"</span>
       </span>}</span>,
       "<span class="hljs-attribute">thumbnailUrl</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
@@ -1452,7 +1452,8 @@
         "<span class="hljs-attribute">location</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
             "<span class="hljs-attribute">ja</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
-            "<span class="hljs-attribute">en</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+            "<span class="hljs-attribute">en</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+            "<span class="hljs-attribute">branchCode</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
           </span>}
         </span>}
       </span>}</span>,
@@ -1466,7 +1467,10 @@
         </span>}</span>,
         "<span class="hljs-attribute">ticketedSeat</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">seatNumber</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
-          "<span class="hljs-attribute">seatSection</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
+          "<span class="hljs-attribute">seatSection</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+          "<span class="hljs-attribute">seatingType</span>": <span class="hljs-value">[
+            <span class="hljs-string">"xxx"</span>
+          ]
         </span>}
       </span>}</span>,
       "<span class="hljs-attribute">priceSpecification</span>": <span class="hljs-value">{
@@ -1569,8 +1573,15 @@
                       "<span class="hljs-attribute">en</span>": <span class="hljs-value">{
                         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
                         "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ルーム名称（英語）"</span>
+                      </span>}</span>,
+                      "<span class="hljs-attribute">branchCode</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+                        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"ルームコード"</span>
                       </span>}
-                    </span>}
+                    </span>}</span>,
+                    "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
+                      <span class="hljs-string">"branchCode"</span>
+                    ]
                   </span>}
                 </span>}
               </span>}
@@ -1619,6 +1630,12 @@
                   "<span class="hljs-attribute">seatSection</span>": <span class="hljs-value">{
                     "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
                     "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"座席セクション"</span>
+                  </span>}</span>,
+                  "<span class="hljs-attribute">seatingType</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"array"</span></span>,
+                    "<span class="hljs-attribute">items</span>": <span class="hljs-value">{
+                      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+                    </span>}
                   </span>}
                 </span>}</span>,
                 "<span class="hljs-attribute">required</span>": <span class="hljs-value">[

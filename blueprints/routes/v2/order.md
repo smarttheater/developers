@@ -182,3 +182,26 @@
 -   Response 200 (application/json)
 
 <!-- include(../../response/400.md) -->
+
+## 同期的に注文作成 [/order/placeOrder]
+
+### 同期的に注文作成[POST]
+
+確定した注文取引に対して、同期的に注文データを作成 すでに注文が作成済の場合、何もしない
+
+-   Parameters
+
+-   Request (application/json)
+
+    -   Attributes
+        -   object
+            -   orderNumber: `xxx` (string, required) - 注文番号
+            -   confirmationNumber: `xxx` (string, required) - 確認番号
+        -   purpose
+            -   id: `xxx` (string, required) - 取引id
+        -   seller
+            -   id: `xxx` (string, required) - 販売者id
+
+-   Response 200 (application/json)
+
+<!-- include(../../response/400.md) -->

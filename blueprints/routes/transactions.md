@@ -64,19 +64,15 @@ example:
 ## 注文取引開始 [/transactions/placeOrder/start]
 
 ### 注文取引開始 [POST]
-期限指定で注文取引を開始します。取引の期限が切れると、取引中で作成された仮予約は取り消され、取引は継続不能となります。
+注文取引を開始します。取引の期限が切れると、取引中で作成されたオファー承認は取り消され、取引は継続不能となります。
 
 + Request (application/json)
     + Headers
         Authentication: Bearer JWT
 
-    + Attributes
-        + expires:  `2017-05-10T07:42:25Z` (string, required) - 取引期限
-
 + Response 201 (application/json)
     + Attributes
         + id: `1234567890abcdefghijklmn` (string, required) - ID
-        + seller: (object, required) - 販売者
         + expires: `2017-05-10T07:42:25Z` (string, required) - 期限
         + startDate: `2017-05-10T07:42:25Z` (string, required) - 開始日時
 

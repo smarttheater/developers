@@ -4,12 +4,58 @@
 
 -   startDate: `2023-06-01T00:00:00.000Z` (string, required) - 予約使用日時 ISO 8601 date format
 
+## Types.Reservation.Search.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
+## Types.Reservation.Search.PriceComponent
+
+-   name (object, optional)
+    -   ja: `xxx` (string, optional) - 価格要素名称（日本語）
+    -   en: `xxx` (string, optional) - 価格要素名称（英語）
+-   price: `1000` (number, required) - 価格要素価格
+-   typeOf: `UnitPriceSpecification` (enum, required) - 価格要素タイプ CategoryCodeChargeSpecification (カテゴリーコード加算仕様) or MovieTicketTypeChargeSpecification (ムビチケ加算仕様) or UnitPriceSpecification (単価仕様)
+    -   `UnitPriceSpecification` (string) - 単価仕様
+    -   `CategoryCodeChargeSpecification` (string) - カテゴリーコード加算仕様
+    -   `MovieTicketTypeChargeSpecification` (string) - ムビチケ加算仕様
+-   referenceQuantity
+    -   value: `1` (number, optional) - 価格要素基準数量
+
 ## Types.Reservation.Search
 
 -   id: `xxx` (string, optional) - 予約 id
 -   bookingTime: `xxx` (string, optional) - 予約日時 ISO 8601 date format
 -   checkedIn: true (boolean, optional) - 注文コード発行フラグ
 -   attended: true (boolean, optional) - 予約使用フラグ
+-   additionalProperty (array[Types.Reservation.Search.PropertyValue], fixed-type, optional) - 追加特性
+-   reservationFor
+    -   id: `xxx` (string, required) - イベントid 
+    -   name (object, optional)
+        -   ja: `xxx` (string, optional) - イベント名称（日本語）
+        -   en: `xxx` (string, optional) - イベント名称（英語）
+    -   startDate: `2023-01-01T00:00:00.000Z` (string, required) - 開始日時 ISO 8601 date format
+    -   endDate: `2023-01-01T00:00:00.000Z` (string, required) - 終了日時 ISO 8601 date format
+    -   doorTime: `2023-01-01T00:00:00.000Z` (string, optional) - 開場日時 ISO 8601 date format
+    -   location
+        -   name (object, optional)
+            -   ja: `xxx` (string, optional) - ルーム名称（日本語）
+            -   en: `xxx` (string, optional) - ルーム名称（英語）
+            -   branchCode: `xxx` (string, required) - ルームコード
+-   reservedTicket
+    -   ticketType
+        -   identifier: `xxx` (string, required) - オファーコード
+        -   name (object, optional)
+            -   ja: `xxx` (string, optional) - オファー名称（日本語）
+            -   en: `xxx` (string, optional) - オファー名称（英語）
+    -   ticketedSeat (object, optional)
+        -   seatNumber: `xxx` (string, required) - 座席コード
+        -   seatSection: `xxx` (string, required) - 座席セクション
+        -   seatingType (array, optional, fixed-type)
+            -   `xxx` (string) - 座席タイプ
+-   price
+    -   priceComponent (array, required, fixed-type)
+        -   (Types.Reservation.Search.PriceComponent) - 価格要素
 
 # Group 予約
 

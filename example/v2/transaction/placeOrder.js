@@ -45,7 +45,7 @@ async function main() {
     date = new Date();
     const screeningEvents = await apiRequest.get('event/screeningEvent/search', {
         startFrom: new Date().toISOString(),
-        startThrough: new Date(date.setDate(date.getDate() + 1)).toISOString(),
+        startThrough: new Date(date.setDate(date.getDate() + 2)).toISOString(),
         superEventLocationBranchCodes: movieTheater.branchCode,
         clientId: CLIENT_ID,
         sellerId: seller.id,
@@ -53,7 +53,7 @@ async function main() {
     if (screeningEvents.length === 0) {
         throw new Error('screeningEvents not found');
     }
-    const screeningEvent = screeningEvents[1];
+    const screeningEvent = screeningEvents[4];
     console.log('screeningEvent', screeningEvent);
 
     const ticketOffers =
@@ -75,6 +75,9 @@ async function main() {
             && priceComponent.length === 1;
     });
     console.log('ticketOffer', ticketOffer);
+    if (ticketOffer === undefined) {
+        throw new Error('ticketOffer not found');
+    }
 
     const seats = await apiRequest.get('event/screeningEvent/searchSeats', {
         eventId: screeningEvent.id,
@@ -167,6 +170,27 @@ async function main() {
         },
     });
     console.log('result', result);
+    await apiRequest.post('order/placeOrder', {
+        object: {
+            confirmationNumber: result.confirmationNumber,
+            orderNumber: result.orderNumber
+        },
+        purpose: {
+            id: transaction.id
+        },
+        seller: {
+            id: seller.id
+        },
+    });
+    await apiRequest.post('delivery/sendOrder', {
+        object: {
+            confirmationNumber: result.confirmationNumber,
+            orderNumber: result.orderNumber
+        },
+        seller: {
+            id: seller.id
+        },
+    });
 }
 
 main()

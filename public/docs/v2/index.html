@@ -3361,7 +3361,6 @@
   "<span class="hljs-attribute">seller</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
   </span>}</span>,
-  "<span class="hljs-attribute">expires</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
   "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">passport</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">token</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span>
@@ -3379,10 +3378,6 @@
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
   "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">expires</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"取引期限 ISO 8601 date format"</span>
-    </span>}</span>,
     "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
       "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
@@ -3435,10 +3430,7 @@
         </span>}
       </span>}
     </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-    <span class="hljs-string">"expires"</span>
-  ]
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
   "<span class="hljs-attribute">expires</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span>
@@ -4310,7 +4302,6 @@
     </span>}
   </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div></div></div></div></div></div><div class="middle"><div id="取引-取引人プロフィール設定-put" class="action put"><h4 class="action-heading"><div class="name">取引人プロフィール設定</div><a href="#取引-取引人プロフィール設定-put" class="method put">PUT</a><code class="uri">/transaction/placeOrder/setProfile</code></h4></div></div><hr class="split"><div class="middle"><section id="返品取引" class="resource-group"><h2 class="group-heading">返品取引 <a href="#返品取引" class="permalink">&para;</a></h2></section></div><div class="middle"><div id="返品取引-取引開始" class="resource"><h3 class="resource-heading">取引開始 <a href="#返品取引-取引開始" class="permalink">&para;</a></h3></div></div><div class="right"><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname">https://example.com/xxx</span>/transaction/returnOrder/start</span></div><div class="tabs"><div class="example-names"><span>Requests</span><span class="tab-button">example 1</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
-  "<span class="hljs-attribute">expires</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span></span>,
   "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">order</span>": <span class="hljs-value">[
       {
@@ -4326,10 +4317,6 @@
   "<span class="hljs-attribute">$schema</span>": <span class="hljs-value"><span class="hljs-string">"http://json-schema.org/draft-04/schema#"</span></span>,
   "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
   "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">expires</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"取引期限 ISO 8601 date format"</span>
-    </span>}</span>,
     "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"object"</span></span>,
       "<span class="hljs-attribute">properties</span>": <span class="hljs-value">{
@@ -4367,10 +4354,7 @@
         <span class="hljs-string">"id"</span>
       ]
     </span>}
-  </span>}</span>,
-  "<span class="hljs-attribute">required</span>": <span class="hljs-value">[
-    <span class="hljs-string">"expires"</span>
-  ]
+  </span>}
 </span>}</code></pre><div style="height: 1px;"></div></div></div><div class="tabs"><div class="example-names"><span>Responses</span><span class="tab-button">200</span><span class="tab-button">400</span></div><div class="tab"><div><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
   "<span class="hljs-attribute">expires</span>": <span class="hljs-value"><span class="hljs-string">"2023-01-01T00:00:00.000Z"</span>

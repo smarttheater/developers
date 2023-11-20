@@ -24,7 +24,6 @@
 -   Request (application/json)
 
     -   Attributes
-        -   expires: `2023-01-01T00:00:00.000Z` (string, required) - 取引期限 ISO 8601 date format
         -   object
            -   order (array, fixed-type)
                 -   (Types.Transaction.ReturnOrder.Start.Object.Order) - 注文

@@ -4,6 +4,8 @@
 
 <!-- include(routes/v2/creativeWork.md) -->
 
+<!-- include(routes/v2/delivery.md) -->
+
 <!-- include(routes/v2/event.md) -->
 
 <!-- include(routes/v2/order.md) -->

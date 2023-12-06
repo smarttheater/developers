@@ -7,7 +7,7 @@
 
 # Group 施設
 
-## 施設のPOS検索 [/hasPOS/search{?page,limit,sellerId,operaterId}]
+## 施設のPOS検索 [/place/hasPOS/search{?page,limit,sellerId,operaterId}]
 
 ### 施設のPOS検索[GET]
 

@@ -48,8 +48,8 @@
             -   amount: `1000` (number, required) - 決済金額
             -   paymentMethod: `xxx` (string, required) - 決済方法区分コード
             -   additionalProperty (array[Types.Payment.PropertyValue], optional, fixed-type) - 追加特性
-            -   seller
-                -   id: `xxx` (string, required) - 販売者 id
+        -   seller
+            -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)
     -   Attributes

@@ -9,7 +9,7 @@
     -   en: `xxx` (string, required) - コンテンツ名称（英語）
 -   contentRating: `xxx` (string, required) - レイティング区分コード
 -   datePublished: `xxx` (string, required) - 公開日 ISO 8601 date format
--   duration: `xxx` (string, required) - 上映時間 ISO 8601 date format
+-   duration: `PT15M` (string, required) - 上映時間 (https://en.wikipedia.org/wiki/ISO_8601#Durations)
 -   thumbnailUrl: `xxx` (string, required) - サムネイルURL
 
 

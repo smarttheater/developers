@@ -66,8 +66,8 @@
             -   issuedThrough
                 -   id: `xxx` (string, required) - 決済サービスid
             -   movieTickets (array[Types.Payment.AuthorizeMovieTicket.MovieTicket], required, fixed-type) - ムビチケ情報
-            -   seller
-                -   id: `xxx` (string, required) - 販売者id
+        -   seller
+            -   id: `xxx` (string, required) - 販売者id
 
 -   Response 200 (application/json)
     -   Attributes

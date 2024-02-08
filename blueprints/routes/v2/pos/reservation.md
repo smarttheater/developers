@@ -3,6 +3,8 @@
 ## Types.Reservation.UseAction
 
 -   startDate: `2023-06-01T00:00:00.000Z` (string, required) - 予約使用日時 ISO 8601 date format
+-   location (optional) - 場所
+    -  identifier: `xxx` (string, optional) - コード
 
 ## Types.Reservation.Search.PropertyValue
 
@@ -69,11 +71,13 @@
 -   Request (application/json)
 
     -   Attributes
-        -   object
+        -   object (required)
             -   id: `xxx` (string, required) - 予約 id
-        -   instrument
+        -   instrument (required)
             -   token: `xxx` (string, required) - トークン
-        -   seller
+        -   location (optional) - 場所
+            -   identifier: `xxx` (string, optional) - コード
+        -   seller (required)
             -   id: `xxx` (string, required) - 販売者 id
 
 -   Response 200 (application/json)

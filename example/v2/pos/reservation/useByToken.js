@@ -4,7 +4,7 @@ const readline = require('readline/promises');
 
 const readInterface = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
 });
 
 /**
@@ -12,10 +12,13 @@ const readInterface = readline.createInterface({
  * 予約を使用
  */
 async function main() {
-    const confirmationNumber = await readInterface.question("Please enter your confirmationNumber >");
-    const telephone = await readInterface.question("Please enter your telephone >");
-
-    const { access_token } = await authentication.getAcccesToken('authorization_code');
+    const orderNumber = await readInterface.question(
+        'Please enter your orderNumber >'
+    );
+    
+    const { access_token } = await authentication.getAcccesToken(
+        'authorization_code'
+    );
     const apiRequest = new api.Request();
     apiRequest.setOptions({
         acccesToken: access_token,
@@ -26,10 +29,17 @@ async function main() {
     }
     const seller = sellers[0];
     console.log('seller', seller);
-    const orders = await apiRequest.get('order/findByConfirmationNumber', {
-        confirmationNumber,
-        telephone,
-        sellerId: seller.id
+    const movieTheaters = await apiRequest.get('place/searchMovieTheaters', {
+        sellerId: seller.id,
+    });
+    if (movieTheaters.length === 0) {
+        throw new Error('movieTheaters not found');
+    }
+    const movieTheater = movieTheaters[0];
+    console.log('movieTheater', movieTheater);
+    const orders = await apiRequest.get('order/search', {
+        orderNumbers: [orderNumber],
+        sellerId: seller.id,
     });
     if (orders.length === 0) {
         throw new Error('orders not found');
@@ -37,11 +47,14 @@ async function main() {
     const order = orders[0];
     console.log('order', order);
 
-    const items = await apiRequest.get('order/searchAcceptedOffersByConfirmationNumber', {
-        confirmationNumber,
-        orderNumber: order.orderNumber,
-        sellerId: seller.id
-    });
+    const items = await apiRequest.get(
+        'order/searchAcceptedOffersByConfirmationNumber',
+        {
+            confirmationNumber: order.confirmationNumber,
+            orderNumber,
+            sellerId: seller.id,
+        }
+    );
     if (items.length === 0) {
         throw new Error('items not found');
     }
@@ -53,18 +66,18 @@ async function main() {
     const { code } = await apiRequest.post('order/authorize', {
         orderNumber: order.orderNumber,
         customer: {
-            telephone
+            telephone: order.customer.telephone,
         },
         expiresInSeconds: date.toISOString(),
         seller: {
-            id: seller.id
+            id: seller.id,
         },
     });
     console.log('code', code);
 
     const reservations = await apiRequest.get('reservation/search', {
         ids: item.itemOffered.id,
-        sellerId: seller.id
+        sellerId: seller.id,
     });
     if (reservations.length === 0) {
         throw new Error('reservations not found');
@@ -75,27 +88,30 @@ async function main() {
     const { token } = await apiRequest.post('token/getToken', {
         code,
         seller: {
-            id: seller.id
+            id: seller.id,
         },
     });
 
     await apiRequest.post('reservation/useByToken', {
         object: {
-            id: item.itemOffered.id
+            id: item.itemOffered.id,
         },
         instrument: {
-            token
+            token,
+        },
+        location: {
+            identifier: movieTheater.hasEntranceGate[0].identifier
         },
         seller: {
-            id: seller.id
+            id: seller.id,
         },
     });
 
     const useActions = await apiRequest.get('reservation/searchUseActions', {
         id: item.itemOffered.id,
-        sellerId: seller.id
+        sellerId: seller.id,
     });
-    console.log('useActions', useActions)
+    console.log('useActions', useActions);
 }
 
 main()

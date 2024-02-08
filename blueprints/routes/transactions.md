@@ -26,7 +26,6 @@
 ## Transactions.EventReservation
 + qr_str: `TTT281430206052148-0` (string, required) - 予約QR文字列
 + payment_no: `56686` (string, required) - 確認番号
-+ performance: `171222001001010915` (string, required) - イベントID
 
 ## Transactions.SeatReservationOffer
 + ticket_type: `001` (string, required) - オファーコード

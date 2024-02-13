@@ -24,6 +24,9 @@ const readInterface = readline.createInterface({
  * 注文取引ムビチケ決済
  */
 async function main() {
+    let screeningEventIndex = await readInterface.question(
+        'Please enter your screeningEvent index >'
+    );
     let identifier = await readInterface.question(
         'Please enter your identifier >'
     );
@@ -40,6 +43,8 @@ async function main() {
     let telephone = await readInterface.question(
         'Please enter your telephone >'
     );
+    screeningEventIndex =
+        screeningEventIndex === '' ? 0 : Number(screeningEventIndex);
     identifier = identifier === '' ? MOVIE_TICKET_IDENTIFIER : identifier;
     accessCode = accessCode === '' ? MOVIE_TICKET_ACCESS_CODE : accessCode;
     familyName = familyName === '' ? FAMILY_NAME : familyName;
@@ -277,7 +282,7 @@ async function main() {
                 object: {
                     amount: 0,
                     paymentMethod: appliesToMovieTicket.serviceOutput.typeOf,
-                    issuedThrough: {id: paymentService.id },
+                    issuedThrough: { id: paymentService.id },
                     movieTickets,
                 },
                 seller: {

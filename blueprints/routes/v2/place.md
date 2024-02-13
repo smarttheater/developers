@@ -1,5 +1,12 @@
 # Data Structure
 
+## Types.Place.SearchMovieTheaters.HasEntranceGate
+
+-   name (object, optional)
+    -   ja: `xxx` (string, optional) - 名称（日本語）
+    -   en: `xxx` (string, optional) - 名称（英語）
+-   identifier: `xxx` (string, required) - コード
+
 ## Types.Place.SearchMovieTheaters
 
 -   id: `xxx` (string, required) - 施設 id
@@ -9,6 +16,7 @@
 -   branchCode: `xxx` (string, required) - 施設コード
 -   parentOrganization
     -   id: `xxx` (string, required) - 親組織 id
+-   hasEntranceGate (array[Types.Place.SearchMovieTheaters.HasEntranceGate], fixed-type) - 入場ゲート
 
 ## Types.Place.SearchScreeningRooms
 

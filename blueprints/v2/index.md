@@ -16,6 +16,8 @@
 
 <!-- include(routes/v2/product.md) -->
 
+<!-- include(routes/v2/reservation.md) -->
+
 <!-- include(routes/v2/seller.md) -->
 
 <!-- include(routes/v2/transaction/placeOrder.md) -->

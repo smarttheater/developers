@@ -159,8 +159,7 @@
 -   Response 200 (application/json)
 
     -   Attributes
-        -   id: `xxx` (string, required) - 取引 id
-        -   expires: `2023-01-01T00:00:00.000Z` (string, required) - 取引期限 ISO 8601 date format
+        -   code: `xxx` (string, required) - 注文コード
 
 <!-- include(../../response/400.md) -->
 

@@ -2,6 +2,8 @@
 
 <!-- include(routes/v2/oauth.md) -->
 
+<!-- include(routes/v2/categoryCode.md) -->
+
 <!-- include(routes/v2/creativeWork.md) -->
 
 <!-- include(routes/v2/delivery.md) -->

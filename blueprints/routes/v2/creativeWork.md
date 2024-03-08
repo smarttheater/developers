@@ -1,5 +1,10 @@
 # Data Structure
 
+## Types.CreativeWork.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.CreativeWork.SearchMovies
 
 -   id: `xxx` (string, optional) - コンテンツid
@@ -11,6 +16,7 @@
 -   datePublished: `xxx` (string, required) - 公開日 ISO 8601 date format
 -   duration: `PT15M` (string, required) - 上映時間 (https://en.wikipedia.org/wiki/ISO_8601#Durations)
 -   thumbnailUrl: `xxx` (string, required) - サムネイルURL
+-   additionalProperty (array[Types.CreativeWork.PropertyValue], optional, fixed-type) - 追加特性
 
 
 # Group コンテンツ

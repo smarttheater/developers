@@ -21,6 +21,10 @@ async function main() {
     const movies =
         await apiRequest.get('creativeWork/searchMovies', { sellerId: seller.id });
     console.log('movies', movies);
+    if (movies.length > 0) {
+        console.log('movie', JSON.stringify(movies[0]));
+    }
+    
 }
 
 main()

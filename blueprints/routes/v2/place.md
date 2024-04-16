@@ -1,5 +1,10 @@
 # Data Structure
 
+## Types.Place.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.Place.SearchMovieTheaters.HasEntranceGate
 
 -   name (object, optional)
@@ -17,6 +22,7 @@
 -   parentOrganization
     -   id: `xxx` (string, required) - 親組織 id
 -   hasEntranceGate (array[Types.Place.SearchMovieTheaters.HasEntranceGate], fixed-type) - 入場ゲート
+-   additionalProperty (array[Types.Place.PropertyValue], optional, fixed-type) - 追加特性
 
 ## Types.Place.SearchScreeningRooms
 
@@ -25,6 +31,7 @@
     -   en: `xxx` (string, required) - ルーム名称（英語）
 -   branchCode: `xxx` (string, required) - ルームコード
 -   openSeatingAllowed: true (boolean , optional) - 自由席フラグ
+-   additionalProperty (array[Types.Place.PropertyValue], optional, fixed-type) - 追加特性
 
 ## Types.Place.HasPOS
 

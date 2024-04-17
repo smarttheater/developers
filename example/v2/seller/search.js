@@ -16,7 +16,7 @@ async function main() {
     if (sellers.length === 0) {
         throw new Error('seller not found');
     }
-    console.log('sellers', sellers);
+    console.log('sellers', JSON.stringify(sellers, null, '\t'));
 }
 
 main()

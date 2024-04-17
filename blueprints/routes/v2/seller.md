@@ -1,5 +1,10 @@
 # Data Structure
 
+## Types.Seller.PropertyValue
+
+-   name: `xxx` (string, required) - プロパティ名
+-   value: `xxx` (string, required) - プロパティ値
+
 ## Types.Seller.Search
 
 -   id: `xxx` (string, optional) - 販売者 id
@@ -7,6 +12,7 @@
     -   ja: `xxx` (string, required) - 販売者名称（日本語）
     -   en: `xxx` (string, required) - 販売者名称（英語）
 -   branchCode: `xxx` (string, required) - 販売者コード
+-   additionalProperty (array[Types.Seller.PropertyValue], optional, fixed-type) - 追加特性
 
 ## Types.Seller.SearchPaymentAccepted
 

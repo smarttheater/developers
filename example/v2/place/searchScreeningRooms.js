@@ -20,7 +20,7 @@ async function main() {
     console.log('seller', seller);
     const screeningRooms =
         await apiRequest.get('place/searchScreeningRooms', { sellerId: seller.id });
-    console.log('screeningRooms', screeningRooms);
+    console.log('screeningRooms', JSON.stringify(screeningRooms, null, '\t'));
 }
 
 main()

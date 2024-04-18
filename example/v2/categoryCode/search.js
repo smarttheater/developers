@@ -20,7 +20,7 @@ async function main() {
     console.log('seller', seller);
     const categoryCodes =
         await apiRequest.get('categoryCode/search', { sellerId: seller.id, categorySetIdentifier: 'ContentRatingType' });
-    console.log('categoryCodes', categoryCodes);
+    console.log('categoryCodes', JSON.stringify(categoryCodes, null, '\t'));
 }
 
 main()

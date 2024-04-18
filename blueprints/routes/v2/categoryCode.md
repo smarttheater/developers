@@ -11,6 +11,7 @@
 -   name
     -   ja: `xxx` (string, optional) - 名称（日本語）
     -   en: `xxx` (string, optional) - 名称（英語）
+-   image: `xxx` (string, optional) - イメージ
 -   additionalProperty (array[Types.CategoryCode.PropertyValue], optional, fixed-type) - 追加特性
 
 # Group 区分

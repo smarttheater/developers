@@ -114,9 +114,9 @@
 -   Parameters
 
     -   page: `1` (number, optional) - ページ
-        -   Default: `1
-    -   limit: `10` (number, optional) - 最大取得件数
-        -   Default: `100
+        -   Default: `1`
+    -   limit: `10` (number, optional) - 最大取得件数 20件まで
+        -   Default: `20`
     -   bookingFrom: `2023-06-01T00:00:00.000Z` (string, optional) - 予約日時範囲(から) ISO 8601 date format
     -   bookingThrough: `2023-06-01T00:00:00.000Z` (string, optional) - 予約日時範囲(まで) ISO 8601 date format
     -   ids: `xxx,xxx` (string, optional) - 予約id 10件まで

@@ -51,9 +51,9 @@
 -   Parameters
 
     -   page: `1` (number, optional) - ページ
-        -   Default: `1
-    -   limit: `10` (number, optional) - 最大取得件数
-        -   Default: `100
+        -   Default: `1`
+    -   limit: `10` (number, optional) - 最大取得件数 20件まで
+        -   Default: `20`
     -   orderDateGte: `2023-01-01T00:00:00.000Z` (string, optional) - 注文日時範囲(から)ISO 8601 date format
     -   orderDateLte: `2023-01-01T00:00:00.000Z` (string, optional) - 注文日時範囲(まで)ISO 8601 date format
     -   orderNumbers: `xxx,xxx` (string, optional) - 注文番号 10件まで

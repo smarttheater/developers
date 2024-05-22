@@ -12,8 +12,6 @@
 
 <!-- include(routes/v2/order.md) -->
 
-<!-- include(routes/v2/payment.md) -->
-
 <!-- include(routes/v2/place.md) -->
 
 <!-- include(routes/v2/product.md) -->

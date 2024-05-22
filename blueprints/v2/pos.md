@@ -4,8 +4,6 @@
 
 <!-- include(routes/v2/pos/order.md) -->
 
-<!-- include(routes/v2/pos/payment.md) -->
-
 <!-- include(routes/v2/pos/place.md) -->
 
 <!-- include(routes/v2/pos/reservation.md) -->
